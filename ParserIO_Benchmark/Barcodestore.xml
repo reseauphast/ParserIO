@@ -1181,73 +1181,6 @@
     </Commentary>
   </Analyse>
   <Analyse>
-    <Barcode_withoutGS>]C1010084002900754910100700107117201507</Barcode_withoutGS>
-    <Barcode_withGS>]C10100840029007549101007001071@17201507</Barcode_withGS>
-    <ACL>
-    </ACL>
-    <ADDITIONALID>
-    </ADDITIONALID>
-    <BESTBEFORE>
-    </BESTBEFORE>
-    <CIP>
-    </CIP>
-    <Company>
-    </Company>
-    <containsOrMayContainId>1</containsOrMayContainId>
-    <CONTENT>
-    </CONTENT>
-    <COUNT>
-    </COUNT>
-    <EAN>
-    </EAN>
-    <Expiry>201507</Expiry>
-    <Family>
-    </Family>
-    <GTIN>00840029007549</GTIN>
-    <LIC>
-    </LIC>
-    <Lot>1007001071</Lot>
-    <LPP>
-    </LPP>
-    <NaS7>
-    </NaS7>
-    <NaSIdParamName>
-    </NaSIdParamName>
-    <NormalizedBESTBEFORE>
-    </NormalizedBESTBEFORE>
-    <NormalizedExpiry>20150731</NormalizedExpiry>
-    <NormalizedPRODDATE>
-    </NormalizedPRODDATE>
-    <PCN>
-    </PCN>
-    <PRODDATE>
-    </PRODDATE>
-    <Product>
-    </Product>
-    <Quantity>
-    </Quantity>
-    <Reference>
-    </Reference>
-    <Serial>
-    </Serial>
-    <SSCC>
-    </SSCC>
-    <SymbologyID>C1</SymbologyID>
-    <SubType>01.10.17</SubType>
-    <Type>GS1-128</Type>
-    <UDI>00840029007549</UDI>
-    <UoM>
-    </UoM>
-    <UPN>
-    </UPN>
-    <VARCOUNT>
-    </VARCOUNT>
-    <VARIANT>
-    </VARIANT>
-    <Commentary>
-    </Commentary>
-  </Analyse>
-  <Analyse>
     <Barcode_withoutGS>]C10100840029008607</Barcode_withoutGS>
     <Barcode_withGS>]C10100840029008607</Barcode_withGS>
     <ACL>
@@ -1788,75 +1721,6 @@
     </SSCC>
     <SymbologyID>C1</SymbologyID>
     <SubType>17.10</SubType>
-    <Type>GS1-128</Type>
-    <UDI>
-    </UDI>
-    <UoM>
-    </UoM>
-    <UPN>
-    </UPN>
-    <VARCOUNT>
-    </VARCOUNT>
-    <VARIANT>
-    </VARIANT>
-    <Commentary>
-    </Commentary>
-  </Analyse>
-  <Analyse>
-    <Barcode_withoutGS>]C11010D626E17201504</Barcode_withoutGS>
-    <Barcode_withGS>]C11010D626E@17201504</Barcode_withGS>
-    <ACL>
-    </ACL>
-    <ADDITIONALID>
-    </ADDITIONALID>
-    <BESTBEFORE>
-    </BESTBEFORE>
-    <CIP>
-    </CIP>
-    <Company>
-    </Company>
-    <containsOrMayContainId>0</containsOrMayContainId>
-    <CONTENT>
-    </CONTENT>
-    <COUNT>
-    </COUNT>
-    <EAN>
-    </EAN>
-    <Expiry>201504</Expiry>
-    <Family>
-    </Family>
-    <GTIN>
-    </GTIN>
-    <LIC>
-    </LIC>
-    <Lot>10D626E</Lot>
-    <LPP>
-    </LPP>
-    <NaS7>
-    </NaS7>
-    <NaSIdParamName>
-    </NaSIdParamName>
-    <NormalizedBESTBEFORE>
-    </NormalizedBESTBEFORE>
-    <NormalizedExpiry>20150430</NormalizedExpiry>
-    <NormalizedPRODDATE>
-    </NormalizedPRODDATE>
-    <PCN>
-    </PCN>
-    <PRODDATE>
-    </PRODDATE>
-    <Product>
-    </Product>
-    <Quantity>
-    </Quantity>
-    <Reference>
-    </Reference>
-    <Serial>
-    </Serial>
-    <SSCC>
-    </SSCC>
-    <SymbologyID>C1</SymbologyID>
-    <SubType>10.17</SubType>
     <Type>GS1-128</Type>
     <UDI>
     </UDI>
@@ -21818,7 +21682,7 @@
     </VARCOUNT>
     <VARIANT>
     </VARIANT>
-    <Commentary>test</Commentary>
+    <Commentary></Commentary>
   </Analyse>
   <Analyse>
     <Barcode_withoutGS>]C10130707387023684</Barcode_withoutGS>
@@ -23703,75 +23567,6 @@
     <SubType>01</SubType>
     <Type>GS1-128</Type>
     <UDI>00801902000484</UDI>
-    <UoM>
-    </UoM>
-    <UPN>
-    </UPN>
-    <VARCOUNT>
-    </VARCOUNT>
-    <VARIANT>
-    </VARIANT>
-    <Commentary>
-    </Commentary>
-  </Analyse>
-  <Analyse>
-    <Barcode_withoutGS>]C11720141110ZF9100484</Barcode_withoutGS>
-    <Barcode_withGS>]C11720141110ZF9100484</Barcode_withGS>
-    <ACL>
-    </ACL>
-    <ADDITIONALID>
-    </ADDITIONALID>
-    <BESTBEFORE>
-    </BESTBEFORE>
-    <CIP>
-    </CIP>
-    <Company>
-    </Company>
-    <containsOrMayContainId>0</containsOrMayContainId>
-    <CONTENT>
-    </CONTENT>
-    <COUNT>
-    </COUNT>
-    <EAN>
-    </EAN>
-    <Expiry>201411</Expiry>
-    <Family>
-    </Family>
-    <GTIN>
-    </GTIN>
-    <LIC>
-    </LIC>
-    <Lot>ZF9100484</Lot>
-    <LPP>
-    </LPP>
-    <NaS7>
-    </NaS7>
-    <NaSIdParamName>
-    </NaSIdParamName>
-    <NormalizedBESTBEFORE>
-    </NormalizedBESTBEFORE>
-    <NormalizedExpiry>20141130</NormalizedExpiry>
-    <NormalizedPRODDATE>
-    </NormalizedPRODDATE>
-    <PCN>
-    </PCN>
-    <PRODDATE>
-    </PRODDATE>
-    <Product>
-    </Product>
-    <Quantity>
-    </Quantity>
-    <Reference>
-    </Reference>
-    <Serial>
-    </Serial>
-    <SSCC>
-    </SSCC>
-    <SymbologyID>C1</SymbologyID>
-    <SubType>17.10</SubType>
-    <Type>GS1-128</Type>
-    <UDI>
-    </UDI>
     <UoM>
     </UoM>
     <UPN>
@@ -29299,74 +29094,7 @@
     <Commentary>
     </Commentary>
   </Analyse>
-  <Analyse>
-    <Barcode_withoutGS>]C101040428090122791720130610030</Barcode_withoutGS>
-    <Barcode_withGS>]C101040428090122791720130610030</Barcode_withGS>
-    <ACL>
-    </ACL>
-    <ADDITIONALID>
-    </ADDITIONALID>
-    <BESTBEFORE>
-    </BESTBEFORE>
-    <CIP>
-    </CIP>
-    <Company>
-    </Company>
-    <containsOrMayContainId>1</containsOrMayContainId>
-    <CONTENT>
-    </CONTENT>
-    <COUNT>
-    </COUNT>
-    <EAN>
-    </EAN>
-    <Expiry>201306</Expiry>
-    <Family>
-    </Family>
-    <GTIN>04042809012279</GTIN>
-    <LIC>
-    </LIC>
-    <Lot>030</Lot>
-    <LPP>
-    </LPP>
-    <NaS7>
-    </NaS7>
-    <NaSIdParamName>
-    </NaSIdParamName>
-    <NormalizedBESTBEFORE>
-    </NormalizedBESTBEFORE>
-    <NormalizedExpiry>20130630</NormalizedExpiry>
-    <NormalizedPRODDATE>
-    </NormalizedPRODDATE>
-    <PCN>
-    </PCN>
-    <PRODDATE>
-    </PRODDATE>
-    <Product>
-    </Product>
-    <Quantity>
-    </Quantity>
-    <Reference>
-    </Reference>
-    <Serial>
-    </Serial>
-    <SSCC>
-    </SSCC>
-    <SymbologyID>C1</SymbologyID>
-    <SubType>01.17.10</SubType>
-    <Type>GS1-128</Type>
-    <UDI>04042809012279</UDI>
-    <UoM>
-    </UoM>
-    <UPN>
-    </UPN>
-    <VARCOUNT>
-    </VARCOUNT>
-    <VARIANT>
-    </VARIANT>
-    <Commentary>
-    </Commentary>
-  </Analyse>
-  <Analyse>
+   <Analyse>
     <Barcode_withoutGS>]C1010570178059211617110100102089307</Barcode_withoutGS>
     <Barcode_withGS>]C1010570178059211617110100102089307</Barcode_withGS>
     <ACL>
@@ -49892,7 +49620,7 @@
     </GTIN>
     <LIC>
     </LIC>
-    <Lot>54321/S12345</Lot>
+    <Lot>54321</Lot>
     <LPP>
     </LPP>
     <NaS7>
@@ -49914,12 +49642,11 @@
     </Quantity>
     <Reference>
     </Reference>
-    <Serial>
-    </Serial>
+    <Serial>12345E</Serial>
     <SSCC>
     </SSCC>
     <SymbologyID>C0</SymbologyID>
-    <SubType>Secondary.$$.5</SubType>
+    <SubType>Secondary.$$.5.S</SubType>
     <Type>HIBC</Type>
     <UDI>
     </UDI>
@@ -49933,5 +49660,125 @@
     </VARIANT>
     <Commentary>
     </Commentary>
+  </Analyse>
+  <Analyse>
+    <Barcode_withoutGS>]C0+A99912345/$$52001510X3/16D20111212/S77DEFG457</Barcode_withoutGS>
+    <Barcode_withGS>]C0+A99912345/$$52001510X3/16D20111212/S77DEFG457</Barcode_withGS>
+    <ACL>
+    </ACL>
+    <ADDITIONALID>
+    </ADDITIONALID>
+    <BESTBEFORE>
+    </BESTBEFORE>
+    <CIP>
+    </CIP>
+    <Company>
+    </Company>
+    <containsOrMayContainId>1</containsOrMayContainId>
+    <CONTENT>
+    </CONTENT>
+    <COUNT>
+    </COUNT>
+    <EAN>
+    </EAN>
+    <Expiry>20015</Expiry>
+    <Family>
+    </Family>
+    <GTIN>
+    </GTIN>
+    <LIC>A999</LIC>
+    <Lot>10X3</Lot>
+    <LPP>
+    </LPP>
+    <NaS7>
+    </NaS7>
+    <NaSIdParamName>
+    </NaSIdParamName>
+    <NormalizedBESTBEFORE>
+    </NormalizedBESTBEFORE>
+    <NormalizedExpiry>20200115</NormalizedExpiry>
+    <NormalizedPRODDATE>20111212</NormalizedPRODDATE>
+    <PCN>1234</PCN>
+    <PRODDATE>20111212</PRODDATE>
+    <Product>
+    </Product>
+    <Quantity>
+    </Quantity>
+    <Reference>
+    </Reference>
+    <Serial>77DEFG45</Serial>
+    <SSCC>
+    </SSCC>
+    <SymbologyID>C0</SymbologyID>
+    <SubType>Primary/Secondary.$$.5.16D.S</SubType>
+    <Type>HIBC</Type>
+    <UDI>A99912345</UDI>
+    <UoM>5</UoM>
+    <UPN>A99912345</UPN>
+    <VARCOUNT>
+    </VARCOUNT>
+    <VARIANT>
+    </VARIANT>
+    <Commentary>Example in ANSI/HIBC 2.5 Document, 2.3.2.2 Date of Manufacture paragraph</Commentary>
+  </Analyse>
+  <Analyse>
+    <Barcode_withoutGS>]C0+A99912345/$10X3/16D20111231/14D202001313</Barcode_withoutGS>
+    <Barcode_withGS>]C0+A99912345/$10X3/16D20111231/14D202001313</Barcode_withGS>
+    <ACL>
+    </ACL>
+    <ADDITIONALID>
+    </ADDITIONALID>
+    <BESTBEFORE>
+    </BESTBEFORE>
+    <CIP>
+    </CIP>
+    <Company>
+    </Company>
+    <containsOrMayContainId>1</containsOrMayContainId>
+    <CONTENT>
+    </CONTENT>
+    <COUNT>
+    </COUNT>
+    <EAN>
+    </EAN>
+    <Expiry>20200131</Expiry>
+    <Family>
+    </Family>
+    <GTIN>
+    </GTIN>
+    <LIC>A999</LIC>
+    <Lot>10X3</Lot>
+    <LPP>
+    </LPP>
+    <NaS7>
+    </NaS7>
+    <NaSIdParamName>
+    </NaSIdParamName>
+    <NormalizedBESTBEFORE>
+    </NormalizedBESTBEFORE>
+    <NormalizedExpiry>20200131</NormalizedExpiry>
+    <NormalizedPRODDATE>20111231</NormalizedPRODDATE>
+    <PCN>1234</PCN>
+    <PRODDATE>20111231</PRODDATE>
+    <Product>
+    </Product>
+    <Quantity>
+    </Quantity>
+    <Reference>
+    </Reference>
+    <Serial></Serial>
+    <SSCC>
+    </SSCC>
+    <SymbologyID>C0</SymbologyID>
+    <SubType>Secondary.$.16D.14D</SubType>
+    <Type>HIBC</Type>
+    <UDI>A99912345</UDI>
+    <UoM>5</UoM>
+    <UPN>A99912345</UPN>
+    <VARCOUNT>
+    </VARCOUNT>
+    <VARIANT>
+    </VARIANT>
+    <Commentary>Example in ANSI/HIBC 2.5 Document, 2.3.2.2 Date of Manufacture paragraph</Commentary>
   </Analyse>
 </Barcodestore>

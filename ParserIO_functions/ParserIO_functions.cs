@@ -1,4 +1,4 @@
-﻿// “Copyright (C) 2009-2014 Association Réseau Phast”
+﻿// “Copyright (C) 2009-2016 Association Réseau Phast”
 // This file is part of ParserIO.
 // ParserIO is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -144,8 +144,8 @@
 //             [en] Supported the variant GS1-128 11.17.10
 // 05/04/11 DU [fr] Ajouté la licence LGPLv3
 //             [en] Added the license LGPLv3
-// 13/04/11 DU [fr] Modifié la méthode DateBrute en Expiry
-//             [en] Changed the DateBrute method to Expiry method
+// 13/04/11 DU [fr] Modifié la méthode dateRaw en Expiry
+//             [en] Changed the dateRaw method to Expiry method
 // 13/04/11 DU [fr] Modifié la méthode DateNormale en NormalizedExpiry
 //             [en] Changed the DateNormale to NormalizedExpiry
 // 13/04/11 DU [fr] Développé la méthode NormalizedPRODDATE
@@ -289,6 +289,10 @@
 //
 // 12-11-2015 DU [fr] Ajouté la méthode UDI
 //               [en] Added UDI méthod
+//
+// 18-03-2016 Version 1.0.0.7
+// 18-03-2016 DU [fr] Début de la mise en conformité au standard HIBC 2.5
+//               [en] Start to develop HIBC 2.5 features
 //
 // TODO [fr] Eviter d'utiliser System.Globalization
 //      [en] Avoid to use System.Globalization
@@ -454,6 +458,7 @@ namespace ParserIO_functions
     //[ProgId("ParserIO_functions")]
     public class ParserIO_func : IParserIO_func
     {
+        private static string hibcASDlist = "(/14D|/16D|/S)";
         private static int[] _month_days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
         private static System.Collections.Generic.List<char> nValuesAssignmets = new System.Collections.Generic.List<char>
@@ -544,7 +549,7 @@ namespace ParserIO_functions
                     //TODO MB Controler Longueur code
                     result = code.Substring(19, code.Length - 19);
                 }
-                else if (subType=="240")
+                else if (subType == "240")
                 {
                     //TODO MB Controler Longueur code
                     result = code.Substring(3, code.Length - 3);
@@ -553,7 +558,7 @@ namespace ParserIO_functions
                 {
                     //TODO MB Controler Longueur code
                     int nextGS = indexOfGS(code, 1);
-                    result = code.Substring(3, nextGS-3);
+                    result = code.Substring(3, nextGS - 3);
                 }
             }
             return result;
@@ -967,7 +972,7 @@ namespace ParserIO_functions
                 code.StartsWith("]C0") |
                 code.StartsWith("]C1") |
                 code.StartsWith("]d1") |
-                code.StartsWith("]d2")|
+                code.StartsWith("]d2") |
                 code.StartsWith("]E0"))
                 result = true;
             return result;
@@ -1002,61 +1007,101 @@ namespace ParserIO_functions
             }
             return result;
         }
-         
-        private static DateTime ConvertDateTimeFromStr(String str, int typeDate)
+
+        /// 1-------MMyy
+        /// 2-------MMddyy
+        /// 3-------yyMMdd
+        /// 4-------yyMMddHH
+        /// 5-------yyJJJ
+        /// 6-------yyJJJHH
+        /// 7-------yyyy-MM
+        /// 8-------MMddyy
+        /// -1------error type
+        private static DateTime ConvertDateTimeFromStr(String dateRaw, int dateType)
         {
+            //if (dateType == 3)
+            //{
+            //    if (dateRaw.StartsWith("20"))
+            //        if ((dateRaw.StartsWith("2013") |
+            //             dateRaw.StartsWith("2014") |
+            //             dateRaw.StartsWith("2015") |
+            //             dateRaw.StartsWith("2016") |
+            //             dateRaw.StartsWith("2017") |
+            //             dateRaw.StartsWith("2018") |
+            //             dateRaw.StartsWith("2019") |
+            //             dateRaw.StartsWith("2020")) &
+            //            (dateRaw.EndsWith("01") |
+            //             dateRaw.EndsWith("02") |
+            //             dateRaw.EndsWith("03") |
+            //             dateRaw.EndsWith("04") |
+            //             dateRaw.EndsWith("05") |
+            //             dateRaw.EndsWith("06") |
+            //             dateRaw.EndsWith("07") |
+            //             dateRaw.EndsWith("08") |
+            //             dateRaw.EndsWith("09") |
+            //             dateRaw.EndsWith("10") |
+            //             dateRaw.EndsWith("11") |
+            //             dateRaw.EndsWith("12")))
+            //        {
+            //            // [fr] Est de la forme AAAAMM, devrait être AAMMJJ
+            //            // [en] Is in YYYYMM form, should be YYMMDD
+            //            dateRaw = dateRaw.Substring(2) + "00";  //27/01/2012 DU: A vérifier //TODO MB Controler Longueur code 
+            //        }
+            //}
+
             DateTime dt = DateTime.MinValue;
             int y = 0, m = 0, d = 0, h = 0, j = 0;
             // y ------years, m ------months, d ------days, h -------hours
 
-            switch (typeDate)
+            switch (dateType)
             {
                 case 1:
-                    m = int.Parse(str.Substring(0, 2));
-                    y = int.Parse(str.Substring(2, 2));
+                    m = int.Parse(dateRaw.Substring(0, 2));
+                    y = int.Parse(dateRaw.Substring(2, 2));
                     break;
                 case 2:
-                    m = int.Parse(str.Substring(0, 2));
-                    d = int.Parse(str.Substring(2, 2));
-                    y = int.Parse(str.Substring(4, 2));
+                    m = int.Parse(dateRaw.Substring(0, 2));
+                    d = int.Parse(dateRaw.Substring(2, 2));
+                    y = int.Parse(dateRaw.Substring(4, 2));
                     break;
                 case 3:
-                    y = int.Parse(str.Substring(0, 2));
-                    m = int.Parse(str.Substring(2, 2));
-                    d = int.Parse(str.Substring(4, 2));
+                    //dateRaw = dateRaw.Substring(2);
+                    y = int.Parse(dateRaw.Substring(0, 2));
+                    m = int.Parse(dateRaw.Substring(2, 2));
+                    d = int.Parse(dateRaw.Substring(4, 2));
                     break;
                 case 4:
-                    y = int.Parse(str.Substring(0, 2));
-                    m = int.Parse(str.Substring(2, 2));
-                    d = int.Parse(str.Substring(4, 2));
-                    h = int.Parse(str.Substring(6, 2));
+                    y = int.Parse(dateRaw.Substring(0, 2));
+                    m = int.Parse(dateRaw.Substring(2, 2));
+                    d = int.Parse(dateRaw.Substring(4, 2));
+                    h = int.Parse(dateRaw.Substring(6, 2));
                     break;
                 case 5:
-                    y = int.Parse(str.Substring(0, 2));
-                    j = int.Parse(str.Substring(2, 3));
+                    y = int.Parse(dateRaw.Substring(0, 2));
+                    j = int.Parse(dateRaw.Substring(2, 3));
                     break;
                 case 6:
-                    y = int.Parse(str.Substring(0, 2));
-                    j = int.Parse(str.Substring(2, 3));
-                    h = int.Parse(str.Substring(5, 2));
+                    y = int.Parse(dateRaw.Substring(0, 2));
+                    j = int.Parse(dateRaw.Substring(2, 3));
+                    h = int.Parse(dateRaw.Substring(5, 2));
                     break;
                 case 7:
-                    y = int.Parse(str.Substring(2, 2));
-                    m = int.Parse(str.Substring(5, 2));
+                    y = int.Parse(dateRaw.Substring(2, 2));
+                    m = int.Parse(dateRaw.Substring(5, 2));
                     break;
                 case 8:
-                    y = int.Parse(str.Substring(4, 2));
-                    m = int.Parse(str.Substring(0, 2));
-                    d = int.Parse(str.Substring(2, 2));
+                    y = int.Parse(dateRaw.Substring(4, 2));
+                    m = int.Parse(dateRaw.Substring(0, 2));
+                    d = int.Parse(dateRaw.Substring(2, 2));
                     break;
                 case 9:
-                    y = int.Parse(str.Substring(8, 2));
-                    m = int.Parse(str.Substring(3, 2));
-                    d = int.Parse(str.Substring(0, 2));
+                    y = int.Parse(dateRaw.Substring(8, 2));
+                    m = int.Parse(dateRaw.Substring(3, 2));
+                    d = int.Parse(dateRaw.Substring(0, 2));
                     break;
                 case 10:
-                    y = int.Parse(str.Substring(0, 2));
-                    m = int.Parse(str.Substring(2, 1));
+                    y = int.Parse(dateRaw.Substring(0, 2));
+                    m = int.Parse(dateRaw.Substring(2, 1));
                     break;
             }
 
@@ -1148,14 +1193,14 @@ namespace ParserIO_functions
                     }
                     //result = code.Substring(25, 3);
                 }
-                else if (subType=="02.17.37.10")
+                else if (subType == "02.17.37.10")
                 {
-                    int nextGS = indexOfGS(code, 24); 
+                    int nextGS = indexOfGS(code, 24);
                     result = code.Substring(26, nextGS - 26); //TODO MB Controler Longueur code 
                 }
                 else if (subType.StartsWith("02.10.15.37"))
                 {
-                    int nextGS = indexOfGS(code, 16); 
+                    int nextGS = indexOfGS(code, 16);
                     result = code.Substring(nextGS + 11, code.Length - nextGS - 11); //TODO MB Controler Longueur code 
                 }
                 else if (subType == "02.37.10")
@@ -1253,7 +1298,7 @@ namespace ParserIO_functions
                 }
             }
 
-            else if (type == "HIBC")
+            else if (type == "HIBC" && subType.Contains("Secondary"))
             {
                 //code = CleanSymbologyId(code);
                 string secondaryCode = null;
@@ -1287,9 +1332,10 @@ namespace ParserIO_functions
                 {
                     result = secondaryCode.Substring(4, 8);
                 }
-                else if (subType.EndsWith("Secondary.$$.5") & (length > 9))
+                else if (subType.Contains("Secondary.$$.5") & (length > 9))
                 {
-                    result = secondaryCode.Substring(4, 5);
+                    int position = secondaryCode.IndexOf("$$5");
+                    result = secondaryCode.Substring(position + 3, 5);
                 }
                 else if (subType.EndsWith("Secondary.$$.6") & (length > 11))
                 {
@@ -1342,6 +1388,15 @@ namespace ParserIO_functions
                 else if (subType.EndsWith("Secondary.$$.9.6") & (length > 17))
                 {
                     result = secondaryCode.Substring(10, 7);
+                }
+                if (containsASD(code))
+                {
+                    if (subType.Contains("14D"))
+                    {
+                        int position = secondaryCode.IndexOf("/14D");
+                        result = secondaryCode.Substring(position + 4, 8);
+                    }
+
                 }
             }
             else if (type == "NaS")
@@ -1424,46 +1479,22 @@ namespace ParserIO_functions
             return result;
         }
 
-        private string NormalizedDate(string dateBrute, string type, string subType, string code)
-        {
-            code = Cleanse(code);
-            code = CleanSymbologyId(code);
-            string result = "";
-            if (!String.IsNullOrEmpty(dateBrute))
-            {
-                int dateType = GetDateType(type, subType, code);
-                if (dateType == 3)
-                {
-                    if (dateBrute.StartsWith("20"))
-                        if ((dateBrute.StartsWith("2013") |
-                             dateBrute.StartsWith("2014") |
-                             dateBrute.StartsWith("2015") |
-                             dateBrute.StartsWith("2016") |
-                             dateBrute.StartsWith("2017") |
-                             dateBrute.StartsWith("2018") |
-                             dateBrute.StartsWith("2019")) &
-                            (dateBrute.EndsWith("01") |
-                             dateBrute.EndsWith("02") |
-                             dateBrute.EndsWith("03") |
-                             dateBrute.EndsWith("04") |
-                             dateBrute.EndsWith("05") |
-                             dateBrute.EndsWith("06") |
-                             dateBrute.EndsWith("07") |
-                             dateBrute.EndsWith("08") |
-                             dateBrute.EndsWith("09") |
-                             dateBrute.EndsWith("10") |
-                             dateBrute.EndsWith("11") |
-                             dateBrute.EndsWith("12")))
-                        {
-                            // [fr] Est de la forme AAAAMM, devrait être AAMMJJ
-                            // [en] Is in YYYYMM form, should be YYMMDD
-                            dateBrute = dateBrute.Substring(2) + "00";  //27/01/2012 DU: A vérifier //TODO MB Controler Longueur code 
-                        }
-                }
 
-                if (dateType != -1)
+
+        private string NormalizedDate(string dateRaw, string type, string subType)
+        {
+            string result = "";
+            if (!String.IsNullOrEmpty(dateRaw))
+            {
+                int dateType = GetDateType(type, subType, dateRaw);
+                if (dateType == 0)
                 {
-                    DateTime dateTime = ConvertDateTimeFromStr(dateBrute, dateType);
+                    result = dateRaw;
+                    return result;
+                }
+                else if (dateType != -1)
+                {
+                    DateTime dateTime = ConvertDateTimeFromStr(dateRaw, dateType);
                     if (dateTime != DateTime.MinValue)
                     {
                         if (dateTime.Hour > 0)
@@ -1482,51 +1513,51 @@ namespace ParserIO_functions
 
         public string NormalizedBESTBEFORE(string code)
         {
-            string dateBrute = BESTBEFORE(code);
+            string dateRaw = BESTBEFORE(code);
             string type = Type(code);
             string subType = SubType(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
 
         public string NormalizedBESTBEFORE(string code, string type, string subType)
         {
-            string dateBrute = BESTBEFORE(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string dateRaw = BESTBEFORE(code);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
 
         public string NormalizedExpiry(string code)
         {
-            string dateBrute = Expiry(code);
+            string dateRaw = Expiry(code);
             string type = Type(code);
             string subType = SubType(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
 
         public string NormalizedExpiry(string code, string type, string subType)
         {
             code = Cleanse(code);
-            string dateBrute = Expiry(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string dateRaw = Expiry(code, type, subType);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
 
         public string NormalizedPRODDATE(string code)
         {
-            string dateBrute = PRODDATE(code);
+            string dateRaw = PRODDATE(code);
             string type = Type(code);
             string subType = SubType(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
 
         public string NormalizedPRODDATE(string code, string type, string subType)
         {
             code = Cleanse(code);
-            string dateBrute = PRODDATE(code);
-            string result = NormalizedDate(dateBrute, type, subType, code);
+            string dateRaw = PRODDATE(code);
+            string result = NormalizedDate(dateRaw, type, subType);
             return result;
         }
         public string Company(string code)
@@ -1563,17 +1594,106 @@ namespace ParserIO_functions
         /// 5-------yyJJJ
         /// 6-------yyJJJHH
         /// 7-------yyyy-MM
-        /// 8-------MMddyy
+        /// 8-------MMddyy  ??
         /// -1------error type
+        private static int GetDateType(String typeBarcode, String subType, String dateRaw)
+        {
+            int typeDate = -1;
+            if (typeBarcode == "GS1-128")
+            {
+                // YYMMDD
+                typeDate = 3;
+            }
+            else if (typeBarcode == "HIBC" && subType.Contains("Secondary"))
+            {
+               if (dateRaw.Length==4) 
+                {
+                    // MMYY
+                    typeDate = 1;
+                }
+                else if (dateRaw.Length==5) 
+                {
+                    // YYJJJ
+                    typeDate = 5;
 
-        private static int GetDateType(String typeBarcode, String subType, String code)
+                }
+                else if (dateRaw.Length==6) 
+                {
+                    if ((subType.Contains("$$.2") | (subType.Contains("$$.8.2"))))
+                    {
+                        // MMDDYY
+                        typeDate = 2;
+                    }
+                    else if ((subType.Contains("$$.3") | (subType.Contains("$$.8.3"))))
+                    {
+                        // YYMMDD
+                        typeDate = 3;
+                    }
+                }
+                else if (dateRaw.Length==7)
+                {
+                    // YYJJJHH
+                    typeDate = 6;
+                }
+               else if (dateRaw.Length==8)
+                {
+                    if ((subType.Contains(".14") | subType.Contains(".16")) && !(subType.Contains("$$.4") | (subType.Contains("$$.8.4"))))
+                    {
+                        // YYYYMMDD
+                        typeDate = 0;
+                    }
+                    else if (!(subType.Contains(".14") | subType.Contains(".16")) && (subType.Contains("$$.4") | (subType.Contains("$$.8.4"))))
+                    {
+                        // YYMMDDHH
+                        typeDate = 4;
+                    }
+                    else
+                    {
+                        // If the secondary structure contains both?
+                        //Todo
+                        // ? > YYYY > ?
+                        // 12 => MM >= 01
+                        // 31 => DD >= 01
+                        // 24 => HH >= 00
+
+                    }
+                }
+            }
+            else if (typeBarcode == "NaS")
+            {
+                if (subType == "005")
+                {
+                    typeDate = 7;
+                }
+                else if (subType == "007")
+                {
+                    typeDate = 8;
+                }
+                else if (subType == "015")
+                {
+                    typeDate = 9;
+                }
+                else if (subType == "016")
+                {
+                    typeDate = 3;
+                }
+                else if (subType == "017")
+                {
+                    typeDate = 10;
+                }
+            }
+            return typeDate;
+        }
+
+
+        private static int GetDateType_old(String typeBarcode, String subType, String code)
         {
             code = Cleanse(code);
             code = CleanSymbologyId(code);
             int typeDate = -1;
             if (typeBarcode == "GS1-128")
             {
-                typeDate = 3;
+                typeDate = 3; //?
             }
             else if (typeBarcode == "HIBC")
             {
@@ -1608,7 +1728,7 @@ namespace ParserIO_functions
                 {
                     typeDate = 4;
                 }
-                else if (subType.EndsWith("Secondary.$$.5") & (length > 9))
+                else if (subType.Contains("Secondary.$$.5") & (length > 9))
                 {
                     typeDate = 5;
                 }
@@ -1663,6 +1783,11 @@ namespace ParserIO_functions
                 else if (subType.EndsWith("Secondary.$$.9.6") & (length > 17))
                 {
                     typeDate = 6;
+                }
+                else if ((subType.Contains("14D") |
+                         (subType.Contains("16D"))))
+                {
+                    typeDate = 99;
                 }
             }
             else if (typeBarcode == "NaS")
@@ -1749,6 +1874,7 @@ namespace ParserIO_functions
         {
             code = Cleanse(code);
             code = CleanSymbologyId(code);
+            int codeLenght = code.Length;
             string result = "";
             if (type.StartsWith("GS1-"))
             {
@@ -1767,8 +1893,7 @@ namespace ParserIO_functions
                 }
                 else if (subType.StartsWith("01.11.17.10"))
                 {
-                    int lenght = code.Length;
-                    result = code.Substring(34, lenght - 34);//TODO MB Controler Longueur code 
+                    result = code.Substring(34, codeLenght - 34);//TODO MB Controler Longueur code 
                 }
                 else if (subType.StartsWith("01.15.10"))
                 {
@@ -1920,212 +2045,271 @@ namespace ParserIO_functions
                     }
                 }
             }
+
+
+
+
             else if (type == "HIBC")
             {
-                string secondaryCode = null;
-                if (subType.StartsWith(@"Primary/Secondary"))
+                if (containsASD(code)) // Version 2.5
                 {
-                    int position = code.IndexOf('/');
-                    secondaryCode = "+" + code.Substring(position + 1);//TODO MB Controler Longueur code 
-                }
-                else
-                {
-                    secondaryCode = code;
-                }
-                int length = secondaryCode.Length;
-                if (subType.StartsWith("Secondary"))
-                {
-                    if (subType.EndsWith("Secondary.N") & (length > 8))
+                    int position;
+                    string secondaryCode = null;
+                    if (subType.StartsWith(@"Primary/Secondary"))
                     {
-                        result = secondaryCode.Substring(6, length - 8);
+                        position = code.IndexOf('/');
                     }
-                    else if (subType.EndsWith("Secondary.$") & (length > 4))
+                    else
                     {
-                        result = secondaryCode.Substring(2, length - 4);
+                        position = 0;
                     }
-                    else if (subType.EndsWith("Secondary.$$") & (length > 9))
-                    {
-                        result = secondaryCode.Substring(7, length - 9);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.2") & (length > 12))
-                    {
-                        result = secondaryCode.Substring(10, length - 12);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.3") & (length > 12))
-                    {
-                        result = secondaryCode.Substring(10, length - 12);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.4") & (length > 14))
-                    {
-                        result = secondaryCode.Substring(12, length - 14);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.5") & (length > 8))
-                    {
-                        result = secondaryCode.Substring(9, length - 11);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.6") & (length > 13))
-                    {
-                        result = secondaryCode.Substring(11, length - 13);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.7") & (length > 6))
-                    {
-                        result = secondaryCode.Substring(4, length - 6);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8") & (length > 12))
-                    {
-                        result = secondaryCode.Substring(10, length - 12);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.2") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 15);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.3") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 15);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.4") & (length > 17))
-                    {
-                        result = secondaryCode.Substring(15, length - 17);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.5") & (length > 14))
-                    {
-                        result = secondaryCode.Substring(12, length - 14);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.6") & (length > 16))
-                    {
-                        result = secondaryCode.Substring(14, length - 16);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.8.7") & (length > 9))
-                    {
-                        result = secondaryCode.Substring(7, length - 9);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 15);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.2") & (length > 18))
-                    {
-                        result = secondaryCode.Substring(16, length - 18);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.3") & (length > 18))
-                    {
-                        result = secondaryCode.Substring(16, length - 18);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.4") & (length > 20))
-                    {
-                        result = secondaryCode.Substring(18, length - 20);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.5") & (length > 17))
-                    {
-                        result = secondaryCode.Substring(15, length - 17);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.6") & (length > 19))
-                    {
-                        result = secondaryCode.Substring(17, length - 19);
-                    }
-                    else if (subType.EndsWith("Secondary.$$.9.7") & (length > 12))
-                    {
-                        result = secondaryCode.Substring(10, length - 12);
-                    }
-                }
+                    secondaryCode = code.Substring(position + 1);
+                    string[] parties = secondaryCode.Split('/');
+                    string temp = parties[0].Substring(1);
 
-                if (subType.StartsWith("Primary/Secondary"))
-                {
-                    if (subType.EndsWith(".N"))
+
+                    // Shift
+                    int shift = 0;
+                    if (subType.Contains("$$.3"))
                     {
-                        result = secondaryCode.Substring(6, length - 7);//TODO MB Controler Longueur code 
+                        shift = 10;
                     }
-                    else if (subType.EndsWith(".$"))
+                    if (subType.Contains("$$.8.3"))
                     {
-                        result = secondaryCode.Substring(2, length - 3);//TODO MB Controler Longueur code 
+                        shift = 13;
                     }
-                    else if (subType.EndsWith(".$$"))
+                    if (subType.Contains("$$.9.3"))
                     {
-                        result = secondaryCode.Substring(7, length - 8);//TODO MB Controler Longueur code 
+                        shift = 16;
                     }
 
-                    else if (subType.EndsWith(".$$.2") & (length > 12))
+                    if (subType.Contains("$$.5"))
                     {
-                        result = secondaryCode.Substring(10, length - 11);
+                        shift = 7;
                     }
-                    else if (subType.EndsWith(".$$.3") & (length > 12))
+                    if (subType.Contains("$$.8.5"))
                     {
-                        result = secondaryCode.Substring(10, length - 11);
+                        shift = 10;
                     }
-                    else if (subType.EndsWith(".$$.4") & (length > 14))
+                    if (subType.Contains("$$.9.5"))
                     {
-                        result = secondaryCode.Substring(12, length - 13);
+                        shift = 13;
                     }
-                    else if (subType.EndsWith(".$$.5") & (length > 11))
+
+                    result = temp.Substring(shift);
+                }
+
+
+
+
+                else // Version 2.4
+                {
+                    string secondaryCode = null;
+                    if (subType.StartsWith(@"Primary/Secondary"))
                     {
-                        result = secondaryCode.Substring(9, length - 10);
+                        int position = code.IndexOf('/');
+                        secondaryCode = "+" + code.Substring(position + 1);//TODO MB Controler Longueur code 
                     }
-                    else if (subType.EndsWith(".$$.6") & (length > 13))
+                    else
                     {
-                        result = secondaryCode.Substring(11, length - 12);
+                        secondaryCode = code;
                     }
-                    else if (subType.EndsWith(".$$.7") & (length > 6))
+                    int length = secondaryCode.Length;
+                    if (subType.StartsWith("Secondary"))
                     {
-                        result = secondaryCode.Substring(4, length - 5);
+                        if (subType.EndsWith("Secondary.N") & (length > 8))
+                        {
+                            result = secondaryCode.Substring(6, length - 8);
+                        }
+                        else if (subType.EndsWith("Secondary.$") & (length > 4))
+                        {
+                            result = secondaryCode.Substring(2, length - 4);
+                        }
+                        else if (subType.EndsWith("Secondary.$$") & (length > 9))
+                        {
+                            result = secondaryCode.Substring(7, length - 9);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.2") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 12);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.3") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 12);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.4") & (length > 14))
+                        {
+                            result = secondaryCode.Substring(12, length - 14);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.5") & (length > 8))
+                        {
+                            result = secondaryCode.Substring(9, length - 11);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.6") & (length > 13))
+                        {
+                            result = secondaryCode.Substring(11, length - 13);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.7") & (length > 6))
+                        {
+                            result = secondaryCode.Substring(4, length - 6);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 12);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.2") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 15);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.3") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 15);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.4") & (length > 17))
+                        {
+                            result = secondaryCode.Substring(15, length - 17);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.5") & (length > 14))
+                        {
+                            result = secondaryCode.Substring(12, length - 14);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.6") & (length > 16))
+                        {
+                            result = secondaryCode.Substring(14, length - 16);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.8.7") & (length > 9))
+                        {
+                            result = secondaryCode.Substring(7, length - 9);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 15);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.2") & (length > 18))
+                        {
+                            result = secondaryCode.Substring(16, length - 18);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.3") & (length > 18))
+                        {
+                            result = secondaryCode.Substring(16, length - 18);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.4") & (length > 20))
+                        {
+                            result = secondaryCode.Substring(18, length - 20);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.5") & (length > 17))
+                        {
+                            result = secondaryCode.Substring(15, length - 17);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.6") & (length > 19))
+                        {
+                            result = secondaryCode.Substring(17, length - 19);
+                        }
+                        else if (subType.EndsWith("Secondary.$$.9.7") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 12);
+                        }
                     }
-                    else if (subType.EndsWith(".$$.8") & (length > 12))
+
+                    if (subType.StartsWith("Primary/Secondary"))
                     {
-                        result = secondaryCode.Substring(10, length - 11);
-                    }
-                    else if (subType.EndsWith(".$$.8.2") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 14);
-                    }
-                    else if (subType.EndsWith(".$$.8.3") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 14);
-                    }
-                    else if (subType.EndsWith(".$$.8.4") & (length > 17))
-                    {
-                        result = secondaryCode.Substring(15, length - 16);
-                    }
-                    else if (subType.EndsWith(".$$.8.5") & (length > 14))
-                    {
-                        result = secondaryCode.Substring(12, length - 13);
-                    }
-                    else if (subType.EndsWith(".$$.8.6") & (length > 16))
-                    {
-                        result = secondaryCode.Substring(14, length - 15);
-                    }
-                    else if (subType.EndsWith(".$$.8.7") & (length > 9))
-                    {
-                        result = secondaryCode.Substring(7, length - 8);
-                    }
-                    else if (subType.EndsWith(".$$.9") & (length > 15))
-                    {
-                        result = secondaryCode.Substring(13, length - 14);
-                    }
-                    else if (subType.EndsWith(".$$.9.2") & (length > 18))
-                    {
-                        result = secondaryCode.Substring(16, length - 17);
-                    }
-                    else if (subType.EndsWith(".$$.9.3") & (length > 18))
-                    {
-                        result = secondaryCode.Substring(16, length - 17);
-                    }
-                    else if (subType.EndsWith(".$$.9.4") & (length > 20))
-                    {
-                        result = secondaryCode.Substring(18, length - 19);
-                    }
-                    else if (subType.EndsWith(".$$.9.5") & (length > 17))
-                    {
-                        result = secondaryCode.Substring(15, length - 16);
-                    }
-                    else if (subType.EndsWith(".$$.9.6") & (length > 19))
-                    {
-                        result = secondaryCode.Substring(17, length - 18);
-                    }
-                    else if (subType.EndsWith(".$$.9.7") & (length > 12))
-                    {
-                        result = secondaryCode.Substring(10, length - 11);
+                        if (subType.EndsWith(".N"))
+                        {
+                            result = secondaryCode.Substring(6, length - 7);//TODO MB Controler Longueur code 
+                        }
+                        else if (subType.EndsWith(".$"))
+                        {
+                            result = secondaryCode.Substring(2, length - 3);//TODO MB Controler Longueur code 
+                        }
+                        else if (subType.EndsWith(".$$"))
+                        {
+                            result = secondaryCode.Substring(7, length - 8);//TODO MB Controler Longueur code 
+                        }
+
+                        else if (subType.EndsWith(".$$.2") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 11);
+                        }
+                        else if (subType.EndsWith(".$$.3") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 11);
+                        }
+                        else if (subType.EndsWith(".$$.4") & (length > 14))
+                        {
+                            result = secondaryCode.Substring(12, length - 13);
+                        }
+                        else if (subType.EndsWith(".$$.5") & (length > 11))
+                        {
+                            result = secondaryCode.Substring(9, length - 10);
+                        }
+                        else if (subType.EndsWith(".$$.6") & (length > 13))
+                        {
+                            result = secondaryCode.Substring(11, length - 12);
+                        }
+                        else if (subType.EndsWith(".$$.7") & (length > 6))
+                        {
+                            result = secondaryCode.Substring(4, length - 5);
+                        }
+                        else if (subType.EndsWith(".$$.8") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 11);
+                        }
+                        else if (subType.EndsWith(".$$.8.2") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 14);
+                        }
+                        else if (subType.EndsWith(".$$.8.3") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 14);
+                        }
+                        else if (subType.EndsWith(".$$.8.4") & (length > 17))
+                        {
+                            result = secondaryCode.Substring(15, length - 16);
+                        }
+                        else if (subType.EndsWith(".$$.8.5") & (length > 14))
+                        {
+                            result = secondaryCode.Substring(12, length - 13);
+                        }
+                        else if (subType.EndsWith(".$$.8.6") & (length > 16))
+                        {
+                            result = secondaryCode.Substring(14, length - 15);
+                        }
+                        else if (subType.EndsWith(".$$.8.7") & (length > 9))
+                        {
+                            result = secondaryCode.Substring(7, length - 8);
+                        }
+                        else if (subType.EndsWith(".$$.9") & (length > 15))
+                        {
+                            result = secondaryCode.Substring(13, length - 14);
+                        }
+                        else if (subType.EndsWith(".$$.9.2") & (length > 18))
+                        {
+                            result = secondaryCode.Substring(16, length - 17);
+                        }
+                        else if (subType.EndsWith(".$$.9.3") & (length > 18))
+                        {
+                            result = secondaryCode.Substring(16, length - 17);
+                        }
+                        else if (subType.EndsWith(".$$.9.4") & (length > 20))
+                        {
+                            result = secondaryCode.Substring(18, length - 19);
+                        }
+                        else if (subType.EndsWith(".$$.9.5") & (length > 17))
+                        {
+                            result = secondaryCode.Substring(15, length - 16);
+                        }
+                        else if (subType.EndsWith(".$$.9.6") & (length > 19))
+                        {
+                            result = secondaryCode.Substring(17, length - 18);
+                        }
+                        else if (subType.EndsWith(".$$.9.7") & (length > 12))
+                        {
+                            result = secondaryCode.Substring(10, length - 11);
+                        }
                     }
                 }
             }
+
             else if (type == "NaS")
             {
                 if (subType == "006")
@@ -2259,7 +2443,6 @@ namespace ParserIO_functions
             string result = "";
             if (type.StartsWith("GS1-"))
             {
-                code = CleanSymbologyId(code);
                 if (subType.StartsWith("01.11"))
                 {
                     result = code.Substring(18, 6);//TODO MB Controler Longueur code 
@@ -2274,6 +2457,14 @@ namespace ParserIO_functions
                     result = code.Substring(2, 6);//TODO MB Controler Longueur code 
                 }
 
+            }
+            else if (type == "HIBC")
+            {
+                if (subType.Contains("16D"))
+                {
+                    int position = code.IndexOf("/16D");
+                    result = code.Substring(position + 4, 8);
+                }
             }
             return result;
         }
@@ -2428,10 +2619,21 @@ namespace ParserIO_functions
                     }
                 }
             }
-            else if (type == "HIBC")
+            else if (type == "HIBC" && subType.Contains("Secondary"))
             {
-                // To do
+                string data = semanticData(code, subType);
+                if (containsASD(data))
+                { 
+                if (subType.EndsWith(".S"))
+                {
+                    int start = data.IndexOf("/S") + 2;
+                    int stop = data.Length - start;
+                    result = data.Substring(start, stop);
+                }
+                }
             }
+
+
             else if (type == "NaS")
             {
                 if (subType == "005")
@@ -2443,6 +2645,22 @@ namespace ParserIO_functions
             return result;
         }
 
+        public static string semanticData(string code, string subType)
+        {
+            string result = "";
+            if (subType.Contains("Secondary"))
+            {
+                if (subType.StartsWith("Primary/"))
+                {
+                    result = code.Substring(code.IndexOf("/"), code.Length - code.IndexOf("/") - 1);
+                }
+                else
+                {
+                    result = code.Substring(1, code.Length - 2);
+                }
+            }
+            return result;
+        }
         public string VARCOUNT(string code)
         {
             string type = Type(code);
@@ -2492,7 +2710,7 @@ namespace ParserIO_functions
                     int nb = length - shift - 3;
                     result = code.Substring(shift, nb);//TODO MB Controler Longueur code 
                 }
-                else if (subType=="10.17.30")
+                else if (subType == "10.17.30")
                 {
                     int firstGS = indexOfGS(code, 1);
                     int shift = firstGS + 1 + 8 + 2;
@@ -2569,10 +2787,69 @@ namespace ParserIO_functions
             code = CleanSymbologyId(code);
             string result = "";
 
+            if ((type == "HIBC") && (subType.Contains("Secondary")))
+            {
+                int start = 1;
+                int stop;
+                string secondaryCode = null;
+                string data = "";
+                if (subType.StartsWith(@"Primary/Secondary"))
+                {
+                    start = start + code.IndexOf('/');
+                }
+                else
+                {
+                    //Nothing
+                }
+                secondaryCode = code.Substring(start);
+
+                if (containsASD(code)) // Version 2.5
+                {    
+                    string[] parties = secondaryCode.Split('/');
+                    data = parties[0].Substring(1);
+
+                }
+                else
+                {
+                    if (subType.StartsWith("Primary"))
+                    {
+                        data = secondaryCode.Substring(0, secondaryCode.Length - 1);
+                    }
+                    else
+                    {
+                        data = secondaryCode.Substring(0, secondaryCode.Length - 2);
+                    }
+                }
+
+
+
+                if (subType.Contains("Secondary.$$.8"))
+                {
+                    result = data.Substring(3, 2);
+                }
+                else if (subType.Contains("Secondary.$$.9"))
+                {
+                    result = data.Substring(3, 5);
+                }
+            }
+
+            else if (type == "NaS")
+            {
+                if (subType == "011")
+                    result = code.Substring(1, 1);
+            }
+            return result;
+        }
+
+        public string Quantity_old(string code, string type, string subType)
+        {
+            code = Cleanse(code);
+            code = CleanSymbologyId(code);
+            string result = "";
+
             if (type == "HIBC")
             {
                 string secondaryCode = null;
-                //code = CleanSymbologyId(code);
                 if (subType.StartsWith(@"Primary/Secondary"))
                 {
                     int position = code.IndexOf('/');
@@ -2643,14 +2920,14 @@ namespace ParserIO_functions
             code = Cleanse(code);
             if ((length > 5) && code.StartsWith("]C1"))
             {
-                    result = "GS1-128";
+                result = "GS1-128";
             }
 
             else if ((length > 5) && code.StartsWith("]d2"))
             {
-                    result = "GS1-Datamatrix";
+                result = "GS1-Datamatrix";
             }
-                
+
             else if ((code.StartsWith("]d1+") | (code.StartsWith("]C0+") | code.StartsWith("]A0+") | code.StartsWith("+"))))
             {
                 code = CleanSymbologyId(code);
@@ -2800,6 +3077,42 @@ namespace ParserIO_functions
             return result;
         }
 
+        private static int indexOfASD(string code, int start)
+        {
+            int result = -1;
+            Regex reg = new Regex(hibcASDlist);
+            Match m = reg.Match(code);
+            if (m.Success)
+            {
+                result = m.Index;
+            }
+            return result;
+        }
+        private static bool containsASD(string secondaryData) //Additional Supplemental Data
+        {
+            bool result = false;
+            if (indexOfASD(secondaryData, 0) != -1)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        private static bool containsASD_old(string secondaryData) //Additional Supplemental Data
+        {
+            bool result = false;
+            if (secondaryData.Contains("/") && (secondaryData.IndexOf("/") < secondaryData.Length - 2))
+            {
+                if (secondaryData.Contains("/14D") |
+                    secondaryData.Contains("/16D") |
+                    secondaryData.Contains("/S"))
+                {
+                    result = true;
+                } 
+            }
+            return result;
+        }
+
         public string UDI(string code)
         {
             string result = "";
@@ -2884,10 +3197,10 @@ namespace ParserIO_functions
             // Start HIBC
             else if (type == "HIBC")
             {
+                char[] array = code.ToCharArray();
                 if (length >= 8)
                 {
-                    char[] array = code.ToCharArray();
-                    if (Alphabetic(array[1]))
+                    if (Alphabetic(array[1])) //...with the first character always being alphabetic.
                     {
                         result = "Primary";
                         int position = code.IndexOf('/');
@@ -2897,7 +3210,7 @@ namespace ParserIO_functions
                             array = code.Substring(position).ToCharArray();
                         }
                     }
-                    else
+                    else // 
                     {
                         result = "Secondary";
                     }
@@ -2961,6 +3274,38 @@ namespace ParserIO_functions
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+
+                        string secondaryData = String.Join("", array);//.Substring(1); 
+                        
+                        if (containsASD(secondaryData))
+                        {
+                            //There is at least a supplementary data!
+                            int nextDI = 0;
+                            for (int i = 0; i < secondaryData.Length; i++)
+                            {
+                                nextDI = secondaryData.IndexOf("/", nextDI + i);
+                                if ((nextDI != -1) & (nextDI+1 != secondaryData.Length))
+                                {
+                                    if (secondaryData.Substring(nextDI, 4) == "/14D")
+                                    {
+                                        result = result + ".14D";
+                                    }
+
+                                    else if (secondaryData.Substring(nextDI, 4) == "/16D")
+                                    {
+                                        result = result + ".16D";
+                                    }
+                                    else if (secondaryData.Substring(nextDI, 2) == "/S")
+                                    {
+                                        result = result + ".S";
+                                    }
+                                }
+                                else
+                                {
+                                    break;
                                 }
                             }
                         }
@@ -3494,7 +3839,7 @@ namespace ParserIO_functions
 
                 if (code.Length > 10)
                 {
-                    if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
+                    if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))                        
                         result = "012"; //  SEM (Sciences Et Medecine) Company (Example: SEM171252^P30778E4009A)
                 }
 

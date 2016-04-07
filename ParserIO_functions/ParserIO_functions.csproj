@@ -59,7 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="ParserIO_functions.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -69,8 +69,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"%25Windir%25\Microsoft.NET\Framework\v4.0.30319\regasm" $(TargetPath) /u
-"%25Windir%25\Microsoft.NET\Framework\v4.0.30319\regasm" $(TargetPath) /codebase /tlb:$(SolutionDir)ParserIO_COMclient\$(TargetName).tlb</PostBuildEvent>
+    <PostBuildEvent>"%25Windir%25\Microsoft.NET\Framework\v4.0.30319\regasm" "$(TargetPath)" /u
+"%25Windir%25\Microsoft.NET\Framework\v4.0.30319\regasm" "$(TargetPath)" /codebase /tlb:$(SolutionDir)ParserIO_COMclient\$(TargetName).tlb</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

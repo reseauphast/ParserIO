@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Phast")]
 [assembly: AssemblyProduct("ParserIO__BenchmarkDelta")]
-[assembly: AssemblyCopyright("Copyright © Phast 2014")]
+[assembly: AssemblyCopyright("Copyright © Phast 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

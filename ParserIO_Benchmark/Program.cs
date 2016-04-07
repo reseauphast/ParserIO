@@ -148,9 +148,17 @@ namespace ParserIO_Benchmark
       count = iterator.Count;
       while (iterator.MoveNext())
       {
-        Analyse = ParseBarcode(iterator.Current.Value);
-        AppendBarcode(Analyse, ref BarcodeOut);
-        Console.Out.WriteLine(iterator.Current.Value);
+                try
+                {
+                    Analyse = ParseBarcode(iterator.Current.Value);
+                    AppendBarcode(Analyse, ref BarcodeOut);
+                    Console.Out.WriteLine(iterator.Current.Value);
+                }
+                catch (Exception e)
+                {
+
+                }
+        
       }
       Console.WriteLine("Nombre de codes à barres analysés : " + count);
       Console.ReadLine();

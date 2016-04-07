@@ -22,7 +22,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="LIC" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="PCN" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Lot" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DateBrute" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateRaw" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="DateNormale" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Erreurs" type="s:string" />

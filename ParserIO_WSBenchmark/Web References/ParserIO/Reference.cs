@@ -84,7 +84,7 @@ namespace ParserIO_WSBenchmark.ParserIO {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.Phast.fr/RLIO/CIOdm/Parse_11", RequestNamespace="http://www.Phast.fr/RLIO/CIOdm", ResponseNamespace="http://www.Phast.fr/RLIO/CIOdm", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int Parse_11(string Code_barres, out string Type, out string Variante, out string Entreprise, out string Produit, out string GTIN, out string LIC, out string PCN, out string Lot, out string DateBrute, out string DateNormale, out string Reference, out string Erreurs) {
+        public int Parse_11(string Code_barres, out string Type, out string Variante, out string Entreprise, out string Produit, out string GTIN, out string LIC, out string PCN, out string Lot, out string dateRaw, out string DateNormale, out string Reference, out string Erreurs) {
             object[] results = this.Invoke("Parse_11", new object[] {
                         Code_barres});
             Type = ((string)(results[1]));
@@ -95,7 +95,7 @@ namespace ParserIO_WSBenchmark.ParserIO {
             LIC = ((string)(results[6]));
             PCN = ((string)(results[7]));
             Lot = ((string)(results[8]));
-            DateBrute = ((string)(results[9]));
+            dateRaw = ((string)(results[9]));
             DateNormale = ((string)(results[10]));
             Reference = ((string)(results[11]));
             Erreurs = ((string)(results[12]));
@@ -400,7 +400,7 @@ namespace ParserIO_WSBenchmark.ParserIO {
         }
         
         /// <remarks/>
-        public string DateBrute {
+        public string dateRaw {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[9]));
