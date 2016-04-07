@@ -1,0 +1,1 @@
+<%@ WebService Language="c#" Codebehind="ParserIO_WS.cs" Class="ParserIO_WS.ParserIO_WS" %>

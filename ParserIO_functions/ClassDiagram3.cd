@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ParserIO_functions.ParserIO_func" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CDIjAYCUAAAAKAJAAACQgEggBHrEIAEABYBBhAAAhGg=</HashCode>
+      <FileName>ParserIO_functions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ParserIO_functions.IParserIO_func">
+    <Position X="7.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CBACAQCQAAAAKAJAAAAQgAAgBFrEIAEABYABhAAABGg=</HashCode>
+      <FileName>ParserIO_functions.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ParserIO_functions.ParserIO_func_events">
+    <Position X="13.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ParserIO_functions.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
