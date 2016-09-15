@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://extension.phast.fr/WebServices/CIOdm/CIOdm_ParserIO.asmx?disco" filename="CIOdm_ParserIO.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://extension.phast.fr/WebServices/CIOdm/CIOdm_ParserIO.asmx?wsdl" filename="CIOdm_ParserIO.wsdl" />
-  </Results>
-</DiscoveryClientResultsFile>

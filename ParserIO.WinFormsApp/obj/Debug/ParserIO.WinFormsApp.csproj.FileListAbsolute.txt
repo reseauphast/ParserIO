@@ -1,0 +1,14 @@
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.csprojResolveAssemblyReference.cache
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.Properties.Resources.resources
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.csproj.GenerateResource.Cache
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.WinFormsApp.exe.config
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.WinFormsApp.exe
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.WinFormsApp.pdb
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.Core.dll
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.Core.pdb
+C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Debug\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.AboutBox.resources
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.Form1.resources
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.exe
+C:\vso\ParserIO\ParserIO.WinFormsApp\obj\Debug\ParserIO.WinFormsApp.pdb

@@ -1,0 +1,16 @@
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Benchmark.exe.config
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Benchmark.exe
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Benchmark.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.ORM.dll
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.ORM.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.DAL.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\obj\Debug\ParserIO.Benchmark.exe
+C:\vso\ParserIO\ParserIO.Benchmark\obj\Debug\ParserIO.Benchmark.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Tools.dll
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Tools.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Core.dll
+C:\vso\ParserIO\ParserIO.Benchmark\bin\Debug\ParserIO.Core.pdb
+C:\vso\ParserIO\ParserIO.Benchmark\obj\Debug\ParserIO.Benchmark.csprojResolveAssemblyReference.cache

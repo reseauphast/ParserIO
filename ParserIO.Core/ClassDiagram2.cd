@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ParserIO.Core.Functions" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CDMjAYCUAAAALANAAACQgEwgBHrEIAEQJYBBhAAAhGg=</HashCode>
+      <FileName>Functions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ParserIO.Core.IFunctions">
+    <Position X="4.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CBACAQCQAAAAKAJAAAAQgAAgBFrEIAEABYABhAAABGg=</HashCode>
+      <FileName>Functions.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

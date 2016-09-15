@@ -1,0 +1,4 @@
+C:\vso\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.pdb

@@ -1,4 +1,4 @@
-// “Copyright (C) 2009-2014 Association Réseau Phast”
+// “Copyright (C) 2009-2016 Association Réseau Phast”
 // This file is part of ParserIO.
 // ParserIO is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,20 +30,20 @@
         
 
 #include "stdafx.h"
-#import "ParserIO_functions.tlb" named_guids raw_interfaces_only
-using namespace ParserIO_functions;
+#import "ParserIO.Core.tlb" named_guids raw_interfaces_only
+using namespace ParserIO_Core;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	HRESULT hr;
 	hr = CoInitialize(NULL);
 
-	IParserIO_funcPtr pIParserIO_func(__uuidof(ParserIO_func));
+	IFunctionsPtr pIFunctions(__uuidof(Functions));
 	
 	BSTR codeBar = ::SysAllocString(L"+H3030605320CE0K");
 	BSTR ret;
 	if(hr == S_OK)
 	{
-		hr = pIParserIO_func->subType(codeBar, &ret);
+		hr = pIFunctions->subType(codeBar, &ret);
 		if(hr == S_OK)
 		{
 			_tprintf(_T("result:%s\r\n"), ret);
@@ -55,7 +55,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	else
 	{
-		_tprintf(_T("Create COM object:%s fail!\r\n"), _T("ParserIO_functions"));
+		_tprintf(_T("Create COM object:%s fail!\r\n"), _T("ParserIO_Core"));
 	}
 	system("pause");
 	::CoUninitialize();

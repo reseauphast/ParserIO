@@ -1,0 +1,14 @@
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.Benchmark.Compare.exe.config
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.Benchmark.Compare.exe
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.Benchmark.Compare.pdb
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.Tools.dll
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.ORM.dll
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.Tools.pdb
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.ORM.pdb
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\bin\Release\ParserIO.DAL.pdb
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\obj\Release\ParserIO.Benchmark.Compare.csprojResolveAssemblyReference.cache
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\obj\Release\ParserIO.Benchmark.Compare.exe
+C:\vso\ParserIO\ParserIO.Benchmark.Compare\obj\Release\ParserIO.Benchmark.Compare.pdb

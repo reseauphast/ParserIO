@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="Barcodestore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Version" type="xs:string"/>
+        <xs:element name="ProviderName" type="xs:string"/>
+        <xs:element name="Analyses" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Analyse" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="AnalyseId" type="xs:string"/>
+                    <xs:element name="Barcode" type="xs:string"/>
+                    <xs:element name="Commentary" type="xs:string"/>
+                    <xs:element name="TimeStamp" type="xs:string"/>
+                    <xs:element name="InformationSet" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="executeResult" type="xs:string"/>
+                          <xs:element name="ACL" type="xs:string"/>
+                          <xs:element name="ADDITIONALID" type="xs:string"/>
+                          <xs:element name="BESTBEFORE" type="xs:string"/>
+                          <xs:element name="CIP" type="xs:string"/>
+                          <xs:element name="Company" type="xs:string"/>
+                          <xs:element name="ContainsOrMayContainId" type="xs:boolean"/>
+                          <xs:element name="CONTENT" type="xs:string"/>
+                          <xs:element name="COUNT" type="xs:string"/>
+                          <xs:element name="EAN" type="xs:string"/>
+                          <xs:element name="Expiry" type="xs:string"/>
+                          <xs:element name="Family" type="xs:string"/>
+                          <xs:element name="GTIN" type="xs:string"/>
+                          <xs:element name="INTERNAL_91" type="xs:string"/>
+                          <xs:element name="INTERNAL_92" type="xs:string"/>
+                          <xs:element name="INTERNAL_93" type="xs:string"/>
+                          <xs:element name="INTERNAL_94" type="xs:string"/>
+                          <xs:element name="INTERNAL_95" type="xs:string"/>
+                          <xs:element name="INTERNAL_96" type="xs:string"/>
+                          <xs:element name="INTERNAL_97" type="xs:string"/>
+                          <xs:element name="INTERNAL_98" type="xs:string"/>
+                          <xs:element name="INTERNAL_99" type="xs:string"/>
+                          <xs:element name="LIC" type="xs:string"/>
+                          <xs:element name="Lot" type="xs:string"/>
+                          <xs:element name="LPP" type="xs:string"/>
+                          <xs:element name="NaS7" type="xs:string"/>
+                          <xs:element name="NaSIdParamName" type="xs:string"/>
+                          <xs:element name="NormalizedBESTBEFORE" type="xs:string"/>
+                          <xs:element name="NormalizedExpiry" type="xs:string"/>
+                          <xs:element name="NormalizedPRODDATE" type="xs:string"/>
+                          <xs:element name="PCN" type="xs:string"/>
+                          <xs:element name="PRODDATE" type="xs:string"/>
+                          <xs:element name="Product" type="xs:string"/>
+                          <xs:element name="Quantity" type="xs:string"/>
+                          <xs:element name="Reference" type="xs:string"/>
+                          <xs:element name="Serial" type="xs:string"/>
+                          <xs:element name="SSCC" type="xs:string"/>
+                          <xs:element name="SubType" type="xs:string"/>
+                          <xs:element name="SymbologyID" type="xs:string"/>
+                          <xs:element name="Type" type="xs:string"/>
+                          <xs:element name="UDI" type="xs:string"/>
+                          <xs:element name="UoM" type="xs:string"/>
+                          <xs:element name="UPN" type="xs:string"/>
+                          <xs:element name="VARCOUNT" type="xs:string"/>
+                          <xs:element name="VARIANT" type="xs:string"/>
+                          <xs:element name="AdditionalInformation" type="xs:string"/>
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
