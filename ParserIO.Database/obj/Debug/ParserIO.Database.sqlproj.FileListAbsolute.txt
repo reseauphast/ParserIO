@@ -1,0 +1,9 @@
+C:\vso\ParserIO\ParserIO.Database\bin\Debug\ParserIO.Database.dacpac
+C:\vso\ParserIO\ParserIO.Database\bin\Debug\ParserIO.Database.dll
+C:\vso\ParserIO\ParserIO.Database\bin\Debug\ParserIO.Database.pdb
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\ParserIO.Database.dll
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\ParserIO.Database.pdb
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\Model.xml
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\refactor.xml
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\postdeploy.sql
+C:\vso\ParserIO\ParserIO.Database\obj\Debug\predeploy.sql

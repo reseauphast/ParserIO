@@ -37,13 +37,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	HRESULT hr;
 	hr = CoInitialize(NULL);
 
-	IFunctionsPtr pIFunctions(__uuidof(Functions));
+	IFunctions1_0Ptr pIFunctions(__uuidof(Functions1_0));
 	
 	BSTR codeBar = ::SysAllocString(L"+H3030605320CE0K");
 	BSTR ret;
+
 	if(hr == S_OK)
 	{
 		hr = pIFunctions->subType(codeBar, &ret);
+
 		if(hr == S_OK)
 		{
 			_tprintf(_T("result:%s\r\n"), ret);

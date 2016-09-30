@@ -10,9 +10,12 @@ namespace ParserIO.Console
     {
         static void Main(string[] args)
         {
-            string barcode = "+M150AR1588RT2E";
+            string barcode = "";
+
+            barcode = "+J123AQ3451/$$3231231BC34567/S4012R";
+
             Core.Functions client = new Core.Functions();
-            DAO.InformationSet result = new DAO.InformationSet();
+            DAO.InformationSet result;
             result = client.GetFullInformationSet(barcode);
         }
     }

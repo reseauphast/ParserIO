@@ -1,0 +1,2345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.9" DspName="Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="130" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="ParserIO.Database.dll" />
+			<Metadata Name="FileName" Value="C:\VSO\PARSERIO\PARSERIO.DATABASE\OBJ\DEBUG\PARSERIO.DATABASE.DLL" />
+			<Metadata Name="AssemblyName" Value="ParserIO.Database" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\vso\ParserIO\ParserIO.Database\obj\Debug\ParserIO.Database.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="SQL_Latin1_General_CP1_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="" />
+			<Property Name="DefaultFullTextLanguage" Value="" />
+			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[BarcodesStore]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[localId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Barcode]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Type]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[SubType]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[ContainsOrMayContainId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[ACL]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[ADDITIONALID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[BESTBEFORE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[CIP]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Company]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[CONTENT]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[COUNT]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Expiry]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Family]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[GTIN]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_91]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_92]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_93]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_94]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_95]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_96]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_97]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_98]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[INTERNAL_99]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[LIC]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Lot]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[LPP]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[NaS7]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[NormalizedBESTBEFORE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[NormalizedExpiry]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[NormalizedPRODDATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[PCN]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[PRODDATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Product]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Quantity]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Reference]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Serial]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[SSCC]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[UDI]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[UoM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[VARCOUNT]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[VARIANT]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Commentary]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[SymbologyID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[EAN]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[NaSIdParamName]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[UPN]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[AdditionalInformation]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[AnalyseId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[TimeStamp]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[P_Barcode_List]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+SELECT [localId]
+      ,[AnalyseId]
+      ,[TimeStamp]
+	  ,[Barcode]
+	  ,[SymbologyID]
+      ,[Type]
+      ,[SubType]
+      ,[ContainsOrMayContainId]
+      ,[ACL]
+      ,[ADDITIONALID]
+      ,[BESTBEFORE]
+      ,[CIP]
+      ,[Company]
+      ,[CONTENT]
+      ,[COUNT]
+	  ,[EAN]
+      ,[Expiry]
+      ,[Family]
+      ,[GTIN]
+	  ,[INTERNAL_91]
+	  ,[INTERNAL_92]
+	  ,[INTERNAL_93]
+	  ,[INTERNAL_94]
+	  ,[INTERNAL_95]
+	  ,[INTERNAL_96]
+	  ,[INTERNAL_97]
+	  ,[INTERNAL_98]
+	  ,[INTERNAL_99]
+      ,[LIC]
+      ,[Lot]
+      ,[LPP]
+      ,[NaS7]
+	  ,[NaSIdParamName]
+      ,[NormalizedBESTBEFORE]
+      ,[NormalizedExpiry]
+      ,[NormalizedPRODDATE]
+      ,[PCN]
+      ,[PRODDATE]
+      ,[Product]
+      ,[Quantity]
+      ,[Reference]
+      ,[Serial]
+      ,[SSCC]
+      ,[UDI]
+      ,[UoM]
+	  ,[UPN]
+      ,[VARCOUNT]
+      ,[VARIANT]
+	  ,[AdditionalInformation]
+      ,[Commentary]
+  FROM [dbo].[BarcodesStore]
+  ORDER BY [AnalyseId]
+  END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[BarcodesStore]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[localId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[AnalyseId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[TimeStamp]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Barcode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SymbologyID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SubType]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ContainsOrMayContainId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ACL]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ADDITIONALID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[BESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[CIP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Company]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[CONTENT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[COUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[EAN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Expiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Family]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[GTIN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_91]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_92]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_93]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_94]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_95]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_96]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_97]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_98]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_99]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[LIC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Lot]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[LPP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NaS7]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NaSIdParamName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedBESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedExpiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedPRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[PCN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[PRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Product]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Quantity]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Reference]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Serial]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UDI]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UoM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UPN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[VARCOUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[VARIANT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[AdditionalInformation]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Commentary]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1038" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[P_Barcode_List]&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[P_Barcode_Upsert]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+SELECT * FROM [BarcodesStore]
+WHERE [AnalyseId]=@AnalyseId
+IF @@ROWCOUNT = 0
+BEGIN
+INSERT INTO [dbo].[BarcodesStore]
+           ([AnalyseId]
+		   ,[TimeStamp]
+		   ,[Barcode]
+		   ,[SymbologyID]
+           ,[Type]
+           ,[SubType]
+           ,[ContainsOrMayContainId]
+           ,[ACL]
+           ,[ADDITIONALID]
+           ,[BESTBEFORE]
+           ,[CIP]
+           ,[Company]
+           ,[CONTENT]
+           ,[COUNT]
+		   ,[EAN]
+           ,[Expiry]
+           ,[Family]
+           ,[GTIN]
+		   ,[INTERNAL_91]
+		   ,[INTERNAL_92]
+           ,[INTERNAL_93]
+		   ,[INTERNAL_94]
+		   ,[INTERNAL_95]
+		   ,[INTERNAL_96]
+		   ,[INTERNAL_97]
+		   ,[INTERNAL_98]
+		   ,[INTERNAL_99]
+           ,[LIC]
+           ,[Lot]
+           ,[LPP]
+           ,[NaS7]
+		   ,[NaSIdParamName]
+           ,[NormalizedBESTBEFORE]
+           ,[NormalizedExpiry]
+           ,[NormalizedPRODDATE]
+           ,[PCN]
+           ,[PRODDATE]
+           ,[Product]
+           ,[Quantity]
+           ,[Reference]
+           ,[Serial]
+           ,[SSCC]
+           ,[UDI]
+           ,[UoM]
+		   ,[UPN]
+           ,[VARCOUNT]
+           ,[VARIANT]
+		   ,[AdditionalInformation]
+           ,[Commentary])
+     VALUES
+           (@AnalyseId,
+		    @TimeStamp,
+		    @Barcode,
+			@SymbologyID,
+            @Type,
+            @SubType,
+            @ContainsOrMayContainId,
+            @ACL,
+            @ADDITIONALID,
+            @BESTBEFORE,
+            @CIP,
+            @Company,
+            @CONTENT,
+            @COUNT,
+			@EAN,
+            @Expiry,
+            @Family,
+            @GTIN,
+			@INTERNAL_91,
+			@INTERNAL_92,
+			@INTERNAL_93,
+			@INTERNAL_94,
+			@INTERNAL_95,
+			@INTERNAL_96,
+			@INTERNAL_97,
+			@INTERNAL_98,
+			@INTERNAL_99,
+            @LIC,
+            @Lot,
+            @LPP,
+            @NaS7,
+			@NaSIdParamName,
+            @NormalizedBESTBEFORE,
+            @NormalizedExpiry,
+            @NormalizedPRODDATE,
+            @PCN,
+            @PRODDATE,
+            @Product,
+            @Quantity,
+            @Reference,
+            @Serial,
+            @SSCC,
+            @UDI,
+            @UoM,
+			@UPN,
+            @VARCOUNT,
+            @VARIANT,
+			@AdditionalInformation,
+            @Commentary)
+END
+ELSE
+BEGIN
+UPDATE [dbo].[BarcodesStore]
+   SET [Barcode] = @Barcode,
+       [Type] = @Type,
+       [SubType] = @SubType,
+       [ContainsOrMayContainId] = @ContainsOrMayContainId,
+       [ACL] = @ACL,
+       [ADDITIONALID] = @ADDITIONALID,
+       [BESTBEFORE] = @BESTBEFORE,
+       [CIP] = @CIP,
+       [Company] = @Company,
+       [CONTENT] = @CONTENT,
+       [COUNT] = @COUNT,
+       [Expiry] = @Expiry,
+       [Family] = @Family,
+       [GTIN] = @GTIN,
+	   [INTERNAL_91] = @INTERNAL_91,
+	   [INTERNAL_92] = @INTERNAL_92,
+	   [INTERNAL_93] = @INTERNAL_93,
+	   [INTERNAL_94] = @INTERNAL_94,
+	   [INTERNAL_95] = @INTERNAL_95,
+	   [INTERNAL_96] = @INTERNAL_96,
+	   [INTERNAL_97] = @INTERNAL_97,
+	   [INTERNAL_98] = @INTERNAL_98,
+	   [INTERNAL_99] = @INTERNAL_99,
+       [LIC] = @LIC,
+       [Lot] = @Lot,
+       [LPP] = @LPP,
+       [NaS7] = @NaS7,
+       [NormalizedBESTBEFORE] = @NormalizedBESTBEFORE,
+       [NormalizedExpiry] = @NormalizedExpiry,
+       [NormalizedPRODDATE] = @NormalizedPRODDATE,
+       [PCN] = @PCN,
+       [PRODDATE] = @PRODDATE,
+       [Product] = @Product,
+       [Quantity] = @Quantity,
+       [Reference] = @Reference,
+       [Serial] = @Serial,
+       [SSCC] = @SSCC,
+       [UDI] = @UDI,
+       [UoM] = @UoM,
+       [VARCOUNT] = @VARCOUNT,
+       [VARIANT] = @VARIANT,
+       [Commentary] = @Commentary,
+       [SymbologyID] = @SymbologyID,
+       [EAN] = @EAN,
+       [NaSIdParamName] = @NaSIdParamName,
+       [UPN] = @UPN,
+       [AdditionalInformation] = @AdditionalInformation,
+       [AnalyseId] = @AnalyseId,
+       [TimeStamp] = @TimeStamp
+ WHERE [AnalyseId]=@AnalyseId
+END
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[BarcodesStore]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[AnalyseId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@AnalyseId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[TimeStamp]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Barcode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SymbologyID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SubType]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ContainsOrMayContainId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ACL]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[ADDITIONALID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[BESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[CIP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Company]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[CONTENT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[COUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[EAN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Expiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Family]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[GTIN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_91]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_92]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_93]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_94]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_95]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_96]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_97]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_98]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[INTERNAL_99]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[LIC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Lot]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[LPP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NaS7]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NaSIdParamName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedBESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedExpiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[NormalizedPRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[PCN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[PRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Product]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Quantity]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Reference]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Serial]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UDI]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UoM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[UPN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[VARCOUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[VARIANT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[AdditionalInformation]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[Commentary]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@TimeStamp]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Barcode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@SymbologyID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@SubType]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@ContainsOrMayContainId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@ACL]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@ADDITIONALID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@BESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@CIP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Company]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@CONTENT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@COUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@EAN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Expiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Family]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@GTIN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_91]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_92]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_93]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_94]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_95]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_96]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_97]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_98]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_99]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@LIC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Lot]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@LPP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@NaS7]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@NaSIdParamName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@NormalizedBESTBEFORE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@NormalizedExpiry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@NormalizedPRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@PCN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@PRODDATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Product]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Quantity]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Reference]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Serial]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@UDI]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@UoM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@UPN]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@VARCOUNT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@VARIANT]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@AdditionalInformation]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@Commentary]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@AnalyseId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@TimeStamp]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Barcode]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@SymbologyID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Type]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@SubType]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@ContainsOrMayContainId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@ACL]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@ADDITIONALID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@BESTBEFORE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@CIP]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Company]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@CONTENT]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@COUNT]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@EAN]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Expiry]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Family]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@GTIN]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_91]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_92]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_93]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_94]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_95]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_96]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_97]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_98]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@INTERNAL_99]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@LIC]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Lot]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@LPP]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@NaS7]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@NaSIdParamName]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@NormalizedBESTBEFORE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@NormalizedExpiry]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@NormalizedPRODDATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@PCN]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@PRODDATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Product]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Quantity]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Reference]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Serial]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@SSCC]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@UDI]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@UoM]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@UPN]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@VARCOUNT]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@VARIANT]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@AdditionalInformation]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Commentary]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="5308" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[P_Barcode_Upsert](&#xD;&#xA;@AnalyseId INT,&#xD;&#xA;@TimeStamp datetime,&#xD;&#xA;@Barcode NVARCHAR(MAX),&#xD;&#xA;@SymbologyID NVARCHAR(MAX),&#xD;&#xA;@Type NVARCHAR(MAX),&#xD;&#xA;@SubType NVARCHAR(MAX),&#xD;&#xA;@ContainsOrMayContainId bit,&#xD;&#xA;@ACL NVARCHAR(MAX),&#xD;&#xA;@ADDITIONALID NVARCHAR(MAX),&#xD;&#xA;@BESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@CIP NVARCHAR(MAX),&#xD;&#xA;@Company NVARCHAR(MAX),&#xD;&#xA;@CONTENT NVARCHAR(MAX),&#xD;&#xA;@COUNT NVARCHAR(MAX),&#xD;&#xA;@EAN NVARCHAR(MAX),&#xD;&#xA;@Expiry NVARCHAR(MAX),&#xD;&#xA;@Family NVARCHAR(MAX),&#xD;&#xA;@GTIN NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_91 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_92 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_93 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_94 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_95 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_96 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_97 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_98 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_99 NVARCHAR(MAX),&#xD;&#xA;@LIC NVARCHAR(MAX),&#xD;&#xA;@Lot NVARCHAR(MAX),&#xD;&#xA;@LPP NVARCHAR(MAX),&#xD;&#xA;@NaS7 NVARCHAR(MAX),&#xD;&#xA;@NaSIdParamName NVARCHAR(MAX),&#xD;&#xA;@NormalizedBESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@NormalizedExpiry NVARCHAR(MAX),&#xD;&#xA;@NormalizedPRODDATE NVARCHAR(MAX),&#xD;&#xA;@PCN NVARCHAR(MAX),&#xD;&#xA;@PRODDATE NVARCHAR(MAX),&#xD;&#xA;@Product NVARCHAR(MAX),&#xD;&#xA;@Quantity NVARCHAR(MAX),&#xD;&#xA;@Reference NVARCHAR(MAX),&#xD;&#xA;@Serial NVARCHAR(MAX),&#xD;&#xA;@SSCC NVARCHAR(MAX),&#xD;&#xA;@UDI NVARCHAR(MAX),&#xD;&#xA;@UoM NVARCHAR(MAX),&#xD;&#xA;@UPN NVARCHAR(MAX),&#xD;&#xA;@VARCOUNT NVARCHAR(MAX),&#xD;&#xA;@VARIANT NVARCHAR(MAX),&#xD;&#xA;@AdditionalInformation nvarchar(MAX),&#xD;&#xA;@Commentary NVARCHAR(MAX)&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+	</Model>
+</DataSchemaModel>

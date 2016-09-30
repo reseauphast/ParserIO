@@ -63,6 +63,14 @@
       <Project>{b2b11f61-9523-4dbb-9607-e9e39bd6700f}</Project>
       <Name>ParserIO.DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParserIO.ORM\ParserIO.ORM.csproj">
+      <Project>{0fe369b2-7f90-410a-b1ff-00d0deddf1a5}</Project>
+      <Name>ParserIO.ORM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParserIO.Tools\ParserIO.Tools.csproj">
+      <Project>{3486d14c-acd2-492d-b672-3039c8cc0983}</Project>
+      <Name>ParserIO.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

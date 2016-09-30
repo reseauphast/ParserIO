@@ -58,6 +58,10 @@
       <Project>{b2b11f61-9523-4dbb-9607-e9e39bd6700f}</Project>
       <Name>ParserIO.DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParserIO.Tools\ParserIO.Tools.csproj">
+      <Project>{3486D14C-ACD2-492D-B672-3039C8CC0983}</Project>
+      <Name>ParserIO.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

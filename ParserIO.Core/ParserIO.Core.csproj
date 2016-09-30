@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions.cs" />
+    <Compile Include="Functions1_0.cs" />
     <Compile Include="Functions2_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

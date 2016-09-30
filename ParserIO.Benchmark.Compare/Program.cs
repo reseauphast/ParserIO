@@ -16,8 +16,8 @@ namespace ParserIO.Benchmark.Compare
             string workingFolder = "C:\\ParserIO\\";
             string dateTime = DateTime.Now.ToString("yyyymmddhhmmss");
 
-            string masterFileName = workingFolder + "Barcodestore_master_20160623150402.xml";
-            string sourceFileName = workingFolder + "Barcodestore_dll_20160423030438.xml";
+            string masterFileName = workingFolder + "Barcodestore_master_20160926155425.xml";
+            string sourceFileName = workingFolder + "Barcodestore_dll_20165426035448.xml";
 
             string outputFileName = workingFolder + "BenchmarkCompare_" + dateTime +".txt";
 
@@ -52,7 +52,7 @@ namespace ParserIO.Benchmark.Compare
 
                 List<Variance> varianceList = new List<Variance>();
 
-                varianceList = Common.DetailedCompare(masterItem.InformationSet, toCompareAnalyse.InformationSet);
+                varianceList = Common.DetailedCompare(masterItem.InformationSet, toCompareAnalyse.InformationSet, analyseIdMaster);
 
 
                 if (varianceList.Count != 0)
@@ -60,7 +60,7 @@ namespace ParserIO.Benchmark.Compare
                   analysesVarianceCount++;
                   foreach(Variance var in varianceList)
                     {
-                        writetext.WriteLine(analyseIdMaster.ToString() + "\t" + var.propertyName + "\t" + var.masterValue + "\t" + var.checkedValue);
+                        writetext.WriteLine(var.analyseId.ToString() + "\t" + analyseIdMaster.ToString() + "\t" + var.propertyName + "\t" + var.masterValue + "\t" + var.checkedValue);
                     }
                     writetext.WriteLine("");
                 }

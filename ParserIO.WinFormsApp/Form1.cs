@@ -109,107 +109,106 @@ using System.Globalization;
 
 namespace ParserIO.WinFormsApp
 {
-  public partial class Form1 : Form
-  {
-    public Form1()
+    public partial class Form1 : Form
     {
-      InitializeComponent();
-    }
+        public Form1()
+        {
+            InitializeComponent();
+        }
 
-    private void Parse(object sender, EventArgs e)
-    {
-      ParserIO.Core.Functions client = new ParserIO.Core.Functions();
-      string Barcode = textBoxBarcode.Text;
-      string type = client.Type(Barcode);
-      string subType = client.SubType(Barcode, type);
-      textBoxACL.Text = client.ACL(Barcode, type, subType);
-      textBoxADDITIONALID.Text = client.ADDITIONALID(Barcode, type, subType);
-      textBoxBESTBEFORE.Text = client.BESTBEFORE(Barcode, type, subType);
-      textBoxCIP.Text = client.CIP(Barcode, type, subType);
-      textBoxcontainsOrMayContainId.Text = client.containsOrMayContainId(Barcode, type, subType).ToString();
-      textBoxCONTENT.Text = client.CONTENT(Barcode, type, subType);
-      textBoxCOUNT.Text = client.COUNT(Barcode, type, subType);
-      textBoxExpiry.Text = client.Expiry(Barcode, type, subType);
-      textBoxFamily.Text = client.Family(Barcode, type, subType);
-      textBoxGTIN.Text = client.GTIN(Barcode, type, subType);
-      textBoxLIC.Text = client.LIC(Barcode, type, subType);
-      textBoxLot.Text = client.Lot(Barcode, type, subType);
-      textBoxLPP.Text = client.LPP(Barcode, type, subType);
-      textBoxNaS7.Text = client.NaS7(Barcode, type, subType);
-      textBoxNormalizedBESTBEFORE.Text = client.NormalizedBESTBEFORE(Barcode, type, subType);
-      textBoxNormalizedExpiry.Text = client.NormalizedExpiry(Barcode, type, subType);
-      textBoxNormalizedPRODDATE.Text = client.NormalizedPRODDATE(Barcode, type, subType);
-      textBoxPCN.Text = client.PCN(Barcode, type, subType);
-      textBoxPRODDATE.Text = client.PRODDATE(Barcode, type, subType);
-      textBoxQuantity.Text = client.Quantity(Barcode, type, subType);
-      textBoxReference.Text = client.Reference(Barcode, type, subType);
-      textBoxNaSIdParamName.Text = client.NaSIdParamName(type, subType);
-      textBoxSerial.Text = client.Serial(Barcode, type, subType);
-      textBoxSSCC.Text = client.SSCC(Barcode, type, subType);
-      textBoxSymbologyID.Text = client.SymbologyID(Barcode);
-      textBoxType.Text = type;
-      textBoxUoM.Text = client.UoM(Barcode, type, subType);
-      textBoxUPN.Text = client.UPN(Barcode, type, subType);
-      textBoxVARCOUNT.Text = client.VARCOUNT(Barcode, type, subType);
-      textBoxVARIANT.Text = client.VARIANT(Barcode, type, subType);
-      textBoxVariante.Text = subType;
-      textBoxUDI.Text = client.UDI(Barcode, type, subType);
-    }
+        private void Parse(object sender, EventArgs e)
+        {
+            Core.Functions client = new Core.Functions();
+            string Barcode = textBoxBarcode.Text;
+            DAO.InformationSet result = client.GetFullInformationSet(Barcode);
+            textBoxExecuteResult.Text = result.executeResult.ToString();
+            textBoxAdditionalInformation.Text = result.AdditionalInformation;
+            textBoxACL.Text = result.ACL;
+            textBoxADDITIONALID.Text = result.ADDITIONALID;
+            textBoxBESTBEFORE.Text = result.BESTBEFORE;
+            textBoxCIP.Text = result.CIP;
+            textBoxcontainsOrMayContainId.Text = result.ContainsOrMayContainId.ToString(); //check type
+            textBoxCONTENT.Text = result.CONTENT;
+            textBoxCOUNT.Text = result.COUNT;
+            textBoxExpiry.Text = result.Expiry;
+            textBoxFamily.Text = result.Family;
+            textBoxGTIN.Text = result.GTIN;
+            textBoxLIC.Text = result.LIC;
+            textBoxLot.Text = result.Lot;
+            textBoxLPP.Text = result.LPP;
+            textBoxNaS7.Text = result.NaS7;
+            textBoxNormalizedBESTBEFORE.Text = result.NormalizedBESTBEFORE;
+            textBoxNormalizedExpiry.Text = result.NormalizedExpiry;
+            textBoxNormalizedPRODDATE.Text = result.NormalizedPRODDATE;
+            textBoxPCN.Text = result.PCN;
+            textBoxPRODDATE.Text = result.PRODDATE;
+            textBoxQuantity.Text = result.Quantity;
+            textBoxReference.Text = result.Reference;
+            textBoxNaSIdParamName.Text = result.NaSIdParamName;
+            textBoxSerial.Text = result.Serial;
+            textBoxSSCC.Text = result.SSCC;
+            textBoxSymbologyID.Text = result.SymbologyID;
+            textBoxType.Text = result.Type;
+            textBoxUoM.Text = result.UoM;
+            textBoxUPN.Text = result.UPN;
+            textBoxVARCOUNT.Text = result.VARCOUNT;
+            textBoxVARIANT.Text = result.VARIANT;
+            textBoxVariante.Text = result.SubType;
+            textBoxUDI.Text = result.UDI;
+        }
 
-    private void textBoxCode_TextChanged(object sender, EventArgs e)
-    {
-      textBoxACL.Clear();
-      textBoxADDITIONALID.Clear();
-      textBoxBESTBEFORE.Clear();
-      textBoxCIP.Clear();
-      textBoxcontainsOrMayContainId.Clear();
-      textBoxCONTENT.Clear();
-      textBoxCOUNT.Clear();
-      textBoxExpiry.Clear();
-      textBoxFamily.Clear();
-      textBoxGTIN.Clear();
-      textBoxINTERNAL_91.Clear();
-      textBoxINTERNAL_92.Clear();
-      textBoxINTERNAL_93.Clear();
-      textBoxINTERNAL_94.Clear();
-      textBoxINTERNAL_95.Clear();
-      textBoxINTERNAL_96.Clear();
-      textBoxINTERNAL_97.Clear();
-      textBoxINTERNAL_98.Clear();
-      textBoxINTERNAL_99.Clear();
-      textBoxLIC.Clear();
-      textBoxLot.Clear();
-      textBoxLPP.Clear();
-      textBoxNaS7.Clear();
-      textBoxNormalizedBESTBEFORE.Clear();
-      textBoxNormalizedExpiry.Clear();
-      textBoxNormalizedPRODDATE.Clear();
-      textBoxPCN.Clear();
-      textBoxPRODDATE.Clear();
-      textBoxQuantity.Clear();
-      textBoxReference.Clear();
-      textBoxNaSIdParamName.Clear();
-      textBoxSerial.Clear();
-      textBoxSSCC.Clear();
-      textBoxSymbologyID.Clear();
-      textBoxType.Clear();
-      textBoxUoM.Clear();
-      textBoxUPN.Clear();
-      textBoxVARCOUNT.Clear();
-      textBoxVARIANT.Clear();
-      textBoxVariante.Clear();
-      textBoxUDI.Clear();
-    }
+        private void textBoxCode_TextChanged(object sender, EventArgs e)
+        {
+            textBoxExecuteResult.Clear();
+            textBoxAdditionalInformation.Clear();
+            textBoxACL.Clear();
+            textBoxADDITIONALID.Clear();
+            textBoxBESTBEFORE.Clear();
+            textBoxCIP.Clear();
+            textBoxcontainsOrMayContainId.Clear();
+            textBoxCONTENT.Clear();
+            textBoxCOUNT.Clear();
+            textBoxExpiry.Clear();
+            textBoxFamily.Clear();
+            textBoxGTIN.Clear();
+            textBoxINTERNAL_91.Clear();
+            textBoxINTERNAL_92.Clear();
+            textBoxINTERNAL_93.Clear();
+            textBoxINTERNAL_94.Clear();
+            textBoxINTERNAL_95.Clear();
+            textBoxINTERNAL_96.Clear();
+            textBoxINTERNAL_97.Clear();
+            textBoxINTERNAL_98.Clear();
+            textBoxINTERNAL_99.Clear();
+            textBoxLIC.Clear();
+            textBoxLot.Clear();
+            textBoxLPP.Clear();
+            textBoxNaS7.Clear();
+            textBoxNormalizedBESTBEFORE.Clear();
+            textBoxNormalizedExpiry.Clear();
+            textBoxNormalizedPRODDATE.Clear();
+            textBoxPCN.Clear();
+            textBoxPRODDATE.Clear();
+            textBoxQuantity.Clear();
+            textBoxReference.Clear();
+            textBoxNaSIdParamName.Clear();
+            textBoxSerial.Clear();
+            textBoxSSCC.Clear();
+            textBoxSymbologyID.Clear();
+            textBoxType.Clear();
+            textBoxUoM.Clear();
+            textBoxUPN.Clear();
+            textBoxVARCOUNT.Clear();
+            textBoxVARIANT.Clear();
+            textBoxVariante.Clear();
+            textBoxUDI.Clear();
+        }
 
-    private void aboutParserIOToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      AboutBox MyAboutBox = new AboutBox();
-      MyAboutBox.ShowDialog();
-    }
-
-    private void labelNaSIdNameParam_Click(object sender, EventArgs e)
-    {
+        private void aboutParserIOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox MyAboutBox = new AboutBox();
+            MyAboutBox.ShowDialog();
+        }
 
     }
-   }
 }

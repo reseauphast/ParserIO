@@ -2,52 +2,52 @@
 {
     public class InformationSet
     {
-        private int _executeResult;
-        private string _ACL;
-        private string _ADDITIONALID;
-        private string _BESTBEFORE;
-        private string _CIP;
-        private string _Company;
-        private bool _ContainsOrMayContainId;
-        private string _CONTENT;
-        private string _COUNT;
-        private string _EAN;
-        private string _Expiry;
-        private string _Family;
-        private string _GTIN;
-        private string _LIC;
-        private string _Lot;
-        private string _LPP;
-        private string _NaS7;
-        private string _NaSIdParamName;
-        private string _NormalizedBESTBEFORE;
-        private string _NormalizedExpiry;
-        private string _NormalizedPRODDATE;
-        private string _PCN;
-        private string _PRODDATE;
-        private string _Product;
-        private string _Quantity;
-        private string _Reference;
-        private string _Serial;
-        private string _SSCC;
-        private string _subType;
-        private string _SymbologyID;
-        private string _type;
-        private string _UDI;
-        private string _UoM;
-        private string _UPN;
-        private string _VARCOUNT;
-        private string _VARIANT;
-        private string _AdditionalInformation;
-        private string _INTERNAL_91;
-        private string _INTERNAL_92;
-        private string _INTERNAL_93;
-        private string _INTERNAL_94;
-        private string _INTERNAL_95;
-        private string _INTERNAL_96;
-        private string _INTERNAL_97;
-        private string _INTERNAL_98;
-        private string _INTERNAL_99;
+        private int _executeResult=0;
+        private string _ACL="";
+        private string _ADDITIONALID = "";
+        private string _BESTBEFORE = "";
+        private string _CIP = "";
+        private string _Company = "";
+        private bool _ContainsOrMayContainId = false;
+        private string _CONTENT = "";
+        private string _COUNT = "";
+        private string _EAN = "";
+        private string _Expiry = "";
+        private string _Family = "";
+        private string _GTIN = "";
+        private string _LIC = "";
+        private string _Lot = "";
+        private string _LPP = "";
+        private string _NaS7 = "";
+        private string _NaSIdParamName = "";
+        private string _NormalizedBESTBEFORE = "";
+        private string _NormalizedExpiry = "";
+        private string _NormalizedPRODDATE = "";
+        private string _PCN = "";
+        private string _PRODDATE = "";
+        private string _Product = "";
+        private string _Quantity = "";
+        private string _Reference = "";
+        private string _Serial = "";
+        private string _SSCC = "";
+        private string _subType="";
+        private string _SymbologyID = "";
+        private string _Type = "";
+        private string _UDI = "";
+        private string _UoM = "";
+        private string _UPN = "";
+        private string _VARCOUNT = "";
+        private string _VARIANT = "";
+        private string _AdditionalInformation="";
+        private string _INTERNAL_91 = "";
+        private string _INTERNAL_92 = "";
+        private string _INTERNAL_93 = "";
+        private string _INTERNAL_94 = "";
+        private string _INTERNAL_95 = "";
+        private string _INTERNAL_96 = "";
+        private string _INTERNAL_97 = "";
+        private string _INTERNAL_98 = "";
+        private string _INTERNAL_99 = "";
         
 
         public int executeResult
@@ -247,8 +247,8 @@
         }
         public string Type
         {
-            get { return _type; }
-            set { _type = value; }
+            get { return _Type; }
+            set { _Type = value; }
         }
         public string UDI
         {
@@ -280,9 +280,9 @@
             get { return _AdditionalInformation; }
             set { _AdditionalInformation = value; }
         }
-
         public InformationSet()
         {
+            //AdditionalInformation = "";
 
         }
     }
