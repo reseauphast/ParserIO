@@ -3442,6 +3442,10 @@ namespace ParserIO.Core
                                 {
                                     result = result + ".10"; //01.17.10
                                 }
+                                else if (ai2 == "21")
+                                {
+                                    result = result + ".21"; //01.17.21
+                                }
                                 else if (ai2 == "30")
                                 {
                                     result = result + ".30"; //01.17.30
