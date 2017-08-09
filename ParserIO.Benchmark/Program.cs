@@ -29,8 +29,8 @@ namespace ParserIO.Benchmark
         {
 
             Provider value = Provider.dll;
-            string workingFolder = "C:\\ParserIO\\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20160926155425.xml";
+            string workingFolder = "D:\\ParserIO\\";
+            string sourceFileName = workingFolder + "Barcodestore_master_20170802174047.xml";
 
             string outputFileName = workingFolder + "Barcodestore_" + value + "_"+ DateTime.Now.ToString("yyyymmddhhmmss") + ".xml";
 
@@ -86,7 +86,7 @@ namespace ParserIO.Benchmark
                 x.InformationSet.ADDITIONALID = targetAnalyse.ADDITIONALID;
                 x.InformationSet.BESTBEFORE = targetAnalyse.BESTBEFORE;
                 x.InformationSet.CIP = targetAnalyse.CIP;
-                x.InformationSet.Company = targetAnalyse.Company;
+                x.InformationSet.Company = ""; // targetAnalyse.Company; //Obsolete
                 x.InformationSet.ContainsOrMayContainId = targetAnalyse.ContainsOrMayContainId;
                 x.InformationSet.CONTENT = targetAnalyse.CONTENT;
                 x.InformationSet.COUNT = targetAnalyse.COUNT;
@@ -113,11 +113,12 @@ namespace ParserIO.Benchmark
                 x.InformationSet.NormalizedPRODDATE = targetAnalyse.NormalizedPRODDATE;
                 x.InformationSet.PCN = targetAnalyse.PCN;
                 x.InformationSet.PRODDATE = targetAnalyse.PRODDATE;
-                x.InformationSet.Product = targetAnalyse.Product;
+                x.InformationSet.Product = ""; // targetAnalyse.Product; //Obsolete
                 x.InformationSet.Quantity = targetAnalyse.Quantity;
                 x.InformationSet.Reference = targetAnalyse.Reference;
                 x.InformationSet.Serial = targetAnalyse.Serial;
                 x.InformationSet.SSCC = targetAnalyse.SSCC;
+                x.InformationSet.StorageLocation = targetAnalyse.StorageLocation;
                 x.InformationSet.SymbologyID = targetAnalyse.SymbologyID;
                 x.InformationSet.UDI = targetAnalyse.UDI;
                 x.InformationSet.UoM = targetAnalyse.UoM;
