@@ -21,7 +21,6 @@ ParserIO is delivered under the GNU Lesser General Public License.
 
 -----------------------------------------------------------------------
 For more information, please consult the ParserIO web site at
-https://parserio.codeplex.com
 https://github.com/reseauphast/ParserIO
 
 -----------------------------------------------------------------------
@@ -30,4 +29,4 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 -----------------------------------------------------------------------
-Copyright (c) 2009-2016, Association Réseau Phast,  http://www.phast.fr
+Copyright (c) 2009-2017, Association Réseau Phast,  http://www.phast.fr

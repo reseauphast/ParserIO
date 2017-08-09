@@ -7,7 +7,7 @@
         private string _ADDITIONALID = "";
         private string _BESTBEFORE = "";
         private string _CIP = "";
-        private string _Company = "";
+        private string _Company = ""; //Obsolete
         private bool _ContainsOrMayContainId = false;
         private string _CONTENT = "";
         private string _COUNT = "";
@@ -25,7 +25,7 @@
         private string _NormalizedPRODDATE = "";
         private string _PCN = "";
         private string _PRODDATE = "";
-        private string _Product = "";
+        private string _Product = ""; //Obsolete
         private string _Quantity = "";
         private string _Reference = "";
         private string _Serial = "";
@@ -48,7 +48,10 @@
         private string _INTERNAL_97 = "";
         private string _INTERNAL_98 = "";
         private string _INTERNAL_99 = "";
+        private string _StorageLocation = "";
         
+
+
 
         public int executeResult
         {
@@ -75,6 +78,7 @@
             get { return _CIP; }
             set { _CIP = value; }
         }
+        //Obsolete
         public string Company
         {
             get { return _Company; }
@@ -205,6 +209,7 @@
             get { return _PRODDATE; }
             set { _PRODDATE = value; }
         }
+        //Obsolete
         public string Product
         {
             get { return _Product; }
@@ -280,6 +285,13 @@
             get { return _AdditionalInformation; }
             set { _AdditionalInformation = value; }
         }
+
+        public string StorageLocation
+        {
+            get { return _StorageLocation; }
+            set { _StorageLocation = value; }
+        }
+
         public InformationSet()
         {
             //AdditionalInformation = "";

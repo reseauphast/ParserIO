@@ -57,15 +57,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ParserIO.Core.snk" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ParserIO.DAO\ParserIO.DAO.csproj">
       <Project>{b2b11f61-9523-4dbb-9607-e9e39bd6700f}</Project>
       <Name>ParserIO.DAO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ParserIO.Core.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿//For more information, please consult the ParserIO web site at
+﻿/*
+//For more information, please consult the ParserIO web site at
 //<http://parserio.codeplex.com>
 //<https://github.com/reseauphast/ParserIO>
 //
@@ -505,7 +506,7 @@ namespace ParserIO.Core
             result.ADDITIONALID = ADDITIONALID(code, result.Type, result.SubType);
             result.BESTBEFORE = BESTBEFORE(code, result.Type, result.SubType);
             result.CIP = CIP(code, result.Type, result.SubType);
-            result.Company = Company(code, result.Type, result.SubType);
+            result.Company = ""; // Company(code, result.Type, result.SubType); //Obsolete
             result.ContainsOrMayContainId = containsOrMayContainId(code, result.Type, result.SubType);
             result.CONTENT = CONTENT(code, result.Type, result.SubType);
             result.COUNT = COUNT(code, result.Type, result.SubType);
@@ -531,7 +532,7 @@ namespace ParserIO.Core
             result.NormalizedPRODDATE = NormalizedPRODDATE(code, result.Type, result.SubType);
             result.PCN = PCN(code, result.Type, result.SubType);
             result.PRODDATE = PRODDATE(code, result.Type, result.SubType);
-            result.Product = Product(code, result.Type, result.SubType);
+            result.Product = ""; // Product(code, result.Type, result.SubType); //Obsolete
             result.Quantity = Quantity(code, result.Type, result.SubType);
             result.Reference = Reference(code, result.Type, result.SubType);
             result.NaSIdParamName = NaSIdParamName(result.Type, result.SubType);
@@ -3923,3 +3924,4 @@ namespace ParserIO.Core
         }
     }
 }
+*/

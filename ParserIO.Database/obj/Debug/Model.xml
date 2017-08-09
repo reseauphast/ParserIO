@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.9" DspName="Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.4" DspName="Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
 	<Header>
 		<CustomData Category="AnsiNulls">
 			<Metadata Name="AnsiNulls" Value="True" />
@@ -8,7 +8,7 @@
 			<Metadata Name="QuotedIdentifier" Value="True" />
 		</CustomData>
 		<CustomData Category="CompatibilityMode">
-			<Metadata Name="CompatibilityMode" Value="130" />
+			<Metadata Name="CompatibilityMode" Value="120" />
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="ParserIO.Database.dll" />
@@ -37,7 +37,6 @@
 			<Property Name="PageVerifyMode" Value="3" />
 			<Property Name="DefaultLanguage" Value="" />
 			<Property Name="DefaultFullTextLanguage" Value="" />
-			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
 			<Relationship Name="DefaultFilegroup">
 				<Entry>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
@@ -180,22 +179,6 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[CIP]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="IsMax" Value="True" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Company]">
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -579,22 +562,6 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Product]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="IsMax" Value="True" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[Quantity]">
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -644,6 +611,22 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[SSCC]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BarcodesStore].[StorageLocation]">
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -871,7 +854,6 @@ SELECT [localId]
       ,[ADDITIONALID]
       ,[BESTBEFORE]
       ,[CIP]
-      ,[Company]
       ,[CONTENT]
       ,[COUNT]
 	  ,[EAN]
@@ -897,11 +879,11 @@ SELECT [localId]
       ,[NormalizedPRODDATE]
       ,[PCN]
       ,[PRODDATE]
-      ,[Product]
       ,[Quantity]
       ,[Reference]
       ,[Serial]
       ,[SSCC]
+	  ,[StorageLocation]
       ,[UDI]
       ,[UoM]
 	  ,[UPN]
@@ -953,9 +935,6 @@ SELECT [localId]
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[CIP]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[BarcodesStore].[Company]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[CONTENT]" />
@@ -1033,9 +1012,6 @@ SELECT [localId]
 					<References Name="[dbo].[BarcodesStore].[PRODDATE]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[BarcodesStore].[Product]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[BarcodesStore].[Quantity]" />
 				</Entry>
 				<Entry>
@@ -1046,6 +1022,9 @@ SELECT [localId]
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[StorageLocation]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[UDI]" />
@@ -1075,7 +1054,7 @@ SELECT [localId]
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="1038" />
+				<Property Name="Length" Value="1025" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[P_Barcode_List]&#xD;&#xA;AS" />
@@ -1101,7 +1080,6 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[ADDITIONALID]
            ,[BESTBEFORE]
            ,[CIP]
-           ,[Company]
            ,[CONTENT]
            ,[COUNT]
 		   ,[EAN]
@@ -1127,11 +1105,11 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[NormalizedPRODDATE]
            ,[PCN]
            ,[PRODDATE]
-           ,[Product]
            ,[Quantity]
            ,[Reference]
            ,[Serial]
            ,[SSCC]
+		   ,[StorageLocation]
            ,[UDI]
            ,[UoM]
 		   ,[UPN]
@@ -1151,7 +1129,6 @@ INSERT INTO [dbo].[BarcodesStore]
             @ADDITIONALID,
             @BESTBEFORE,
             @CIP,
-            @Company,
             @CONTENT,
             @COUNT,
 			@EAN,
@@ -1177,11 +1154,11 @@ INSERT INTO [dbo].[BarcodesStore]
             @NormalizedPRODDATE,
             @PCN,
             @PRODDATE,
-            @Product,
             @Quantity,
             @Reference,
             @Serial,
             @SSCC,
+			@StorageLocation,
             @UDI,
             @UoM,
 			@UPN,
@@ -1201,7 +1178,6 @@ UPDATE [dbo].[BarcodesStore]
        [ADDITIONALID] = @ADDITIONALID,
        [BESTBEFORE] = @BESTBEFORE,
        [CIP] = @CIP,
-       [Company] = @Company,
        [CONTENT] = @CONTENT,
        [COUNT] = @COUNT,
        [Expiry] = @Expiry,
@@ -1225,11 +1201,11 @@ UPDATE [dbo].[BarcodesStore]
        [NormalizedPRODDATE] = @NormalizedPRODDATE,
        [PCN] = @PCN,
        [PRODDATE] = @PRODDATE,
-       [Product] = @Product,
        [Quantity] = @Quantity,
        [Reference] = @Reference,
        [Serial] = @Serial,
        [SSCC] = @SSCC,
+	   [StorageLocation]=@StorageLocation,
        [UDI] = @UDI,
        [UoM] = @UoM,
        [VARCOUNT] = @VARCOUNT,
@@ -1288,9 +1264,6 @@ END]]></Value>
 					<References Name="[dbo].[BarcodesStore].[CIP]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[BarcodesStore].[Company]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[BarcodesStore].[CONTENT]" />
 				</Entry>
 				<Entry>
@@ -1366,9 +1339,6 @@ END]]></Value>
 					<References Name="[dbo].[BarcodesStore].[PRODDATE]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[BarcodesStore].[Product]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[BarcodesStore].[Quantity]" />
 				</Entry>
 				<Entry>
@@ -1379,6 +1349,9 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BarcodesStore].[StorageLocation]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[BarcodesStore].[UDI]" />
@@ -1430,9 +1403,6 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[P_Barcode_Upsert].[@CIP]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[P_Barcode_Upsert].[@Company]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[P_Barcode_Upsert].[@CONTENT]" />
@@ -1510,9 +1480,6 @@ END]]></Value>
 					<References Name="[dbo].[P_Barcode_Upsert].[@PRODDATE]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[P_Barcode_Upsert].[@Product]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[P_Barcode_Upsert].[@Quantity]" />
 				</Entry>
 				<Entry>
@@ -1523,6 +1490,9 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[P_Barcode_Upsert].[@SSCC]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[P_Barcode_Upsert].[@StorageLocation]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[P_Barcode_Upsert].[@UDI]" />
@@ -1706,22 +1676,6 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@CIP]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="IsMax" Value="True" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Company]">
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -2137,22 +2091,6 @@ END]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Product]">
-						<Relationship Name="Type">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="IsMax" Value="True" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@Quantity]">
 						<Relationship Name="Type">
 							<Entry>
@@ -2202,6 +2140,22 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@SSCC]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[P_Barcode_Upsert].[@StorageLocation]">
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -2335,10 +2289,10 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="5308" />
+				<Property Name="Length" Value="5227" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[P_Barcode_Upsert](&#xD;&#xA;@AnalyseId INT,&#xD;&#xA;@TimeStamp datetime,&#xD;&#xA;@Barcode NVARCHAR(MAX),&#xD;&#xA;@SymbologyID NVARCHAR(MAX),&#xD;&#xA;@Type NVARCHAR(MAX),&#xD;&#xA;@SubType NVARCHAR(MAX),&#xD;&#xA;@ContainsOrMayContainId bit,&#xD;&#xA;@ACL NVARCHAR(MAX),&#xD;&#xA;@ADDITIONALID NVARCHAR(MAX),&#xD;&#xA;@BESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@CIP NVARCHAR(MAX),&#xD;&#xA;@Company NVARCHAR(MAX),&#xD;&#xA;@CONTENT NVARCHAR(MAX),&#xD;&#xA;@COUNT NVARCHAR(MAX),&#xD;&#xA;@EAN NVARCHAR(MAX),&#xD;&#xA;@Expiry NVARCHAR(MAX),&#xD;&#xA;@Family NVARCHAR(MAX),&#xD;&#xA;@GTIN NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_91 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_92 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_93 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_94 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_95 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_96 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_97 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_98 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_99 NVARCHAR(MAX),&#xD;&#xA;@LIC NVARCHAR(MAX),&#xD;&#xA;@Lot NVARCHAR(MAX),&#xD;&#xA;@LPP NVARCHAR(MAX),&#xD;&#xA;@NaS7 NVARCHAR(MAX),&#xD;&#xA;@NaSIdParamName NVARCHAR(MAX),&#xD;&#xA;@NormalizedBESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@NormalizedExpiry NVARCHAR(MAX),&#xD;&#xA;@NormalizedPRODDATE NVARCHAR(MAX),&#xD;&#xA;@PCN NVARCHAR(MAX),&#xD;&#xA;@PRODDATE NVARCHAR(MAX),&#xD;&#xA;@Product NVARCHAR(MAX),&#xD;&#xA;@Quantity NVARCHAR(MAX),&#xD;&#xA;@Reference NVARCHAR(MAX),&#xD;&#xA;@Serial NVARCHAR(MAX),&#xD;&#xA;@SSCC NVARCHAR(MAX),&#xD;&#xA;@UDI NVARCHAR(MAX),&#xD;&#xA;@UoM NVARCHAR(MAX),&#xD;&#xA;@UPN NVARCHAR(MAX),&#xD;&#xA;@VARCOUNT NVARCHAR(MAX),&#xD;&#xA;@VARIANT NVARCHAR(MAX),&#xD;&#xA;@AdditionalInformation nvarchar(MAX),&#xD;&#xA;@Commentary NVARCHAR(MAX)&#xD;&#xA;)&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[P_Barcode_Upsert](&#xD;&#xA;@AnalyseId INT,&#xD;&#xA;@TimeStamp datetime,&#xD;&#xA;@Barcode NVARCHAR(MAX),&#xD;&#xA;@SymbologyID NVARCHAR(MAX),&#xD;&#xA;@Type NVARCHAR(MAX),&#xD;&#xA;@SubType NVARCHAR(MAX),&#xD;&#xA;@ContainsOrMayContainId bit,&#xD;&#xA;@ACL NVARCHAR(MAX),&#xD;&#xA;@ADDITIONALID NVARCHAR(MAX),&#xD;&#xA;@BESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@CIP NVARCHAR(MAX),&#xD;&#xA;@CONTENT NVARCHAR(MAX),&#xD;&#xA;@COUNT NVARCHAR(MAX),&#xD;&#xA;@EAN NVARCHAR(MAX),&#xD;&#xA;@Expiry NVARCHAR(MAX),&#xD;&#xA;@Family NVARCHAR(MAX),&#xD;&#xA;@GTIN NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_91 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_92 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_93 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_94 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_95 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_96 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_97 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_98 NVARCHAR(MAX),&#xD;&#xA;@INTERNAL_99 NVARCHAR(MAX),&#xD;&#xA;@LIC NVARCHAR(MAX),&#xD;&#xA;@Lot NVARCHAR(MAX),&#xD;&#xA;@LPP NVARCHAR(MAX),&#xD;&#xA;@NaS7 NVARCHAR(MAX),&#xD;&#xA;@NaSIdParamName NVARCHAR(MAX),&#xD;&#xA;@NormalizedBESTBEFORE NVARCHAR(MAX),&#xD;&#xA;@NormalizedExpiry NVARCHAR(MAX),&#xD;&#xA;@NormalizedPRODDATE NVARCHAR(MAX),&#xD;&#xA;@PCN NVARCHAR(MAX),&#xD;&#xA;@PRODDATE NVARCHAR(MAX),&#xD;&#xA;@Quantity NVARCHAR(MAX),&#xD;&#xA;@Reference NVARCHAR(MAX),&#xD;&#xA;@Serial NVARCHAR(MAX),&#xD;&#xA;@SSCC NVARCHAR(MAX),&#xD;&#xA;@StorageLocation NVARCHAR(MAX),&#xD;&#xA;@UDI NVARCHAR(MAX),&#xD;&#xA;@UoM NVARCHAR(MAX),&#xD;&#xA;@UPN NVARCHAR(MAX),&#xD;&#xA;@VARCOUNT NVARCHAR(MAX),&#xD;&#xA;@VARIANT NVARCHAR(MAX),&#xD;&#xA;@AdditionalInformation nvarchar(MAX),&#xD;&#xA;@Commentary NVARCHAR(MAX)&#xD;&#xA;)&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 	</Model>

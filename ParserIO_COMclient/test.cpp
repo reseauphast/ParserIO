@@ -36,15 +36,16 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	HRESULT hr;
 	hr = CoInitialize(NULL);
-
-	IFunctions1_0Ptr pIFunctions(__uuidof(Functions1_0));
+	/*
+	IFunctionsPtr pIFunctions(__uuidof(Functions));
 	
 	BSTR codeBar = ::SysAllocString(L"+H3030605320CE0K");
 	BSTR ret;
 
 	if(hr == S_OK)
 	{
-		hr = pIFunctions->subType(codeBar, &ret);
+	
+		hr = pIFunctions->GetFullInformationSet(codeBar, &ret);
 
 		if(hr == S_OK)
 		{
@@ -54,13 +55,16 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			_tprintf(_T("Call method:%s fail!\r\n"), _T("variante"));
 		}
+		
 	}
 	else
 	{
 		_tprintf(_T("Create COM object:%s fail!\r\n"), _T("ParserIO_Core"));
 	}
+	
 	system("pause");
 	::CoUninitialize();
 	::SysFreeString(codeBar);
+	*/
 	return 0;
 }

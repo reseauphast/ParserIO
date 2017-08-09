@@ -7,10 +7,38 @@ using System;
 using ParserIO.DAO;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
+using System.Reflection;
 
+[assembly: AssemblyKeyFile("ParserIO.Core.snk")]
 namespace ParserIO.Core
 {
-    public class Functions
+
+    [Guid("EAA4976A-45C3-4BC5-BC0B-E474F4C3C83F")]
+    // InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface IFunctions
+    {
+        [DispId(1)]
+        InformationSet GetFullInformationSet(string code);
+    }
+
+    [Guid("7BD20046-DF8C-44A6-8F6B-687FAA26FA71"),
+      InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface ParserIO_Core_events
+    {
+    }
+
+    [Guid("0D53A3E8-E51A-49C7-944E-E72A2064F938"),
+      ClassInterface(ClassInterfaceType.AutoDual),
+      ComVisible(true)]
+    // [fr] Verifier si  ComVisible(true) est utile
+    // [en] Check if ComVisible(true) is useful or not
+    //[ProgId("ParserIO_functions")]
+
+
+
+
+    public class Functions : IFunctions
     {
         private InformationSet result = new InformationSet();
         private static int[] _month_days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -18,6 +46,35 @@ namespace ParserIO.Core
         {
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-', '.', ' ', '$', '/', '+', '%'
         };
+
+        private static System.Collections.Generic.List<string> gs1AIList = new System.Collections.Generic.List<string>()
+        {
+            "00",
+            "01",
+            "02",
+            "10",
+            "11",
+            "12",
+            "13",
+            "15",
+            "16",
+            "17",
+            "20",
+            "21",
+            "240",
+            "30",
+            "90",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96",
+            "97",
+            "98",
+            "99"
+        };
+
         private static DateTime ConvertDateTimeFromStr(String dateRaw, int dateType)
         {
             //if (dateType == 3)
@@ -369,7 +426,7 @@ namespace ParserIO.Core
                 result = "d2";
             return result;
         }
-        private bool NumericString(string code)
+        private static bool NumericString(string code)
         {
             bool ok = true;
             char[] array = code.ToCharArray();
@@ -383,7 +440,7 @@ namespace ParserIO.Core
             }
             return ok;
         }
-        private bool NumericChar(char c)
+        private static bool NumericChar(char c)
         // [fr] Pas utilisé la classe Char du .Net Framework pour faciliter la transposition dans un autre langage
         // [en] Not used the Char class of the .Net Framewort to facilitate the translation into another language
         {
@@ -431,7 +488,7 @@ namespace ParserIO.Core
               c == 'Y' |
               c == 'Z');
         }
-        private bool CheckGTINKey(string code)
+        private static bool CheckGTINKey(string code)
         {
             bool result = false;
             int length = code.Length;
@@ -462,7 +519,7 @@ namespace ParserIO.Core
                 result = (n1 == n2);
             return result;
         }
-        private bool CheckHIBCKey(string code)
+        private static bool CheckHIBCKey(string code)
         {
             bool result = false;
             int sum = 0;
@@ -480,7 +537,7 @@ namespace ParserIO.Core
                 result = true;
             return result;
         }
-        private bool CheckSSCCKey(string code)
+        private static bool CheckSSCCKey(string code)
         {
             bool result = false;
             int length = code.Length;
@@ -511,7 +568,7 @@ namespace ParserIO.Core
                 result = (n1 == n2);
             return result;
         }
-        private bool CheckEan13Key(string code)
+        private static bool CheckEan13Key(string code)
         {
             bool result = false;
             int length = code.Length;
@@ -556,7 +613,7 @@ namespace ParserIO.Core
             }
             return result;
         }
-        private bool Check7Car(string code)
+        private static bool Check7Car(string code)
         {
             bool result = false;
             bool ok = true;
@@ -641,7 +698,7 @@ namespace ParserIO.Core
         {
             if (code.Length > 0)
             {
-                if (result.Type == "GS1-128")
+                if ((result.Type == "GS1-128") | (result.Type == "GS1-Datamatrix"))
                 {
                     if (code.StartsWith("@"))
                     {
@@ -658,6 +715,8 @@ namespace ParserIO.Core
                     else if (code.StartsWith("01"))
                     {
                         result.SubType = result.SubType + ".01";
+                        //Check if GTIN-13 or GTIN-14
+
                         result.GTIN = code.Substring(2, 14);
                         result.UDI = result.GTIN;
                         if (result.GTIN.StartsWith("03400"))
@@ -1129,11 +1188,10 @@ namespace ParserIO.Core
 
                                 switch (asd1)
                                 {
-                                    case "L":
+                                    case "L": //Storage location
                                         {
                                             result.SubType = result.SubType + ".L";
-                                            //Storage location
-
+                                            result.StorageLocation = item.Substring(1, endData - 1);
                                             break;
                                         }
                                     case "S":
@@ -1158,8 +1216,6 @@ namespace ParserIO.Core
                                             break;
                                         }
                                 }
-
-
                             }
                         }
                     }
@@ -1167,6 +1223,21 @@ namespace ParserIO.Core
                 else if (result.Type == "EAN 13")
                 {
                     result.EAN = code;
+                    result.GTIN = code;
+
+                    if (code.Substring(0, 4) == "3401")
+                    {
+                        result.SubType = "ACL 13";
+                        result.ACL = code;
+                    }
+                    else if (code.Substring(0, 4) == "3400")
+                    {
+                        result.SubType = "CIP 13";
+                        result.CIP = code;
+                    }
+
+                    //Obsolete
+                    /*
                     if (code.Substring(0, 4) == "3401")
                     {
                         result.SubType = "ACL 13";
@@ -1182,6 +1253,7 @@ namespace ParserIO.Core
                         result.Company = code.Substring(0, 7);
                         result.Product = code.Substring(7, 5);
                     }
+                    */
                 }
                 else if (result.Type == "NaS")
                 {
@@ -1201,8 +1273,8 @@ namespace ParserIO.Core
                             // 4022495007216119361
                             result.SubType = "001"; // EAN 13 and LPP without checksum
                             result.EAN = subLeftCode;
-                            result.Company = code.Substring(0, 7);
-                            result.Product = code.Substring(7, 5);
+                            //result.Company = code.Substring(0, 7);
+                            //result.Product = code.Substring(7, 5);
                             result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
                         }
                     }
@@ -1238,8 +1310,8 @@ namespace ParserIO.Core
                         {
                             // 40224950072161139964
                             result.SubType = "004"; // EAN 13 and LPP
-                            result.Company = code.Substring(0, 7);
-                            result.Product = code.Substring(7, 5);
+                            //result.Company = code.Substring(0, 7);
+                            //result.Product = code.Substring(7, 5);
                             result.EAN = subLeftCode;
                             result.LPP = subRightCode;
                         }
@@ -1458,12 +1530,22 @@ namespace ParserIO.Core
             code = Cleanse(code);
             if ((length > 5) && code.StartsWith("]C1"))
             {
-                result = "GS1-128";
+                string ai2 = code.Substring(3,2);
+                string ai3 = code.Substring(3, 3);
+                if (gs1AIList.Contains(ai2) | gs1AIList.Contains(ai3))
+                {
+                    result = "GS1-128";
+                }
             }
 
             else if ((length > 5) && code.StartsWith("]d2"))
             {
-                result = "GS1-Datamatrix";
+                string ai2 = code.Substring(3, 2);
+                string ai3 = code.Substring(3, 3);
+                if (gs1AIList.Contains(ai2) | gs1AIList.Contains(ai3))
+                {
+                    result = "GS1-Datamatrix";
+                }
             }
 
             else if ((code.StartsWith("]d1+") | (code.StartsWith("]C0+") | code.StartsWith("]A0+") | code.StartsWith("+"))))
@@ -1580,6 +1662,35 @@ namespace ParserIO.Core
             }
             return result;
         }
+        private static bool CheckParsing(InformationSet analyse)
+        {
+            bool result = false;
+
+            //GTIN, SSCC, CONTENT, CIP, EAN, LPP, Quantity, UoM, VARCOUNT, COUNT
+            //GTIN
+            if ((analyse.GTIN.Length == 13) | (analyse.GTIN.Length == 14))
+            {
+                if(analyse.Type=="EAN 13")
+                {
+                    if (CheckEan13Key(analyse.GTIN) & CheckEan13Key(analyse.EAN))
+                    {
+                        result = true;
+                    }
+                }
+                else if ((analyse.Type.Contains("GS1") & analyse.SubType.Contains("01")))
+                {
+                    if (CheckGTINKey(analyse.GTIN))
+                    {
+                        result = true;
+                    }
+                }
+            }
+            
+            //Todo
+            result = true;
+
+            return result;
+        }
         public InformationSet GetFullInformationSet(string code)
         {
             try
@@ -1609,6 +1720,14 @@ namespace ParserIO.Core
                 }
                 result.Family = Family(code, result.Type, result.SubType);
 
+                if (CheckParsing(result))
+                {
+                    result.AdditionalInformation = "No errors detected!";
+                }
+                else
+                {
+                    result.AdditionalInformation = "Errors detected!";
+                }
             }
             catch (Exception e)
             {

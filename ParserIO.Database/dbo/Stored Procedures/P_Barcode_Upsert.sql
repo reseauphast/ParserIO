@@ -10,7 +10,6 @@
 @ADDITIONALID NVARCHAR(MAX),
 @BESTBEFORE NVARCHAR(MAX),
 @CIP NVARCHAR(MAX),
-@Company NVARCHAR(MAX),
 @CONTENT NVARCHAR(MAX),
 @COUNT NVARCHAR(MAX),
 @EAN NVARCHAR(MAX),
@@ -36,11 +35,11 @@
 @NormalizedPRODDATE NVARCHAR(MAX),
 @PCN NVARCHAR(MAX),
 @PRODDATE NVARCHAR(MAX),
-@Product NVARCHAR(MAX),
 @Quantity NVARCHAR(MAX),
 @Reference NVARCHAR(MAX),
 @Serial NVARCHAR(MAX),
 @SSCC NVARCHAR(MAX),
+@StorageLocation NVARCHAR(MAX),
 @UDI NVARCHAR(MAX),
 @UoM NVARCHAR(MAX),
 @UPN NVARCHAR(MAX),
@@ -67,7 +66,6 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[ADDITIONALID]
            ,[BESTBEFORE]
            ,[CIP]
-           ,[Company]
            ,[CONTENT]
            ,[COUNT]
 		   ,[EAN]
@@ -93,11 +91,11 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[NormalizedPRODDATE]
            ,[PCN]
            ,[PRODDATE]
-           ,[Product]
            ,[Quantity]
            ,[Reference]
            ,[Serial]
            ,[SSCC]
+		   ,[StorageLocation]
            ,[UDI]
            ,[UoM]
 		   ,[UPN]
@@ -117,7 +115,6 @@ INSERT INTO [dbo].[BarcodesStore]
             @ADDITIONALID,
             @BESTBEFORE,
             @CIP,
-            @Company,
             @CONTENT,
             @COUNT,
 			@EAN,
@@ -143,11 +140,11 @@ INSERT INTO [dbo].[BarcodesStore]
             @NormalizedPRODDATE,
             @PCN,
             @PRODDATE,
-            @Product,
             @Quantity,
             @Reference,
             @Serial,
             @SSCC,
+			@StorageLocation,
             @UDI,
             @UoM,
 			@UPN,
@@ -167,7 +164,6 @@ UPDATE [dbo].[BarcodesStore]
        [ADDITIONALID] = @ADDITIONALID,
        [BESTBEFORE] = @BESTBEFORE,
        [CIP] = @CIP,
-       [Company] = @Company,
        [CONTENT] = @CONTENT,
        [COUNT] = @COUNT,
        [Expiry] = @Expiry,
@@ -191,11 +187,11 @@ UPDATE [dbo].[BarcodesStore]
        [NormalizedPRODDATE] = @NormalizedPRODDATE,
        [PCN] = @PCN,
        [PRODDATE] = @PRODDATE,
-       [Product] = @Product,
        [Quantity] = @Quantity,
        [Reference] = @Reference,
        [Serial] = @Serial,
        [SSCC] = @SSCC,
+	   [StorageLocation]=@StorageLocation,
        [UDI] = @UDI,
        [UoM] = @UoM,
        [VARCOUNT] = @VARCOUNT,

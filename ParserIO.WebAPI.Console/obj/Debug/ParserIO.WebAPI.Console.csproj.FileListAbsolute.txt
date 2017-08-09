@@ -1,0 +1,14 @@
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.WebAPI.Console.exe.config
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.WebAPI.Console.exe
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.WebAPI.Console.pdb
+C:\vso\ParserIO\ParserIO.WebAPI.Console\obj\Debug\ParserIO.WebAPI.Console.csprojResolveAssemblyReference.cache
+C:\vso\ParserIO\ParserIO.WebAPI.Console\obj\Debug\ParserIO.WebAPI.Console.exe
+C:\vso\ParserIO\ParserIO.WebAPI.Console\obj\Debug\ParserIO.WebAPI.Console.pdb
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.Tools.dll
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.ORM.dll
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.Tools.pdb
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.ORM.pdb
+C:\vso\ParserIO\ParserIO.WebAPI.Console\bin\Debug\ParserIO.DAL.pdb

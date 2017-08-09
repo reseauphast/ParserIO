@@ -1,0 +1,5 @@
+C:\vso\ParserIO\ParserIO.DAL\bin\Debug\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.DAL\bin\Debug\ParserIO.DAL.pdb
+C:\vso\ParserIO\ParserIO.DAL\obj\Debug\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.DAL\obj\Debug\ParserIO.DAL.pdb
+C:\vso\ParserIO\ParserIO.DAL\obj\Debug\ParserIO.DAL.csprojResolveAssemblyReference.cache

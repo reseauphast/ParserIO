@@ -130,6 +130,7 @@ namespace ParserIO.WinFormsApp
             textBoxcontainsOrMayContainId.Text = result.ContainsOrMayContainId.ToString(); //check type
             textBoxCONTENT.Text = result.CONTENT;
             textBoxCOUNT.Text = result.COUNT;
+            textBoxEAN.Text = result.EAN;
             textBoxExpiry.Text = result.Expiry;
             textBoxFamily.Text = result.Family;
             textBoxGTIN.Text = result.GTIN;
@@ -147,6 +148,7 @@ namespace ParserIO.WinFormsApp
             textBoxNaSIdParamName.Text = result.NaSIdParamName;
             textBoxSerial.Text = result.Serial;
             textBoxSSCC.Text = result.SSCC;
+            textBoxStorageLocation.Text = result.StorageLocation;
             textBoxSymbologyID.Text = result.SymbologyID;
             textBoxType.Text = result.Type;
             textBoxUoM.Text = result.UoM;
@@ -168,6 +170,7 @@ namespace ParserIO.WinFormsApp
             textBoxcontainsOrMayContainId.Clear();
             textBoxCONTENT.Clear();
             textBoxCOUNT.Clear();
+            textBoxEAN.Clear();
             textBoxExpiry.Clear();
             textBoxFamily.Clear();
             textBoxGTIN.Clear();
@@ -194,6 +197,7 @@ namespace ParserIO.WinFormsApp
             textBoxNaSIdParamName.Clear();
             textBoxSerial.Clear();
             textBoxSSCC.Clear();
+            textBoxStorageLocation.Clear();
             textBoxSymbologyID.Clear();
             textBoxType.Clear();
             textBoxUoM.Clear();
@@ -210,5 +214,9 @@ namespace ParserIO.WinFormsApp
             MyAboutBox.ShowDialog();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

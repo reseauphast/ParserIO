@@ -12,7 +12,7 @@ namespace ParserIO.Console
         {
             string barcode = "";
 
-            barcode = "+J123AQ3451/$$3231231BC34567/S4012R";
+            barcode = "]C0+$$0311D023/L13RJ";
 
             Core.Functions client = new Core.Functions();
             DAO.InformationSet result;

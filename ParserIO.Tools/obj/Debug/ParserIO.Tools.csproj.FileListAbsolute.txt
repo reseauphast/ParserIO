@@ -1,0 +1,11 @@
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.Tools.dll
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.Tools.pdb
+C:\vso\ParserIO\ParserIO.Tools\obj\Debug\ParserIO.Tools.csprojResolveAssemblyReference.cache
+C:\vso\ParserIO\ParserIO.Tools\obj\Debug\ParserIO.Tools.dll
+C:\vso\ParserIO\ParserIO.Tools\obj\Debug\ParserIO.Tools.pdb
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.DAO.dll
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.DAO.pdb
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.ORM.dll
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.DAL.dll
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.ORM.pdb
+C:\vso\ParserIO\ParserIO.Tools\bin\Debug\ParserIO.DAL.pdb
