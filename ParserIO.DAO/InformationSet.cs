@@ -294,7 +294,7 @@
 
         public InformationSet()
         {
-            //AdditionalInformation = "";
+            //AdditionalInformation = "No errors detected!";
 
         }
     }

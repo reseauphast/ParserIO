@@ -1,9 +1,0 @@
-C:\vso\ParserIO\ParserIO.Database\bin\Release\ParserIO.Database.dacpac
-C:\vso\ParserIO\ParserIO.Database\bin\Release\ParserIO.Database.dll
-C:\vso\ParserIO\ParserIO.Database\bin\Release\ParserIO.Database.pdb
-C:\vso\ParserIO\ParserIO.Database\obj\Release\Model.xml
-C:\vso\ParserIO\ParserIO.Database\obj\Release\refactor.xml
-C:\vso\ParserIO\ParserIO.Database\obj\Release\postdeploy.sql
-C:\vso\ParserIO\ParserIO.Database\obj\Release\predeploy.sql
-C:\vso\ParserIO\ParserIO.Database\obj\Release\ParserIO.Database.dll
-C:\vso\ParserIO\ParserIO.Database\obj\Release\ParserIO.Database.pdb

@@ -1,5 +1,0 @@
-C:\vso\ParserIO\ParserIO.DAO\bin\Debug\ParserIO.DAO.dll
-C:\vso\ParserIO\ParserIO.DAO\bin\Debug\ParserIO.DAO.pdb
-C:\vso\ParserIO\ParserIO.DAO\obj\Debug\ParserIO.DAO.dll
-C:\vso\ParserIO\ParserIO.DAO\obj\Debug\ParserIO.DAO.pdb
-C:\vso\ParserIO\ParserIO.DAO\obj\Debug\ParserIO.DAO.csprojResolveAssemblyReference.cache

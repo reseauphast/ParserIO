@@ -1,8 +1,0 @@
-C:\vso\ParserIO\ParserIO.Core\bin\Release\ParserIO.Core.dll
-C:\vso\ParserIO\ParserIO.Core\bin\Release\ParserIO.Core.pdb
-C:\vso\ParserIO\ParserIO.Core\bin\Release\ParserIO.Core.tlb
-C:\vso\ParserIO\ParserIO.Core\bin\Release\ParserIO.DAO.dll
-C:\vso\ParserIO\ParserIO.Core\bin\Release\ParserIO.DAO.pdb
-C:\vso\ParserIO\ParserIO.Core\obj\Release\ParserIO.Core.csprojResolveAssemblyReference.cache
-C:\vso\ParserIO\ParserIO.Core\obj\Release\ParserIO.Core.dll
-C:\vso\ParserIO\ParserIO.Core\obj\Release\ParserIO.Core.pdb

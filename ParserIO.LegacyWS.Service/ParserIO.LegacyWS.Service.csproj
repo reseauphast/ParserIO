@@ -103,8 +103,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\DEV.pubxml" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
-    <None Include="Properties\PublishProfiles\STS_Services.pubxml" />
+    <None Include="Properties\PublishProfiles\RECETTE.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

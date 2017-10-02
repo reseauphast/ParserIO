@@ -1,9 +1,0 @@
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.ORM.dll
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.ORM.pdb
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.DAL.dll
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.DAO.dll
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.DAL.pdb
-C:\vso\ParserIO\ParserIO.ORM\bin\Debug\ParserIO.DAO.pdb
-C:\vso\ParserIO\ParserIO.ORM\obj\Debug\ParserIO.ORM.csprojResolveAssemblyReference.cache
-C:\vso\ParserIO\ParserIO.ORM\obj\Debug\ParserIO.ORM.dll
-C:\vso\ParserIO\ParserIO.ORM\obj\Debug\ParserIO.ORM.pdb

@@ -704,7 +704,6 @@ namespace ParserIO.Core
                     {
                         code = code.Substring(1, code.Length - 1);
                     }
-
                     if (code.StartsWith("00"))
                     {
                         result.SubType = result.SubType + ".00";
@@ -717,23 +716,45 @@ namespace ParserIO.Core
                         result.SubType = result.SubType + ".01";
                         //Check if GTIN-13 or GTIN-14
 
-                        result.GTIN = code.Substring(2, 14);
-                        result.UDI = result.GTIN;
-                        if (result.GTIN.StartsWith("03400"))
+                        string gtin= code.Substring(2, 14);
+                        if (CheckGTINKey(gtin))
                         {
-                            result.CIP = result.GTIN.Substring(1, 13);
+                            result.GTIN = gtin;
+                            result.UDI = gtin;
+                            if (result.GTIN.StartsWith("03400"))
+                            {
+                                result.CIP = result.GTIN.Substring(1, 13);
+                            }
+                            else if (result.GTIN.StartsWith("03401"))
+                            {
+                                result.ACL = result.GTIN.Substring(1, 13);
+                            }
                         }
-                        else if (result.GTIN.StartsWith("03401"))
+                        else
                         {
-                            result.ACL = result.GTIN.Substring(1, 13);
+                            // Warning
                         }
+
                         code = code.Substring(16, code.Length - 16);
                         Parse(code);
                     }
                     else if (code.StartsWith("02"))
                     {
+
                         result.SubType = result.SubType + ".02";
-                        result.CONTENT = code.Substring(2, 14);
+
+                        string content = code.Substring(2, 14);
+
+                        if (CheckGTINKey(content))
+                        {
+                            result.CONTENT = content;
+                            result.UDI = content;
+                        }
+                        else
+                        {
+                            // Warning
+                        }
+
                         code = code.Substring(16, code.Length - 16);
                         Parse(code);
                     }
@@ -995,10 +1016,14 @@ namespace ParserIO.Core
                         code = code.Substring(skip, code.Length - skip);
                         Parse(code);
                     }
+                    else
+                    {
+                        result.AdditionalInformation = result.AdditionalInformation + ";" +code;
+                    }
                     if (result.SubType.StartsWith("."))
                     {
                         result.SubType = result.SubType.Substring(1, result.SubType.Length - 1);
-                    }
+                    }                   
                 }
                 else if (result.Type == "HIBC")
                 {
@@ -1176,16 +1201,51 @@ namespace ParserIO.Core
 
                             foreach (string item in parties)
                             {
-                                string asd1 = item.Substring(0, 1); //
+                                string asd1 = item.Substring(0, 1);
+                                string asd2 = string.Empty;
                                 string asd3 = string.Empty;
+
+                                if (item.Length > 1)
+                                {
+                                    asd2 = item.Substring(0, 2);
+                                }
+
                                 if (item.Length > 2)
                                 {
-                                    asd3 = item.Substring(0, 3); //
+                                    asd3 = item.Substring(0, 3);
                                 }
 
                                 int endData = item.Length;
 
+                                if(asd1 == "L")
+                                {
+                                    result.SubType = result.SubType + ".L";
+                                    result.StorageLocation = item.Substring(1, endData - 1);
+                                }
+                                else if (asd1 == "S")
+                                {
+                                    result.SubType = result.SubType + ".S";
+                                    result.Serial = item.Substring(1, endData - 1);
+                                }
+                                //else if(asd2 == "1N")
+                                //{
 
+                                //}
+                                else if (asd3 == "14D")
+                                {
+                                    result.SubType = result.SubType + ".14D";
+                                    result.Expiry = item.Substring(3, endData - 3);
+                                }
+                                else if (asd3 == "16D")
+                                {
+                                    result.SubType = result.SubType + ".16D";
+                                    result.PRODDATE = item.Substring(3, endData - 3);
+                                }
+                                else
+                                {
+                                    result.AdditionalInformation = result.AdditionalInformation + ";" + item;
+                                }
+                                /*
                                 switch (asd1)
                                 {
                                     case "L": //Storage location
@@ -1216,6 +1276,7 @@ namespace ParserIO.Core
                                             break;
                                         }
                                 }
+                                */
                             }
                         }
                     }
@@ -1470,6 +1531,7 @@ namespace ParserIO.Core
             if (type.StartsWith("GS1-"))
             {
                 if (subType.Contains("01") |
+                    subType.Contains("02") |
                     subType.Contains("240") |
                     subType.Contains("90") |
                     subType.Contains("91") |
@@ -1664,30 +1726,18 @@ namespace ParserIO.Core
         }
         private static bool CheckParsing(InformationSet analyse)
         {
-            bool result = false;
+            bool result = true;
 
-            //GTIN, SSCC, CONTENT, CIP, EAN, LPP, Quantity, UoM, VARCOUNT, COUNT
-            //GTIN
-            if ((analyse.GTIN.Length == 13) | (analyse.GTIN.Length == 14))
+            if (analyse.Type.Contains("GS1"))
             {
-                if(analyse.Type=="EAN 13")
+                if (analyse.SubType.Contains("01"))
                 {
-                    if (CheckEan13Key(analyse.GTIN) & CheckEan13Key(analyse.EAN))
+                    if (analyse.GTIN.Length==0)
                     {
-                        result = true;
-                    }
-                }
-                else if ((analyse.Type.Contains("GS1") & analyse.SubType.Contains("01")))
-                {
-                    if (CheckGTINKey(analyse.GTIN))
-                    {
-                        result = true;
+                        result = false;
                     }
                 }
             }
-            
-            //Todo
-            result = true;
 
             return result;
         }
@@ -1720,13 +1770,14 @@ namespace ParserIO.Core
                 }
                 result.Family = Family(code, result.Type, result.SubType);
 
-                if (CheckParsing(result))
+                if (result.AdditionalInformation.Length == 0)
                 {
                     result.AdditionalInformation = "No errors detected!";
                 }
                 else
                 {
-                    result.AdditionalInformation = "Errors detected!";
+
+                    result.AdditionalInformation = "Errors detected:" + result.AdditionalInformation.Remove(0,1);
                 }
             }
             catch (Exception e)

@@ -1,1 +1,0 @@
-C:\vso\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.WinFormsApp.exe.config

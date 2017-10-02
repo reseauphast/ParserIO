@@ -1,9 +1,0 @@
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\ParserIO.WCF.Client.exe.config
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\ParserIO.WCF.Client.exe
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\ParserIO.WCF.Client.pdb
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\Newtonsoft.Json.dll
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\System.Net.Http.Formatting.dll
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\Newtonsoft.Json.xml
-C:\vso\ParserIO\ParserIO.WCF.Client\bin\Release\System.Net.Http.Formatting.xml
-C:\vso\ParserIO\ParserIO.WCF.Client\obj\Release\ParserIO.WCF.Client.exe
-C:\vso\ParserIO\ParserIO.WCF.Client\obj\Release\ParserIO.WCF.Client.pdb

@@ -1,8 +1,0 @@
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\bin\Debug\ParserIO.LegacyWS.Console.exe.config
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\bin\Debug\ParserIO.LegacyWS.Console.exe
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\bin\Debug\ParserIO.LegacyWS.Console.pdb
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\bin\Debug\ParserIO.DAO.dll
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\bin\Debug\ParserIO.DAO.pdb
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\obj\Debug\ParserIO.LegacyWS.Console.exe
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\obj\Debug\ParserIO.LegacyWS.Console.pdb
-C:\vso\ParserIO\ParserIO.LegacyWS.Console\obj\Debug\ParserIO.LegacyWS.Console.csprojResolveAssemblyReference.cache
