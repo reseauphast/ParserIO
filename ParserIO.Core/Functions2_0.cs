@@ -1317,113 +1317,101 @@ namespace ParserIO.Core
                     */
                 }
                 else if (result.Type == "NaS")
-                {
-                    if (code.Length == 7)
-                        if (Check7Car(code))
-                        {
-                            // 9641309
-                            result.SubType = "NaS7";
-                            result.NaS7 = code;
-                        }
-
-                    if (code.Length == 19)
-                    {
-                        string subLeftCode = code.Substring(0, 13);
-                        if (CheckEan13Key(subLeftCode))
-                        {
-                            // 4022495007216119361
-                            result.SubType = "001"; // EAN 13 and LPP without checksum
-                            result.EAN = subLeftCode;
-                            //result.Company = code.Substring(0, 7);
-                            //result.Product = code.Substring(7, 5);
-                            result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
-                        }
+                {   switch (code.Length)
+                    {   
+                        case 7:     if (Check7Car(code))
+                                    {
+                                        // 9641309
+                                        result.SubType = "NaS7";
+                                        result.NaS7 = code;
+                                    }
+                                    break;
+                        case 17:    string maybeLot = code.Substring(11, 6);
+                                    bool ok = NumericString(maybeLot);
+                                    if ((ok) & (code.Substring(10, 1) == " "))
+                                    {
+                                        // FBIOW8D160 102223
+                                        result.SubType = "006"; // COUSIN BIOSERV Company
+                                        result.Reference = code.Substring(0, 10);
+                                        result.Lot = maybeLot;
+                                    }   
+                                    break;
+                        case 19:    string subLeftCode = code.Substring(0, 13);
+                                    if (CheckEan13Key(subLeftCode))
+                                    {
+                                        // 4022495007216119361
+                                        result.SubType = "001"; // EAN 13 and LPP without checksum
+                                        result.EAN = subLeftCode;
+                                        //result.Company = code.Substring(0, 7);
+                                        //result.Product = code.Substring(7, 5);
+                                        result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
+                                    }
+                                    break;
+                        case 20:    string subLeftCode = code.Substring(0, 13);
+                                    string subRightCode = code.Substring(13, 7);
+                                    if (CheckEan13Key(subLeftCode) & Check7Car(subRightCode))
+                                    {   if & code.StartsWith("3401"))
+                                        {
+                                            // 34010798755871393295
+                                            result.SubType = "002"; // ACL 13 and LPP
+                                            result.ACL = subLeftCode;
+                                            result.LPP = code.Substring(13, 7);
+                                        }
+                                        else
+                                        {
+                                            // 40224950072161139964
+                                            result.SubType = "004"; // EAN 13 and LPP
+                                            //result.Company = code.Substring(0, 7);
+                                            //result.Product = code.Substring(7, 5);
+                                            result.EAN = subLeftCode;
+                                            result.LPP = subRightCode;
+                                        }
+                                    }
+                                    break;
+                        case 21:    string subLeftCode = code.Substring(0, 13);
+                                    string subRightCode = code.Substring(14, 7);
+                                    if (CheckEan13Key(subLeftCode) & Check7Car(subRightCode) & code.StartsWith("3401"))
+                                    {
+                                        // 3401079875587 1393295
+                                        result.SubType = "003"; // ACL 13 and LPP with Espace
+                                        result.ACL = subLeftCode;
+                                        result.LPP = subRightCode;
+                                    }
+                                    break;
+                        case 22:    string maybeRef = code.Substring(0, 8);
+                                    string maybeLot = code.Substring(8, 8);
+                                    string maybeExpiry = code.Substring(16, 6);
+                                    bool ok1 = NumericString(maybeRef);
+                                    bool ok2 = NumericString(maybeExpiry);
+                                    bool ok3 = !NumericString(maybeLot);
+                                    if (ok1 & ok2 & ok3)
+                                    {
+                                        // 58562152ANTL0294122012
+                                        result.SubType = "007"; // BARD France Company
+                                        result.Reference = maybeRef;
+                                        result.Lot = maybeLot;
+                                        result.Expiry = maybeExpiry;
+                                    }
+                                    break;
+                        case 28:    if ((code.Substring(20, 1) == " ") & (code.Substring(25, 1) == "-"))
+                                    {
+                                        // ASK +20.0 1102745059 2016-05
+                                        result.SubType = "005"; // Chris Eyes Company
+                                        result.Reference = code.Substring(0, 9);
+                                        result.Serial = code.Substring(10, 10);
+                                        result.Expiry = code.Substring(21, 7);
+                                    }
+                                    // Obsolete
+                                    //if (code.Length == 28)
+                                    //{
+                                    //    bool ok = NumericString(code);
+                                    //    if (ok)
+                                    //        result = "008"; // PHYSIOL France Company (Example: 2808123005365310060911306301)
+                                    //} 
+                                    break;
                     }
-                    if (code.Length == 20)
-                    {
-                        string subLeftCode = code.Substring(0, 13);
-                        string subRightCode = code.Substring(13, 7);
-                        if (CheckEan13Key(subLeftCode) & Check7Car(subRightCode) & code.StartsWith("3401"))
-                        {
-                            // 34010798755871393295
-                            result.SubType = "002"; // ACL 13 and LPP
-                            result.ACL = subLeftCode;
-                            result.LPP = code.Substring(13, 7);
-                        }
-                    }
-                    if (code.Length == 21)
-                    {
-                        string subLeftCode = code.Substring(0, 13);
-                        string subRightCode = code.Substring(14, 7);
-                        if (CheckEan13Key(subLeftCode) & Check7Car(subRightCode) & code.StartsWith("3401"))
-                        {
-                            // 3401079875587 1393295
-                            result.SubType = "003"; // ACL 13 and LPP with Espace
-                            result.ACL = subLeftCode;
-                            result.LPP = subRightCode;
-                        }
-                    }
-                    if (code.Length == 20)
-                    {
-                        string subLeftCode = code.Substring(0, 13);
-                        string subRightCode = code.Substring(13, 7);
-                        if (CheckEan13Key(subLeftCode) & Check7Car(subRightCode) & !code.StartsWith("3401"))
-                        {
-                            // 40224950072161139964
-                            result.SubType = "004"; // EAN 13 and LPP
-                            //result.Company = code.Substring(0, 7);
-                            //result.Product = code.Substring(7, 5);
-                            result.EAN = subLeftCode;
-                            result.LPP = subRightCode;
-                        }
-                    }
-                    if (code.Length == 28)
-                    {
-                        if ((code.Substring(20, 1) == " ") & (code.Substring(25, 1) == "-"))
-                        {
-                            // ASK +20.0 1102745059 2016-05
-                            result.SubType = "005"; // Chris Eyes Company
-                            result.Reference = code.Substring(0, 9);
-                            result.Serial = code.Substring(10, 10);
-                            result.Expiry = code.Substring(21, 7);
-                        }
-                    }
-                    if (code.Length == 17)
-                    {
-                        string maybeLot = code.Substring(11, 6);
-                        bool ok = NumericString(maybeLot);
-                        if ((ok) & (code.Substring(10, 1) == " "))
-                        {
-                            // FBIOW8D160 102223
-                            result.SubType = "006"; // COUSIN BIOSERV Company
-                            result.Reference = code.Substring(0, 10);
-                            result.Lot = maybeLot;
-                        }
-                    }
-                    if (code.Length == 22)
-                    {
-                        string maybeRef = code.Substring(0, 8);
-                        string maybeLot = code.Substring(8, 8);
-                        string maybeExpiry = code.Substring(16, 6);
-                        bool ok1 = NumericString(maybeRef);
-                        bool ok2 = NumericString(maybeExpiry);
-                        bool ok3 = !NumericString(maybeLot);
-                        if (ok1 & ok2 & ok3)
-                        {
-                            // 58562152ANTL0294122012
-                            result.SubType = "007"; // BARD France Company
-                            result.Reference = maybeRef;
-                            result.Lot = maybeLot;
-                            result.Expiry = maybeExpiry;
-                        }
-                    }
-                    // Obsolete
-                    //if (code.Length == 28)
-                    //{
-                    //    bool ok = NumericString(code);
-                    //    if (ok)
-                    //        result = "008"; // PHYSIOL France Company (Example: 2808123005365310060911306301)
-                    //}                                                   //  28081230 053653 10060911306301
+                    
+                    //  28081230 053653 10060911306301
                     if (code.Length >= 8)
                     {
                         if (!NumericString(code) & (code.Substring(0, 4) == "PAR-"))
@@ -1464,55 +1452,47 @@ namespace ParserIO.Core
                             result.Lot = code.Substring(code.IndexOf('^') + 1, code.Length - code.IndexOf('^') - 2);
                         }
                     }
-                    if (code.Length == 14)
-                    {
-                        if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
-                        {
-                            //  BF01-11018180
-                            result.SubType = "013"; // ABS BOLTON Company
-                            result.Reference = code.Substring(1, 13);
-                        }
-                    }
-                    if (code.Length == 10)
-                    {
-                        if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
-                        {
-                            // CPDR 24602
-                            result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
-                            result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
-                        }
-                    }
-                    if (code.Length == 17)
-                    {
-                        if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))
-                        {
-                            //To Do : waiting for Symbios answer
-                            // H080-25.01.2014-1
-                            result.SubType = "015"; // Symbios Orthopédie
-                            result.Reference = "";
-                            result.Expiry = "";
-                        }
-                    }
-                    if (code.Length == 24)
-                    {
-                        if (NumericString(code.Substring(18, 6)))
-                        {
-                            // ]C0FR04052CFZF3015237141231
-                            result.SubType = "016"; // Teleflex / Arrow
-                            result.Reference = code.Substring(0, 9);
-                            result.Lot = code.Substring(9, 9);
-                            result.Expiry = code.Substring(18, 6);
-                        }
-                    }
-                    if (code.Length == 14)
-                    {
-                        if (NumericString(code.Substring(0, 9)) & (code.Substring(10, 1) == " "))
-                        {
-                            // ]C01401788197 001
-                            result.SubType = "017"; // FCI
-                            result.Lot = code.Substring(0, 7);
-                            result.Expiry = code.Substring(7, 3);
-                        }
+                    
+                    switch (code.Length)
+                    {   case 10:    if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
+                                    {
+                                        // CPDR 24602
+                                        result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
+                                        result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
+                                    }
+                                    break;
+                        case 14:    if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
+                                    {
+                                        //  BF01-11018180
+                                        result.SubType = "013"; // ABS BOLTON Company
+                                        result.Reference = code.Substring(1, 13);
+                                    }
+                                    if (NumericString(code.Substring(0, 9)) & (code.Substring(10, 1) == " "))
+                                    {
+                                        // ]C01401788197 001
+                                        result.SubType = "017"; // FCI
+                                        result.Lot = code.Substring(0, 7);
+                                        result.Expiry = code.Substring(7, 3);
+                                    }
+                                    break;
+                        case 17:    if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))
+                                    {
+                                        //To Do : waiting for Symbios answer
+                                        // H080-25.01.2014-1
+                                        result.SubType = "015"; // Symbios Orthopédie
+                                        result.Reference = "";
+                                        result.Expiry = "";
+                                    }
+                                    break;
+                        case 24:    if (NumericString(code.Substring(18, 6)))
+                                    {
+                                        // ]C0FR04052CFZF3015237141231
+                                        result.SubType = "016"; // Teleflex / Arrow
+                                        result.Reference = code.Substring(0, 9);
+                                        result.Lot = code.Substring(9, 9);
+                                        result.Expiry = code.Substring(18, 6);
+                                    }
+                                    break;
                     }
                     if (result.SubType == "")
                     {
