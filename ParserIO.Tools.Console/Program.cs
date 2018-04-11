@@ -10,7 +10,7 @@ namespace ParserIO.Tools.Console
     {
         static void Main(string[] args)
         {
-            string fileName = "D:\\ParserIO\\Barcodestore_dll_20170102050118.xml";
+            string fileName = "D:\\ParserIO\\Barcodestore_master_20180410170614.xml";
             //FileProcess.BarcodestoreImport(fileName);
             FileProcess.BarcodestoreExport();
         }

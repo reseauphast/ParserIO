@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ParserIO.DAO;
 
 namespace ParserIO.DAL
 {
@@ -12,18 +13,21 @@ namespace ParserIO.DAL
     {
         public static int P_Barcode_Upsert(int AnalyseId,
                                            DateTime TimeStamp,
+                                           string ParserIOVersion,
                                            string Barcode,
                                            string SymbologyID,
                                            string Type,
                                            string SubType,
                                            string NaSIdParamName,
                                            bool ContainsOrMayContainId,
+                                           List<Identifier> Identifiers,
                                            string ACL,
                                            string ADDITIONALID,
                                            string BESTBEFORE,
                                            string CIP,
                                            string CONTENT,
                                            string COUNT,
+                                           string CUSTPARTNO,
                                            string EAN13,
                                            string Expiry,
                                            string Family,
@@ -73,6 +77,11 @@ namespace ParserIO.DAL
             TimeStampParam.Value = TimeStamp;
             inParam.Add(TimeStampParam);
 
+            SqlParameter ParserIOVersionParam = new SqlParameter();
+            ParserIOVersionParam.ParameterName = "ParserIOVersion";
+            ParserIOVersionParam.Value = ParserIOVersion;
+            inParam.Add(ParserIOVersionParam);
+
             SqlParameter BarcodeParam = new SqlParameter();
             BarcodeParam.ParameterName = "Barcode";
             BarcodeParam.Value = Barcode;
@@ -97,6 +106,33 @@ namespace ParserIO.DAL
             containsOrMayContainIdParam.ParameterName = "ContainsOrMayContainId";
             containsOrMayContainIdParam.Value = ContainsOrMayContainId;
             inParam.Add(containsOrMayContainIdParam);
+
+
+            //Identifiers
+            string IdentifiersRawList = string.Empty;
+            bool isFirst = true;
+            string separator = string.Empty;
+            foreach(Identifier x in Identifiers)
+            {
+                if(isFirst)
+                {
+                    separator = "";
+                    isFirst = false;
+                }
+                else
+                {
+                    separator = "@";
+                }
+                IdentifiersRawList = IdentifiersRawList + separator + x;
+            }
+
+
+            SqlParameter identifiersParam = new SqlParameter();
+            identifiersParam.ParameterName = "Identifiers";
+            identifiersParam.Value = IdentifiersRawList;
+            inParam.Add(identifiersParam);
+
+
 
             SqlParameter ACLParam = new SqlParameter();
             ACLParam.ParameterName = "ACL";
@@ -132,6 +168,11 @@ namespace ParserIO.DAL
             COUNTParam.ParameterName = "COUNT";
             COUNTParam.Value = COUNT;
             inParam.Add(COUNTParam);
+
+            SqlParameter CUSTPARTNOParam = new SqlParameter();
+            CUSTPARTNOParam.ParameterName = "CUSTPARTNO";
+            CUSTPARTNOParam.Value = CUSTPARTNO;
+            inParam.Add(CUSTPARTNOParam);
 
             SqlParameter EANParam = new SqlParameter();
             EANParam.ParameterName = "EAN";

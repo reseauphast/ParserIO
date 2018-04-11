@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParserIO.DAO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,18 +15,21 @@ namespace ParserIO.ORM
             int executeResult = 0;
             executeResult = DAL.Barcodestore.P_Barcode_Upsert(analyse.AnalyseId,
                                                               analyse.TimeStamp,
+                                                              analyse.InformationSet.ParserIOVersion,
                                                               analyse.Barcode,
                                                               analyse.InformationSet.SymbologyID,
                                                               analyse.InformationSet.Type,
                                                               analyse.InformationSet.SubType,
                                                               analyse.InformationSet.NaSIdParamName,
                                                               analyse.InformationSet.ContainsOrMayContainId,
+                                                              analyse.InformationSet.Identifiers,
                                                               analyse.InformationSet.ACL,
                                                               analyse.InformationSet.ADDITIONALID,
                                                               analyse.InformationSet.BESTBEFORE,
                                                               analyse.InformationSet.CIP,
                                                               analyse.InformationSet.CONTENT,
                                                               analyse.InformationSet.COUNT,
+                                                              analyse.InformationSet.CUSTPARTNO,
                                                               analyse.InformationSet.EAN,
                                                               analyse.InformationSet.Expiry,
                                                               analyse.InformationSet.Family,
@@ -78,6 +82,7 @@ namespace ParserIO.ORM
                 DAO.Analyse item = new DAO.Analyse();
                 item.AnalyseId = Convert.ToInt32(dr["AnalyseId"]);
                 item.TimeStamp = Convert.ToDateTime(dr["TimeStamp"]);
+                item.InformationSet.ParserIOVersion = dr["ParserIOVersion"].ToString();
                 item.Barcode = dr["Barcode"].ToString();
                 item.Commentary = dr["Commentary"].ToString();
                 item.InformationSet.SymbologyID = dr["SymbologyID"].ToString();
@@ -91,6 +96,7 @@ namespace ParserIO.ORM
                 item.InformationSet.Company = ""; // dr["Company"].ToString(); //Obsolete
                 item.InformationSet.CONTENT = dr["CONTENT"].ToString();
                 item.InformationSet.COUNT = dr["COUNT"].ToString();
+                item.InformationSet.CUSTPARTNO = dr["CUSTPARTNO"].ToString();
                 item.InformationSet.EAN = dr["EAN"].ToString();
                 item.InformationSet.Expiry = dr["Expiry"].ToString();
                 item.InformationSet.Family = dr["Family"].ToString();
@@ -126,6 +132,21 @@ namespace ParserIO.ORM
                 item.InformationSet.VARCOUNT = dr["VARCOUNT"].ToString();
                 item.InformationSet.VARIANT = dr["VARIANT"].ToString();
                 item.InformationSet.AdditionalInformation = dr["AdditionalInformation"].ToString();
+
+                //Identifiers
+                string IdentifiersRawList = dr["Identifiers"].ToString();
+                
+                if (IdentifiersRawList.Length > 0)
+                {
+                    int count = IdentifiersRawList.Split('@').Length;
+                    string[] IdentifiersSplitList = new string[count];
+                    IdentifiersSplitList = IdentifiersRawList.Split('@');
+
+                    foreach(string x in IdentifiersSplitList)
+                    {
+                        item.InformationSet.Identifiers.Add(new Identifier { Value = x });
+                    }
+                }
 
                 result.Add(item);
             }

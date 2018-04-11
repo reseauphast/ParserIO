@@ -1,13 +1,16 @@
 ﻿CREATE PROCEDURE [dbo].[P_Barcode_Upsert](
 @AnalyseId INT,
 @TimeStamp datetime,
+@ParserIOVersion NVARCHAR(MAX),
 @Barcode NVARCHAR(MAX),
 @SymbologyID NVARCHAR(MAX),
 @Type NVARCHAR(MAX),
 @SubType NVARCHAR(MAX),
 @ContainsOrMayContainId bit,
+@Identifiers NVARCHAR(MAX),
 @ACL NVARCHAR(MAX),
 @ADDITIONALID NVARCHAR(MAX),
+@CUSTPARTNO NVARCHAR(MAX),
 @BESTBEFORE NVARCHAR(MAX),
 @CIP NVARCHAR(MAX),
 @CONTENT NVARCHAR(MAX),
@@ -57,13 +60,16 @@ BEGIN
 INSERT INTO [dbo].[BarcodesStore]
            ([AnalyseId]
 		   ,[TimeStamp]
+		   ,[ParserIOVersion]
 		   ,[Barcode]
 		   ,[SymbologyID]
            ,[Type]
            ,[SubType]
            ,[ContainsOrMayContainId]
+		   ,[Identifiers]
            ,[ACL]
            ,[ADDITIONALID]
+		   ,[CUSTPARTNO]
            ,[BESTBEFORE]
            ,[CIP]
            ,[CONTENT]
@@ -106,13 +112,16 @@ INSERT INTO [dbo].[BarcodesStore]
      VALUES
            (@AnalyseId,
 		    @TimeStamp,
+			@ParserIOVersion,
 		    @Barcode,
 			@SymbologyID,
             @Type,
             @SubType,
             @ContainsOrMayContainId,
+			@Identifiers,
             @ACL,
             @ADDITIONALID,
+			@CUSTPARTNO,
             @BESTBEFORE,
             @CIP,
             @CONTENT,
@@ -157,11 +166,14 @@ ELSE
 BEGIN
 UPDATE [dbo].[BarcodesStore]
    SET [Barcode] = @Barcode,
+       [ParserIOVersion] = @ParserIOVersion,
        [Type] = @Type,
        [SubType] = @SubType,
        [ContainsOrMayContainId] = @ContainsOrMayContainId,
+	   [Identifiers] = @Identifiers,
        [ACL] = @ACL,
        [ADDITIONALID] = @ADDITIONALID,
+	   [CUSTPARTNO] = @CUSTPARTNO,
        [BESTBEFORE] = @BESTBEFORE,
        [CIP] = @CIP,
        [CONTENT] = @CONTENT,

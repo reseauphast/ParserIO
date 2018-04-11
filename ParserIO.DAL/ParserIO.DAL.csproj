@@ -49,6 +49,12 @@
     <Compile Include="DataBaseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParserIO.DAO\ParserIO.DAO.csproj">
+      <Project>{B2B11F61-9523-4DBB-9607-E9E39BD6700F}</Project>
+      <Name>ParserIO.DAO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

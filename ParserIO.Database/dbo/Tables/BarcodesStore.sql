@@ -6,6 +6,7 @@
     [ContainsOrMayContainId] NVARCHAR (MAX) NULL,
     [ACL]                    NVARCHAR (MAX) NULL,
     [ADDITIONALID]           NVARCHAR (MAX) NULL,
+    [CUSTPARTNO]             NVARCHAR (MAX) NULL,
     [BESTBEFORE]             NVARCHAR (MAX) NULL,
     [CIP]                    NVARCHAR (MAX) NULL,
     [CONTENT]                NVARCHAR (MAX) NULL,
@@ -13,15 +14,15 @@
     [Expiry]                 NVARCHAR (MAX) NULL,
     [Family]                 NVARCHAR (MAX) NULL,
     [GTIN]                   NVARCHAR (MAX) NULL,
-	[INTERNAL_91]            NVARCHAR (MAX) NULL,
-	[INTERNAL_92]            NVARCHAR (MAX) NULL,
-	[INTERNAL_93]            NVARCHAR (MAX) NULL,
-	[INTERNAL_94]            NVARCHAR (MAX) NULL,
-	[INTERNAL_95]            NVARCHAR (MAX) NULL,
-	[INTERNAL_96]            NVARCHAR (MAX) NULL,
-	[INTERNAL_97]            NVARCHAR (MAX) NULL,
-	[INTERNAL_98]            NVARCHAR (MAX) NULL,
-	[INTERNAL_99]            NVARCHAR (MAX) NULL,
+    [INTERNAL_91]            NVARCHAR (MAX) NULL,
+    [INTERNAL_92]            NVARCHAR (MAX) NULL,
+    [INTERNAL_93]            NVARCHAR (MAX) NULL,
+    [INTERNAL_94]            NVARCHAR (MAX) NULL,
+    [INTERNAL_95]            NVARCHAR (MAX) NULL,
+    [INTERNAL_96]            NVARCHAR (MAX) NULL,
+    [INTERNAL_97]            NVARCHAR (MAX) NULL,
+    [INTERNAL_98]            NVARCHAR (MAX) NULL,
+    [INTERNAL_99]            NVARCHAR (MAX) NULL,
     [LIC]                    NVARCHAR (MAX) NULL,
     [Lot]                    NVARCHAR (MAX) NULL,
     [LPP]                    NVARCHAR (MAX) NULL,
@@ -35,7 +36,7 @@
     [Reference]              NVARCHAR (MAX) NULL,
     [Serial]                 NVARCHAR (MAX) NULL,
     [SSCC]                   NVARCHAR (MAX) NULL,
-	[StorageLocation]        NVARCHAR (MAX) NULL,
+    [StorageLocation]        NVARCHAR (MAX) NULL,
     [UDI]                    NVARCHAR (MAX) NULL,
     [UoM]                    NVARCHAR (MAX) NULL,
     [VARCOUNT]               NVARCHAR (MAX) NULL,
@@ -47,8 +48,14 @@
     [UPN]                    NVARCHAR (MAX) NULL,
     [AdditionalInformation]  NVARCHAR (MAX) NULL,
     [AnalyseId]              INT            NULL,
-    [TimeStamp]              DATETIME       NULL
+    [TimeStamp]              DATETIME       NULL,
+    [Identifiers]            NVARCHAR (MAX) NULL,
+    [ParserIOVersion]        NVARCHAR (MAX) NULL
 );
+
+
+
+
 
 
 

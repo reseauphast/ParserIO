@@ -1,0 +1,7 @@
+D:\vso\ParserIO\ParserIO.Core\bin\Dev\ParserIO.Core.dll
+D:\vso\ParserIO\ParserIO.Core\bin\Dev\ParserIO.Core.pdb
+D:\vso\ParserIO\ParserIO.Core\bin\Dev\ParserIO.DAO.dll
+D:\vso\ParserIO\ParserIO.Core\bin\Dev\ParserIO.DAO.pdb
+D:\vso\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.csprojResolveAssemblyReference.cache
+D:\vso\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.dll
+D:\vso\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.pdb

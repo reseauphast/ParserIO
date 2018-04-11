@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="parserio.core.tlh" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

@@ -32,11 +32,13 @@
 #include "stdafx.h"
 #import "ParserIO.Core.tlb" named_guids raw_interfaces_only
 using namespace ParserIO_Core;
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+/*
 	HRESULT hr;
 	hr = CoInitialize(NULL);
-	/*
+
 	IFunctionsPtr pIFunctions(__uuidof(Functions));
 	
 	BSTR codeBar = ::SysAllocString(L"+H3030605320CE0K");

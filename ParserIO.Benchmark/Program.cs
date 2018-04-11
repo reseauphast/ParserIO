@@ -30,7 +30,7 @@ namespace ParserIO.Benchmark
 
             Provider value = Provider.dll;
             string workingFolder = "D:\\ParserIO\\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20170802174047.xml";
+            string sourceFileName = workingFolder + "Barcodestore_master_20180411093658.xml";
 
             string outputFileName = workingFolder + "Barcodestore_" + value + "_"+ DateTime.Now.ToString("yyyymmddhhmmss") + ".xml";
 
@@ -53,7 +53,7 @@ namespace ParserIO.Benchmark
                 DAO.Analyse x = new DAO.Analyse();
                 DAO.InformationSet targetAnalyse = new DAO.InformationSet();
                 x.AnalyseId = Convert.ToInt32(sourceAnalyse.GetElementsByTagName("AnalyseId")[0].InnerText);
-                x.TimeStamp = Convert.ToDateTime(sourceAnalyse.GetElementsByTagName("TimeStamp")[0].InnerText);
+                x.TimeStamp = Convert.ToDateTime(sourceAnalyse.GetElementsByTagName("TimeStamp")[0].InnerText);       
                 x.Barcode = sourceAnalyse.GetElementsByTagName("Barcode")[0].InnerText;
                 x.Commentary = sourceAnalyse.GetElementsByTagName("Commentary")[0].InnerText;
                 
@@ -79,6 +79,7 @@ namespace ParserIO.Benchmark
                     //todo
                 }
 
+                x.InformationSet.ParserIOVersion = targetAnalyse.ParserIOVersion;
                 x.InformationSet.Type = targetAnalyse.Type;
                 x.InformationSet.SubType = targetAnalyse.SubType;
                 x.InformationSet.executeResult = targetAnalyse.executeResult;
@@ -88,8 +89,10 @@ namespace ParserIO.Benchmark
                 x.InformationSet.CIP = targetAnalyse.CIP;
                 x.InformationSet.Company = ""; // targetAnalyse.Company; //Obsolete
                 x.InformationSet.ContainsOrMayContainId = targetAnalyse.ContainsOrMayContainId;
+                x.InformationSet.Identifiers = targetAnalyse.Identifiers;
                 x.InformationSet.CONTENT = targetAnalyse.CONTENT;
                 x.InformationSet.COUNT = targetAnalyse.COUNT;
+                x.InformationSet.CUSTPARTNO = targetAnalyse.CUSTPARTNO;
                 x.InformationSet.EAN = targetAnalyse.EAN;
                 x.InformationSet.Expiry = targetAnalyse.Expiry;
                 x.InformationSet.Family = targetAnalyse.Family;

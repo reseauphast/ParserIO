@@ -1,55 +1,78 @@
-﻿namespace ParserIO.DAO
+﻿using System.Collections.Generic;
+
+namespace ParserIO.DAO
 {
+    public class Identifier
+    {
+        private string _Value = string.Empty;
+
+        public string Value
+        {
+            get
+            {
+                return _Value;
+            }
+
+            set
+            {
+                _Value = value;
+            }
+        }
+    }
+
     public class InformationSet
     {
         private int _executeResult=0;
-        private string _ACL="";
-        private string _ADDITIONALID = "";
-        private string _BESTBEFORE = "";
-        private string _CIP = "";
-        private string _Company = ""; //Obsolete
+        private string _ACL = string.Empty;
+        private string _ADDITIONALID = string.Empty;
+        private string _BESTBEFORE = string.Empty;
+        private string _CIP = string.Empty;
+        private string _Company = string.Empty; //Obsolete
         private bool _ContainsOrMayContainId = false;
-        private string _CONTENT = "";
-        private string _COUNT = "";
-        private string _EAN = "";
-        private string _Expiry = "";
-        private string _Family = "";
-        private string _GTIN = "";
-        private string _LIC = "";
-        private string _Lot = "";
-        private string _LPP = "";
-        private string _NaS7 = "";
-        private string _NaSIdParamName = "";
-        private string _NormalizedBESTBEFORE = "";
-        private string _NormalizedExpiry = "";
-        private string _NormalizedPRODDATE = "";
-        private string _PCN = "";
-        private string _PRODDATE = "";
-        private string _Product = ""; //Obsolete
-        private string _Quantity = "";
-        private string _Reference = "";
-        private string _Serial = "";
-        private string _SSCC = "";
-        private string _subType="";
-        private string _SymbologyID = "";
-        private string _Type = "";
-        private string _UDI = "";
-        private string _UoM = "";
-        private string _UPN = "";
-        private string _VARCOUNT = "";
-        private string _VARIANT = "";
-        private string _AdditionalInformation="";
-        private string _INTERNAL_91 = "";
-        private string _INTERNAL_92 = "";
-        private string _INTERNAL_93 = "";
-        private string _INTERNAL_94 = "";
-        private string _INTERNAL_95 = "";
-        private string _INTERNAL_96 = "";
-        private string _INTERNAL_97 = "";
-        private string _INTERNAL_98 = "";
-        private string _INTERNAL_99 = "";
-        private string _StorageLocation = "";
-        
+        private string _CONTENT = string.Empty;
+        private string _COUNT = string.Empty;
+        private string _CUSTPARTNO = string.Empty;
+        private string _EAN = string.Empty;
+        private string _Expiry = string.Empty;
+        private string _Family = string.Empty;
+        private string _GTIN = string.Empty;
+        private string _LIC = string.Empty;
+        private string _Lot = string.Empty;
+        private string _LPP = string.Empty;
+        private string _NaS7 = string.Empty;
+        private string _NaSIdParamName = string.Empty;
+        private string _NormalizedBESTBEFORE = string.Empty;
+        private string _NormalizedExpiry = string.Empty;
+        private string _NormalizedPRODDATE = string.Empty;
+        private string _PCN = string.Empty;
+        private string _PRODDATE = string.Empty;
+        private string _Product = string.Empty; //Obsolete
+        private string _Quantity = string.Empty;
+        private string _Reference = string.Empty;
+        private string _Serial = string.Empty;
+        private string _SSCC = string.Empty;
+        private string _subType=string.Empty;
+        private string _SymbologyID = string.Empty;
+        private string _Type = string.Empty;
+        private string _UDI = string.Empty;
+        private string _UoM = string.Empty;
+        private string _UPN = string.Empty;
+        private string _VARCOUNT = string.Empty;
+        private string _VARIANT = string.Empty;
+        private string _AdditionalInformation=string.Empty;
+        private string _INTERNAL_91 = string.Empty;
+        private string _INTERNAL_92 = string.Empty;
+        private string _INTERNAL_93 = string.Empty;
+        private string _INTERNAL_94 = string.Empty;
+        private string _INTERNAL_95 = string.Empty;
+        private string _INTERNAL_96 = string.Empty;
+        private string _INTERNAL_97 = string.Empty;
+        private string _INTERNAL_98 = string.Empty;
+        private string _INTERNAL_99 = string.Empty;
+        private string _StorageLocation = string.Empty;
+        private List<Identifier> _Identifiers = new List<Identifier>();
+        private string _ParserIOVersion = string.Empty;
+
 
 
 
@@ -98,6 +121,11 @@
         {
             get { return _COUNT; }
             set { _COUNT = value; }
+        }
+        public string CUSTPARTNO
+        {
+            get { return _CUSTPARTNO; }
+            set { _CUSTPARTNO = value; }
         }
         public string EAN
         {
@@ -240,6 +268,11 @@
             get { return _SSCC; }
             set { _SSCC = value; }
         }
+        public string StorageLocation
+        {
+            get { return _StorageLocation; }
+            set { _StorageLocation = value; }
+        }
         public string SubType
         {
             get { return _subType; }
@@ -286,10 +319,16 @@
             set { _AdditionalInformation = value; }
         }
 
-        public string StorageLocation
+        public List<Identifier> Identifiers
         {
-            get { return _StorageLocation; }
-            set { _StorageLocation = value; }
+            get { return _Identifiers; }
+            set { _Identifiers = value; }
+        }
+
+        public string ParserIOVersion
+        {
+            get { return _ParserIOVersion; }
+            set { _ParserIOVersion = value; }
         }
 
         public InformationSet()

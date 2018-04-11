@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Collections.Generic;
 
 [assembly: AssemblyKeyFile("ParserIO.Core.snk")]
 namespace ParserIO.Core
@@ -62,6 +63,7 @@ namespace ParserIO.Core
             "20",
             "21",
             "240",
+            "241",
             "30",
             "90",
             "91",
@@ -694,6 +696,94 @@ namespace ParserIO.Core
             }
             return result;
         }
+
+        public List<Identifier> Identifiers(InformationSet InfoSet)
+        {
+            List<Identifier> result = new List<Identifier>();
+
+            if (InfoSet.Type == "EAN 13")
+            {
+                result.Add(new Identifier { Value = InfoSet.GTIN });
+            }
+            else if (InfoSet.Type.Contains("GS1"))
+            {
+                if (InfoSet.SubType.Contains("01"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.GTIN });
+                }
+                if (InfoSet.SubType.Contains("240"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.ADDITIONALID });
+                }
+                if (InfoSet.SubType.Contains("241"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.CUSTPARTNO });
+                }
+                if (InfoSet.SubType.Contains("91"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_91 });
+                }
+                if (InfoSet.SubType.Contains("92"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_92 });
+                }
+                if (InfoSet.SubType.Contains("93"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_93 });
+                }
+                if (InfoSet.SubType.Contains("94"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_94 });
+                }
+                if (InfoSet.SubType.Contains("95"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_95 });
+                }
+                if (InfoSet.SubType.Contains("96"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_96 });
+                }
+                if (InfoSet.SubType.Contains("97"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_97 });
+                }
+                if (InfoSet.SubType.Contains("98"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_98 });
+                }
+                if (InfoSet.SubType.Contains("99"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_99 });
+                }
+            }
+            else if (InfoSet.Type == "HIBC")
+            {
+                if (InfoSet.SubType.StartsWith("Primary"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.UDI });
+                }
+            }
+            else if (InfoSet.Type == "NaS")
+            {
+                if (InfoSet.SubType == "001" | InfoSet.SubType == "004")
+                {
+                    result.Add(new Identifier { Value = InfoSet.EAN });
+                }
+                else if (InfoSet.SubType == "002" | InfoSet.SubType == "003")
+                {
+                    result.Add(new Identifier { Value = InfoSet.ACL });
+                }
+                else if (InfoSet.SubType == "NaS7")
+                {
+                    result.Add(new Identifier { Value = InfoSet.NaS7 });
+                }
+                else
+                {
+                    result.Add(new Identifier { Value = InfoSet.Reference });
+                }
+            }
+            return result;
+        }
         private void Parse(string code)
         {
             if (code.Length > 0)
@@ -716,7 +806,7 @@ namespace ParserIO.Core
                         result.SubType = result.SubType + ".01";
                         //Check if GTIN-13 or GTIN-14
 
-                        string gtin= code.Substring(2, 14);
+                        string gtin = code.Substring(2, 14);
                         if (CheckGTINKey(gtin))
                         {
                             result.GTIN = gtin;
@@ -1016,14 +1106,30 @@ namespace ParserIO.Core
                         code = code.Substring(skip, code.Length - skip);
                         Parse(code);
                     }
+                    else if (code.StartsWith("241"))
+                    {
+                        result.SubType = result.SubType + ".241";
+                        int skip = 0;
+                        if (containsGS(code))
+                        {
+                            skip = indexOfGS(code, 0);
+                        }
+                        else
+                        {
+                            skip = code.Length;
+                        }
+                        result.CUSTPARTNO = code.Substring(3, skip - 3);
+                        code = code.Substring(skip, code.Length - skip);
+                        Parse(code);
+                    }
                     else
                     {
-                        result.AdditionalInformation = result.AdditionalInformation + ";" +code;
+                        result.AdditionalInformation = result.AdditionalInformation + ";" + code;
                     }
                     if (result.SubType.StartsWith("."))
                     {
                         result.SubType = result.SubType.Substring(1, result.SubType.Length - 1);
-                    }                   
+                    }
                 }
                 else if (result.Type == "HIBC")
                 {
@@ -1217,7 +1323,7 @@ namespace ParserIO.Core
 
                                 int endData = item.Length;
 
-                                if(asd1 == "L")
+                                if (asd1 == "L")
                                 {
                                     result.SubType = result.SubType + ".L";
                                     result.StorageLocation = item.Substring(1, endData - 1);
@@ -1400,23 +1506,24 @@ namespace ParserIO.Core
                             result.Lot = maybeLot;
                         }
                     }
-                    if (code.Length == 22)
-                    {
-                        string maybeRef = code.Substring(0, 8);
-                        string maybeLot = code.Substring(8, 8);
-                        string maybeExpiry = code.Substring(16, 6);
-                        bool ok1 = NumericString(maybeRef);
-                        bool ok2 = NumericString(maybeExpiry);
-                        bool ok3 = !NumericString(maybeLot);
-                        if (ok1 & ok2 & ok3)
-                        {
-                            // 58562152ANTL0294122012
-                            result.SubType = "007"; // BARD France Company
-                            result.Reference = maybeRef;
-                            result.Lot = maybeLot;
-                            result.Expiry = maybeExpiry;
-                        }
-                    }
+                    // Obsolete
+                    //if (code.Length == 22)
+                    //{
+                    //    string maybeRef = code.Substring(0, 8);
+                    //    string maybeLot = code.Substring(8, 8);
+                    //    string maybeExpiry = code.Substring(16, 6);
+                    //    bool ok1 = NumericString(maybeRef);
+                    //    bool ok2 = NumericString(maybeExpiry);
+                    //    bool ok3 = !NumericString(maybeLot);
+                    //    if (ok1 & ok2 & ok3)
+                    //    {
+                    //        // 58562152ANTL0294122012
+                    //        result.SubType = "007"; // BARD France Company
+                    //        result.Reference = maybeRef;
+                    //        result.Lot = maybeLot;
+                    //        result.Expiry = maybeExpiry;
+                    //    }
+                    //}
                     // Obsolete
                     //if (code.Length == 28)
                     //{
@@ -1533,6 +1640,7 @@ namespace ParserIO.Core
                 if (subType.Contains("01") |
                     subType.Contains("02") |
                     subType.Contains("240") |
+                    subType.Contains("241") |
                     subType.Contains("90") |
                     subType.Contains("91") |
                     subType.Contains("92") |
@@ -1569,6 +1677,7 @@ namespace ParserIO.Core
             }
             return result;
         }
+
         public string NaSIdParamName(string type, string subType)
         {
             string result = "";
@@ -1592,7 +1701,7 @@ namespace ParserIO.Core
             code = Cleanse(code);
             if ((length > 5) && code.StartsWith("]C1"))
             {
-                string ai2 = code.Substring(3,2);
+                string ai2 = code.Substring(3, 2);
                 string ai3 = code.Substring(3, 3);
                 if (gs1AIList.Contains(ai2) | gs1AIList.Contains(ai3))
                 {
@@ -1732,7 +1841,7 @@ namespace ParserIO.Core
             {
                 if (analyse.SubType.Contains("01"))
                 {
-                    if (analyse.GTIN.Length==0)
+                    if (analyse.GTIN.Length == 0)
                     {
                         result = false;
                     }
@@ -1754,6 +1863,12 @@ namespace ParserIO.Core
 
                 result.ContainsOrMayContainId = containsOrMayContainId(code, result.Type, result.SubType);
                 result.NaSIdParamName = NaSIdParamName(result.Type, result.SubType);
+                result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString(); ;
+
+                if (result.ContainsOrMayContainId)
+                {
+                    result.Identifiers = Identifiers(result);
+                }
 
                 if (result.Expiry != "")
                 {
@@ -1777,7 +1892,7 @@ namespace ParserIO.Core
                 else
                 {
 
-                    result.AdditionalInformation = "Errors detected:" + result.AdditionalInformation.Remove(0,1);
+                    result.AdditionalInformation = "Errors detected:" + result.AdditionalInformation.Remove(0, 1);
                 }
             }
             catch (Exception e)

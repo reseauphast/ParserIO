@@ -106,6 +106,7 @@
 using System;
 using System.Windows.Forms;
 using System.Globalization;
+using ParserIO.DAO;
 
 namespace ParserIO.WinFormsApp
 {
@@ -121,6 +122,7 @@ namespace ParserIO.WinFormsApp
             Core.Functions client = new Core.Functions();
             string Barcode = textBoxBarcode.Text;
             DAO.InformationSet result = client.GetFullInformationSet(Barcode);
+            textBoxParserIOVersion.Text = result.ParserIOVersion;
             textBoxExecuteResult.Text = result.executeResult.ToString();
             textBoxAdditionalInformation.Text = result.AdditionalInformation;
             textBoxACL.Text = result.ACL;
@@ -128,8 +130,28 @@ namespace ParserIO.WinFormsApp
             textBoxBESTBEFORE.Text = result.BESTBEFORE;
             textBoxCIP.Text = result.CIP;
             textBoxcontainsOrMayContainId.Text = result.ContainsOrMayContainId.ToString(); //check type
+
+            //Identifiers
+            string IdentifiersRawList = string.Empty;
+            bool isFirst = true;
+            string returnCarriageLine = string.Empty;
+
+            foreach (Identifier x in result.Identifiers)
+            {
+                if(isFirst)
+                {   
+                    isFirst = false;
+                }
+                else
+                {
+                    returnCarriageLine = "\r\n";
+                }
+                textBoxIdentifiers.AppendText(returnCarriageLine + x.Value);
+            }
+
             textBoxCONTENT.Text = result.CONTENT;
             textBoxCOUNT.Text = result.COUNT;
+            textBoxCUSTPARTNO.Text = result.CUSTPARTNO;
             textBoxEAN.Text = result.EAN;
             textBoxExpiry.Text = result.Expiry;
             textBoxFamily.Text = result.Family;
@@ -157,6 +179,20 @@ namespace ParserIO.WinFormsApp
             textBoxVARIANT.Text = result.VARIANT;
             textBoxVariante.Text = result.SubType;
             textBoxUDI.Text = result.UDI;
+
+            if (result.Type == "HIBC")
+            {
+                tabControlOutput.SelectedTab = hibcTabPage;
+            }
+            else if (result.Type.Contains("GS1") | result.Type == "EAN 13")
+            {
+                tabControlOutput.SelectedTab = gs1TabPage;
+            }
+            else if (result.Type == "NaS")
+            {
+                tabControlOutput.SelectedTab = nasTabPage;
+            }
+
         }
 
         private void textBoxCode_TextChanged(object sender, EventArgs e)
@@ -168,9 +204,11 @@ namespace ParserIO.WinFormsApp
             textBoxBESTBEFORE.Clear();
             textBoxCIP.Clear();
             textBoxcontainsOrMayContainId.Clear();
+            textBoxIdentifiers.Clear();
             textBoxCONTENT.Clear();
             textBoxCOUNT.Clear();
             textBoxEAN.Clear();
+            textBoxCUSTPARTNO.Clear();
             textBoxExpiry.Clear();
             textBoxFamily.Clear();
             textBoxGTIN.Clear();
@@ -206,6 +244,8 @@ namespace ParserIO.WinFormsApp
             textBoxVARIANT.Clear();
             textBoxVariante.Clear();
             textBoxUDI.Clear();
+
+            tabControlOutput.SelectedTab = hibcTabPage;
         }
 
         private void aboutParserIOToolStripMenuItem_Click(object sender, EventArgs e)
