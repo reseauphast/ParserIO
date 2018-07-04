@@ -1391,6 +1391,7 @@ namespace ParserIO.Core
                 {
                     result.EAN = code;
                     result.GTIN = code;
+                    result.UDI = code;
 
                     if (code.Substring(0, 4) == "3401")
                     {
@@ -1424,13 +1425,13 @@ namespace ParserIO.Core
                 }
                 else if (result.Type == "NaS")
                 {
-                    if (code.Length == 7)
-                        if (Check7Car(code))
-                        {
-                            // 9641309
-                            result.SubType = "NaS7";
-                            result.NaS7 = code;
-                        }
+                    //if (code.Length == 7)
+                    //    if (Check7Car(code))
+                    //    {
+                    //        // 9641309
+                    //        result.SubType = "NaS7";
+                    //        result.NaS7 = code;
+                    //    }
 
                     if (code.Length == 19)
                     {
@@ -1531,15 +1532,15 @@ namespace ParserIO.Core
                     //    if (ok)
                     //        result = "008"; // PHYSIOL France Company (Example: 2808123005365310060911306301)
                     //}                                                   //  28081230 053653 10060911306301
-                    if (code.Length >= 8)
-                    {
-                        if (!NumericString(code) & (code.Substring(0, 4) == "PAR-"))
-                        {
-                            // PAR-1234-AB
-                            result.SubType = "009"; //  Arthrex Company
-                            result.Reference = code.Substring(1, code.Length - 1);
-                        }
-                    }
+                    //if (code.Length >= 8)
+                    //{
+                    //    if (!NumericString(code) & (code.Substring(0, 4) == "PAR-"))
+                    //    {
+                    //        // PAR-1234-AB
+                    //        result.SubType = "009"; //  Arthrex Company
+                    //        result.Reference = code.Substring(1, code.Length - 1);
+                    //    }
+                    //}
                     // Obsolete
                     //if (code.Length == 7)
                     //{
@@ -1575,7 +1576,7 @@ namespace ParserIO.Core
                     {
                         if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
                         {
-                            //  BF01-11018180
+                            // ˽BF01-11018180
                             result.SubType = "013"; // ABS BOLTON Company
                             result.Reference = code.Substring(1, 13);
                         }
@@ -1589,45 +1590,45 @@ namespace ParserIO.Core
                             result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
                         }
                     }
-                    if (code.Length == 17)
-                    {
-                        if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))
-                        {
-                            //To Do : waiting for Symbios answer
-                            // H080-25.01.2014-1
-                            result.SubType = "015"; // Symbios Orthopédie
-                            result.Reference = "";
-                            result.Expiry = "";
-                        }
-                    }
-                    if (code.Length == 24)
-                    {
-                        if (NumericString(code.Substring(18, 6)))
-                        {
-                            // ]C0FR04052CFZF3015237141231
-                            result.SubType = "016"; // Teleflex / Arrow
-                            result.Reference = code.Substring(0, 9);
-                            result.Lot = code.Substring(9, 9);
-                            result.Expiry = code.Substring(18, 6);
-                        }
-                    }
-                    if (code.Length == 14)
-                    {
-                        if (NumericString(code.Substring(0, 9)) & (code.Substring(10, 1) == " "))
-                        {
-                            // ]C01401788197 001
-                            result.SubType = "017"; // FCI
-                            result.Lot = code.Substring(0, 7);
-                            result.Expiry = code.Substring(7, 3);
-                        }
-                    }
+                    //if (code.Length == 17)
+                    //{
+                    //    if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))
+                    //    {
+                    //        //To Do : waiting for Symbios answer
+                    //        // H080-25.01.2014-1
+                    //        result.SubType = "015"; // Symbios Orthopédie
+                    //        result.Reference = "";
+                    //        result.Expiry = "";
+                    //    }
+                    //}
+                    // Obsolete
+                    //if (code.Length == 24)
+                    //{
+                    //    if (NumericString(code.Substring(18, 6)))
+                    //    {
+                    //        // ]C0FR04052CFZF3015237141231
+                    //        result.SubType = "016"; // Teleflex / Arrow
+                    //        result.Reference = code.Substring(0, 9);
+                    //        result.Lot = code.Substring(9, 9);
+                    //        result.Expiry = code.Substring(18, 6);
+                    //    }
+                    //}
+                    //if (code.Length == 14)
+                    //{
+                    //    if (NumericString(code.Substring(0, 9)) & (code.Substring(10, 1) == " "))
+                    //    {
+                    //        // ]C01401788197 001
+                    //        result.SubType = "017"; // FCI
+                    //        result.Lot = code.Substring(0, 7);
+                    //        result.Expiry = code.Substring(7, 3);
+                    //    }
+                    //}
                     if (result.SubType == "")
                     {
                         result.SubType = "NaS";
                         result.Reference = code;
                     }
                 }
-
             }
         }
         public bool containsOrMayContainId(string code, string type, string subType)

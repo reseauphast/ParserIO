@@ -30,7 +30,7 @@ namespace ParserIO.Benchmark
 
             Provider value = Provider.dll;
             string workingFolder = "D:\\ParserIO\\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20180411093658.xml";
+            string sourceFileName = workingFolder + "Barcodestore_master_20180628145228.xml";
 
             string outputFileName = workingFolder + "Barcodestore_" + value + "_"+ DateTime.Now.ToString("yyyymmddhhmmss") + ".xml";
 

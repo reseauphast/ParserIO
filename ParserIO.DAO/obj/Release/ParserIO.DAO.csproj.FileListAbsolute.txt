@@ -1,7 +1,0 @@
-D:\vso\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.dll
-D:\vso\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.pdb
-D:\vso\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.tlb
-D:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.dll
-D:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.pdb
-D:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csprojResolveAssemblyReference.cache
-D:\vso\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csproj.CoreCompileInputs.cache
