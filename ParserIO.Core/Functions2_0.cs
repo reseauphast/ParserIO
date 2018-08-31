@@ -257,7 +257,7 @@ namespace ParserIO.Core
         private static int GetDateType(String typeBarcode, String subType, String dateRaw)
         {
             int typeDate = -1;
-            if (typeBarcode == "GS1-128")
+            if (typeBarcode == "GS1-128" | typeBarcode == "GS1-Datamatrix")
             {
                 // YYMMDD
                 typeDate = 3;
@@ -1397,11 +1397,14 @@ namespace ParserIO.Core
                     {
                         result.SubType = "ACL 13";
                         result.ACL = code;
+                        result.GTIN = code;
+                        result.UDI = code;
                     }
                     else if (code.Substring(0, 4) == "3400")
                     {
                         result.SubType = "CIP 13";
                         result.CIP = code;
+                        result.GTIN = code;
                     }
 
                     //Obsolete
@@ -1441,6 +1444,8 @@ namespace ParserIO.Core
                             // 4022495007216119361
                             result.SubType = "001"; // EAN 13 and LPP without checksum
                             result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             //result.Company = code.Substring(0, 7);
                             //result.Product = code.Substring(7, 5);
                             result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
@@ -1455,6 +1460,9 @@ namespace ParserIO.Core
                             // 34010798755871393295
                             result.SubType = "002"; // ACL 13 and LPP
                             result.ACL = subLeftCode;
+                            result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = code.Substring(13, 7);
                         }
                     }
@@ -1467,6 +1475,9 @@ namespace ParserIO.Core
                             // 3401079875587 1393295
                             result.SubType = "003"; // ACL 13 and LPP with Espace
                             result.ACL = subLeftCode;
+                            result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = subRightCode;
                         }
                     }
@@ -1481,6 +1492,8 @@ namespace ParserIO.Core
                             //result.Company = code.Substring(0, 7);
                             //result.Product = code.Substring(7, 5);
                             result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = subRightCode;
                         }
                     }
@@ -1556,12 +1569,6 @@ namespace ParserIO.Core
                     //    if (NumericString(code.Substring(1, 1)) & (code.Substring(0, 1) == "Q"))
                     //        result = "011"; //  Arthrex Company (Example: Q1)
                     //}
-                    // Obsolete
-                    //if (code.Length > 10)
-                    //{
-                    //  if (NumericString(code.Substring(3, 6)) & (code.Substring(0, 3) == "SEM") & (code.Substring(9, 1) == "^"))
-                    //    result = "012"; //  SEM (Sciences Et Medecine) Company (Example: SEM171252^P30778E4009A)
-                    //}
                     if (code.Length > 10)
                     {
                         if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
@@ -1581,15 +1588,17 @@ namespace ParserIO.Core
                             result.Reference = code.Substring(1, 13);
                         }
                     }
-                    if (code.Length == 10)
-                    {
-                        if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
-                        {
-                            // CPDR 24602
-                            result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
-                            result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
-                        }
-                    }
+                    //Obsolete
+                    //if (code.Length == 10)
+                    //{
+                    //    if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
+                    //    {
+                    //        // CPDR 24602
+                    //        result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
+                    //        result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
+                    //    }
+                    //}
+                    //Obsolete
                     //if (code.Length == 17)
                     //{
                     //    if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))

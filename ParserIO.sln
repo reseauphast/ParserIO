@@ -56,6 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{513009AC-1
 		Data\Barcodestore_master_20180212153109.xml = Data\Barcodestore_master_20180212153109.xml
 		Data\Barcodestore_master_20180411093658.xml = Data\Barcodestore_master_20180411093658.xml
 		Data\Barcodestore_master_20180628145228.xml = Data\Barcodestore_master_20180628145228.xml
+		Data\Barcodestore_master_20180829154420.xml = Data\Barcodestore_master_20180829154420.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserIO.Core", "ParserIO.Core\ParserIO.Core.csproj", "{46A0D701-3A2B-44AC-AFD0-BE7235C3F680}"
