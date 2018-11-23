@@ -1691,6 +1691,7 @@ namespace ParserIO.Core
                     //    if (NumericString(code.Substring(1, 1)) & (code.Substring(0, 1) == "Q"))
                     //        result = "011"; //  Arthrex Company (Example: Q1)
                     //}
+<<<<<<< HEAD
                     // Obsolete
                     //if (code.Length > 10)
                     //{
@@ -1712,6 +1713,27 @@ namespace ParserIO.Core
                     //        result.Reference = code.Substring(1, 13);
                     //    }
                     //}
+=======
+                    if (code.Length > 10)
+                    {
+                        if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
+                        {
+                            // SEM171252^P30778E4009A
+                            result.SubType = "012"; //  SEM (Sciences Et Medecine)
+                            result.Reference = code.Substring(3, 6);
+                            result.Lot = code.Substring(code.IndexOf('^') + 1, code.Length - code.IndexOf('^') - 2);
+                        }
+                    }
+                    if (code.Length == 14)
+                    {
+                        if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
+                        {
+                            // ˽BF01-11018180
+                            result.SubType = "013"; // ABS BOLTON Company
+                            result.Reference = code.Substring(1, 13);
+                        }
+                    }
+>>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
                     //Obsolete
                     //if (code.Length == 10)
                     //{
