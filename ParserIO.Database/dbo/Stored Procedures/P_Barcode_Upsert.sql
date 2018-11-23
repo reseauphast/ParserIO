@@ -4,6 +4,7 @@
 @ParserIOVersion NVARCHAR(MAX),
 @Barcode NVARCHAR(MAX),
 @SymbologyID NVARCHAR(MAX),
+@SymbologyIDDesignation NVARCHAR(MAX),
 @Type NVARCHAR(MAX),
 @SubType NVARCHAR(MAX),
 @ContainsOrMayContainId bit,
@@ -19,6 +20,7 @@
 @Expiry NVARCHAR(MAX),
 @Family NVARCHAR(MAX),
 @GTIN NVARCHAR(MAX),
+@INTERNAL_90 NVARCHAR(MAX),
 @INTERNAL_91 NVARCHAR(MAX),
 @INTERNAL_92 NVARCHAR(MAX),
 @INTERNAL_93 NVARCHAR(MAX),
@@ -63,6 +65,7 @@ INSERT INTO [dbo].[BarcodesStore]
 		   ,[ParserIOVersion]
 		   ,[Barcode]
 		   ,[SymbologyID]
+		   ,[SymbologyIDDesignation]
            ,[Type]
            ,[SubType]
            ,[ContainsOrMayContainId]
@@ -78,6 +81,7 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[Expiry]
            ,[Family]
            ,[GTIN]
+		   ,[INTERNAL_90]
 		   ,[INTERNAL_91]
 		   ,[INTERNAL_92]
            ,[INTERNAL_93]
@@ -115,6 +119,7 @@ INSERT INTO [dbo].[BarcodesStore]
 			@ParserIOVersion,
 		    @Barcode,
 			@SymbologyID,
+			@SymbologyIDDesignation,
             @Type,
             @SubType,
             @ContainsOrMayContainId,
@@ -130,6 +135,7 @@ INSERT INTO [dbo].[BarcodesStore]
             @Expiry,
             @Family,
             @GTIN,
+			@INTERNAL_90,
 			@INTERNAL_91,
 			@INTERNAL_92,
 			@INTERNAL_93,
@@ -181,6 +187,7 @@ UPDATE [dbo].[BarcodesStore]
        [Expiry] = @Expiry,
        [Family] = @Family,
        [GTIN] = @GTIN,
+	   [INTERNAL_90] = @INTERNAL_90,
 	   [INTERNAL_91] = @INTERNAL_91,
 	   [INTERNAL_92] = @INTERNAL_92,
 	   [INTERNAL_93] = @INTERNAL_93,
@@ -210,6 +217,7 @@ UPDATE [dbo].[BarcodesStore]
        [VARIANT] = @VARIANT,
        [Commentary] = @Commentary,
        [SymbologyID] = @SymbologyID,
+	   [SymbologyIDDesignation] = @SymbologyIDDesignation,
        [EAN] = @EAN,
        [NaSIdParamName] = @NaSIdParamName,
        [UPN] = @UPN,

@@ -53,6 +53,7 @@ namespace ParserIO.DAO
         private string _SSCC = string.Empty;
         private string _subType=string.Empty;
         private string _SymbologyID = string.Empty;
+        private string _SymbologyIDDesignation = string.Empty;
         private string _Type = string.Empty;
         private string _UDI = string.Empty;
         private string _UoM = string.Empty;
@@ -60,6 +61,7 @@ namespace ParserIO.DAO
         private string _VARCOUNT = string.Empty;
         private string _VARIANT = string.Empty;
         private string _AdditionalInformation=string.Empty;
+        private string _INTERNAL_90 = string.Empty;
         private string _INTERNAL_91 = string.Empty;
         private string _INTERNAL_92 = string.Empty;
         private string _INTERNAL_93 = string.Empty;
@@ -146,6 +148,11 @@ namespace ParserIO.DAO
         {
             get { return _GTIN; }
             set { _GTIN = value; }
+        }
+        public string INTERNAL_90
+        {
+            get { return _INTERNAL_90; }
+            set { _INTERNAL_90 = value; }
         }
         public string INTERNAL_91
         {
@@ -282,6 +289,11 @@ namespace ParserIO.DAO
         {
             get { return _SymbologyID; }
             set { _SymbologyID = value; }
+        }
+        public string SymbologyIDDesignation
+        {
+            get { return _SymbologyIDDesignation; }
+            set { _SymbologyIDDesignation = value; }
         }
         public string Type
         {

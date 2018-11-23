@@ -48,6 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{513009AC-1
 		Data\Barcodestore.0.1.2.xsd = Data\Barcodestore.0.1.2.xsd
 		Data\Barcodestore.0.1.3.xsd = Data\Barcodestore.0.1.3.xsd
 		Data\Barcodestore.0.1.4.xsd = Data\Barcodestore.0.1.4.xsd
+		Data\Barcodestore.0.1.5.xsd = Data\Barcodestore.0.1.5.xsd
 		Data\Barcodestore_master_20160623150402.xml = Data\Barcodestore_master_20160623150402.xml
 		Data\Barcodestore_master_20160914164639.xml = Data\Barcodestore_master_20160914164639.xml
 		Data\Barcodestore_master_20160926151315.xml = Data\Barcodestore_master_20160926151315.xml
@@ -56,6 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{513009AC-1
 		Data\Barcodestore_master_20180212153109.xml = Data\Barcodestore_master_20180212153109.xml
 		Data\Barcodestore_master_20180411093658.xml = Data\Barcodestore_master_20180411093658.xml
 		Data\Barcodestore_master_20180628145228.xml = Data\Barcodestore_master_20180628145228.xml
+		Data\Barcodestore_master_20180829154420.xml = Data\Barcodestore_master_20180829154420.xml
+		Data\Barcodestore_master_20181123171642.xml = Data\Barcodestore_master_20181123171642.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserIO.Core", "ParserIO.Core\ParserIO.Core.csproj", "{46A0D701-3A2B-44AC-AFD0-BE7235C3F680}"
@@ -506,7 +509,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 21
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://phast.visualstudio.com/
+		SccTeamFoundationServer = https://phast.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = ParserIO_COMclient\\test.vcxproj
 		SccProjectName1 = ParserIO_COMclient

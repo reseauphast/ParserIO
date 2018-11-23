@@ -1,9 +1,9 @@
-ParserIO README
+﻿ParserIO README
 
 What is ParserIO?
 ---------------------------------------------------------------------
 ParserIO is a barcode interpreter (parser). It takes one input string and it returns a well-structured output as result of the parsing.
-ParserIO as ParserInterOpérable (Interoperable Parser) is a C# Class Library developed using Microsoft .NET.
+ParserIO as ParserInterOpérable (Interoperable Parser) is a C# Class Library developed using Microsoft .NET 4.5.
  
 You have 4 methods to integrate it within your software: 
 1. You can integrate the C# namespace within your code

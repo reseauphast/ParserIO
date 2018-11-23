@@ -36,10 +36,9 @@ namespace ParserIO.Tools
             }
         }
 
-        public static void BarcodestoreExport()
+        public static void BarcodestoreExport(string workingFolder)
         {
             string StandardDateFormat14 = "yyyyMMddHHmmss";
-            string workingFolder = "D:\\ParserIO\\";
             string outputFileName = workingFolder + "Barcodestore_master_" + DateTime.Now.ToString(StandardDateFormat14) + ".xml";
 
             DAO.Barcodestore result = new DAO.Barcodestore();

@@ -32,6 +32,7 @@ namespace ParserIO.DAL
                                            string Expiry,
                                            string Family,
                                            string GTIN,
+                                           string INTERNAL_90,
                                            string INTERNAL_91,
                                            string INTERNAL_92,
                                            string INTERNAL_93,
@@ -114,16 +115,11 @@ namespace ParserIO.DAL
             string separator = string.Empty;
             foreach(Identifier x in Identifiers)
             {
-                if(isFirst)
-                {
-                    separator = "";
-                    isFirst = false;
-                }
-                else
-                {
-                    separator = "@";
-                }
-                IdentifiersRawList = IdentifiersRawList + separator + x;
+                IdentifiersRawList = IdentifiersRawList + "@" + x.Value;
+            }
+            if(IdentifiersRawList.StartsWith("@"))
+            {
+                IdentifiersRawList = IdentifiersRawList.TrimStart('@');
             }
 
 
@@ -193,6 +189,11 @@ namespace ParserIO.DAL
             GTINParam.ParameterName = "GTIN";
             GTINParam.Value = GTIN;
             inParam.Add(GTINParam);
+
+            SqlParameter INTERNAL_90Param = new SqlParameter();
+            INTERNAL_90Param.ParameterName = "INTERNAL_90";
+            INTERNAL_90Param.Value = INTERNAL_90;
+            inParam.Add(INTERNAL_90Param);
 
             SqlParameter INTERNAL_91Param = new SqlParameter();
             INTERNAL_91Param.ParameterName = "INTERNAL_91";

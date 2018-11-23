@@ -29,8 +29,8 @@ namespace ParserIO.Benchmark
         {
 
             Provider value = Provider.dll;
-            string workingFolder = "D:\\ParserIO\\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20180628145228.xml";
+            string workingFolder = @"C:\_Phast\tools\ParserIO\";
+            string sourceFileName = workingFolder + "Barcodestore_master_20181123171642.xml";
 
             string outputFileName = workingFolder + "Barcodestore_" + value + "_"+ DateTime.Now.ToString("yyyymmddhhmmss") + ".xml";
 
@@ -97,6 +97,7 @@ namespace ParserIO.Benchmark
                 x.InformationSet.Expiry = targetAnalyse.Expiry;
                 x.InformationSet.Family = targetAnalyse.Family;
                 x.InformationSet.GTIN = targetAnalyse.GTIN;
+                x.InformationSet.INTERNAL_90 = targetAnalyse.INTERNAL_90;
                 x.InformationSet.INTERNAL_91 = targetAnalyse.INTERNAL_91;
                 x.InformationSet.INTERNAL_92 = targetAnalyse.INTERNAL_92;
                 x.InformationSet.INTERNAL_93 = targetAnalyse.INTERNAL_93;
@@ -123,6 +124,7 @@ namespace ParserIO.Benchmark
                 x.InformationSet.SSCC = targetAnalyse.SSCC;
                 x.InformationSet.StorageLocation = targetAnalyse.StorageLocation;
                 x.InformationSet.SymbologyID = targetAnalyse.SymbologyID;
+                x.InformationSet.SymbologyIDDesignation = targetAnalyse.SymbologyIDDesignation;
                 x.InformationSet.UDI = targetAnalyse.UDI;
                 x.InformationSet.UoM = targetAnalyse.UoM;
                 x.InformationSet.UPN = targetAnalyse.UPN;

@@ -172,6 +172,7 @@ namespace ParserIO.WinFormsApp
             textBoxSSCC.Text = result.SSCC;
             textBoxStorageLocation.Text = result.StorageLocation;
             textBoxSymbologyID.Text = result.SymbologyID;
+            textBoxSymbologyIDDesignation.Text = result.SymbologyIDDesignation;
             textBoxType.Text = result.Type;
             textBoxUoM.Text = result.UoM;
             textBoxUPN.Text = result.UPN;
@@ -179,6 +180,16 @@ namespace ParserIO.WinFormsApp
             textBoxVARIANT.Text = result.VARIANT;
             textBoxVariante.Text = result.SubType;
             textBoxUDI.Text = result.UDI;
+            textBoxINTERNAL_90.Text = result.INTERNAL_90;
+            textBoxINTERNAL_91.Text = result.INTERNAL_91;
+            textBoxINTERNAL_92.Text = result.INTERNAL_92;
+            textBoxINTERNAL_93.Text = result.INTERNAL_93;
+            textBoxINTERNAL_94.Text = result.INTERNAL_94;
+            textBoxINTERNAL_95.Text = result.INTERNAL_95;
+            textBoxINTERNAL_96.Text = result.INTERNAL_96;
+            textBoxINTERNAL_97.Text = result.INTERNAL_97;
+            textBoxINTERNAL_98.Text = result.INTERNAL_98;
+            textBoxINTERNAL_99.Text = result.INTERNAL_99;
 
             if (result.Type == "HIBC")
             {
@@ -197,6 +208,7 @@ namespace ParserIO.WinFormsApp
 
         private void textBoxCode_TextChanged(object sender, EventArgs e)
         {
+            textBoxParserIOVersion.Clear();
             textBoxExecuteResult.Clear();
             textBoxAdditionalInformation.Clear();
             textBoxACL.Clear();
@@ -212,6 +224,7 @@ namespace ParserIO.WinFormsApp
             textBoxExpiry.Clear();
             textBoxFamily.Clear();
             textBoxGTIN.Clear();
+            textBoxINTERNAL_90.Clear();
             textBoxINTERNAL_91.Clear();
             textBoxINTERNAL_92.Clear();
             textBoxINTERNAL_93.Clear();
@@ -237,6 +250,7 @@ namespace ParserIO.WinFormsApp
             textBoxSSCC.Clear();
             textBoxStorageLocation.Clear();
             textBoxSymbologyID.Clear();
+            textBoxSymbologyIDDesignation.Clear();
             textBoxType.Clear();
             textBoxUoM.Clear();
             textBoxUPN.Clear();

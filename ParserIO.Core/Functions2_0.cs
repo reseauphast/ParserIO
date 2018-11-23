@@ -77,6 +77,8 @@ namespace ParserIO.Core
             "99"
         };
 
+        private static readonly string NonPrintableGS = ((char)0x001d).ToString();
+
         private static DateTime ConvertDateTimeFromStr(String dateRaw, int dateType)
         {
             //if (dateType == 3)
@@ -257,7 +259,7 @@ namespace ParserIO.Core
         private static int GetDateType(String typeBarcode, String subType, String dateRaw)
         {
             int typeDate = -1;
-            if (typeBarcode == "GS1-128")
+            if (typeBarcode == "GS1-128" | typeBarcode == "GS1-Datamatrix")
             {
                 // YYMMDD
                 typeDate = 3;
@@ -352,6 +354,13 @@ namespace ParserIO.Core
             result = result.Replace("(21)", "21");
             result = result.Replace("(22)", "22");
             result = result.Replace("(30)", "30");
+            result = result.Replace("(90)", "90");
+            result = result.Replace("(91)", "91");
+            result = result.Replace("(92)", "92");
+            result = result.Replace("(93)", "93");
+            result = result.Replace("(94)", "94");
+            result = result.Replace("(95)", "95");
+            result = result.Replace("(96)", "96");
             result = result.Replace("(240)", "240");
             if (result.StartsWith("*") & (result.EndsWith("*")))
                 result = result.Substring(1, result.Length - 2);
@@ -362,11 +371,13 @@ namespace ParserIO.Core
         private static string getGStype(string code)
         {
             string result = "Not";
-            string GS = ((char)0x001d).ToString();
-            if (code.Contains(GS))
+            
+            if (code.Contains(NonPrintableGS))
                 result = "GS";
             else if (code.Contains("@"))
                 result = "@";
+            else if (code.Contains("[GS]"))
+                result = "[GS]";
             return result;
         }
         private static int indexOfGS(string code, int start)
@@ -375,11 +386,18 @@ namespace ParserIO.Core
             string GSchar = getGStype(code);
             if (GSchar == "GS")
             {
-                string GS = ((char)0x001d).ToString();
-                result = code.IndexOf(GS, start);
+                result = code.IndexOf(NonPrintableGS, start);
             }
             else if (GSchar == "@")
+            {
                 result = code.IndexOf("@", start);
+            }
+            else if (GSchar == "[GS]")
+            {
+                result = code.IndexOf("[GS]", start);
+            }
+
+
             return result;
         }
         private static bool containsGS(string code)
@@ -412,22 +430,96 @@ namespace ParserIO.Core
         public string SymbologyID(string code)
         {
             string result = "";
-            code = Cleanse(code);
             string ID = "";
             if (code.Length >= 3)
                 ID = code.Substring(0, 3);
-            if (ID == "]A0")
-                result = "A0";
-            else if (ID == "]C0")
-                result = "C0";
-            else if (ID == "]C1")
-                result = "C1";
-            else if (ID == "]d1")
-                result = "d1";
-            else if (ID == "]d2")
-                result = "d2";
+
+            switch (ID)
+            {
+                case "]A0":
+                    {
+                        result = "A0";
+                        break;
+                    }
+                case "]C0":
+                    {
+                        result = "C0";
+                        break;
+                    }
+                case "]C1":
+                    {
+                        result = "C1";
+                        break;
+                    }
+                case "]d1":
+                    {
+                        result = "d1";
+                        break;
+                    }
+                case "]d2":
+                    {
+                        result = "d2";
+                        break;
+                    }
+                case "]E0":
+                    {
+                        result = "E0";
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
             return result;
         }
+
+        public string SymbologyIDDesignation(string SymbologyID)
+        {
+            string result = "";
+
+            switch (SymbologyID)
+            {
+                case "A0":
+                    {
+                        result = "Code 39 - Data transmitted as decoded; no check character validation nor full ASCII processing";
+                        break;
+                    }
+                case "C0":
+                    {
+                        result = "Code 128 - Standard data packet.  No FNC1 in first or second symbol character position after start character";
+                        break;
+                    }
+                case "C1":
+                    {
+                        result = "Code 128 - FNC1 in first symbol character position after start character; GS1-128 data packet";
+                        break;
+                    }
+                case "d1":
+                    {
+                        result = "Data Matrix - ECC 200";
+                        break;
+                    }
+                case "d2":
+                    {
+                        result = "Data Matrix - ECC 200, FNC1 in first or fifth position";
+                        break;
+                    }
+                case "E0":
+                    {
+                        result = "EAN/UPC - Standard data packet in GTIN-13 format, i.e. 13 digits for EAN-13, UPC-A and UPC-E (does not include add-on data)";
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return result;
+        }
+
         private static bool NumericString(string code)
         {
             bool ok = true;
@@ -719,6 +811,10 @@ namespace ParserIO.Core
                 {
                     result.Add(new Identifier { Value = InfoSet.CUSTPARTNO });
                 }
+                if (InfoSet.SubType.Contains("90"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.INTERNAL_90 });
+                }
                 if (InfoSet.SubType.Contains("91"))
                 {
                     result.Add(new Identifier { Value = InfoSet.INTERNAL_91 });
@@ -794,6 +890,15 @@ namespace ParserIO.Core
                     {
                         code = code.Substring(1, code.Length - 1);
                     }
+                    else if (code.StartsWith("[GS]"))
+                    {
+                        code = code.Substring(4, code.Length - 4);
+                    }
+                    else if(code.StartsWith(NonPrintableGS))
+                    {
+                        code = code.Substring(1, code.Length - 1);
+                    }
+
                     if (code.StartsWith("00"))
                     {
                         result.SubType = result.SubType + ".00";
@@ -943,6 +1048,22 @@ namespace ParserIO.Core
                             skip = code.Length;
                         }
                         result.COUNT = code.Substring(2, skip - 2);
+                        code = code.Substring(skip, code.Length - skip);
+                        Parse(code);
+                    }
+                    else if (code.StartsWith("90"))
+                    {
+                        result.SubType = result.SubType + ".90";
+                        int skip = 0;
+                        if (containsGS(code))
+                        {
+                            skip = indexOfGS(code, 0);
+                        }
+                        else
+                        {
+                            skip = code.Length;
+                        }
+                        result.INTERNAL_90 = code.Substring(2, skip - 2);
                         code = code.Substring(skip, code.Length - skip);
                         Parse(code);
                     }
@@ -1397,11 +1518,14 @@ namespace ParserIO.Core
                     {
                         result.SubType = "ACL 13";
                         result.ACL = code;
+                        result.GTIN = code;
+                        result.UDI = code;
                     }
                     else if (code.Substring(0, 4) == "3400")
                     {
                         result.SubType = "CIP 13";
                         result.CIP = code;
+                        result.GTIN = code;
                     }
 
                     //Obsolete
@@ -1441,6 +1565,8 @@ namespace ParserIO.Core
                             // 4022495007216119361
                             result.SubType = "001"; // EAN 13 and LPP without checksum
                             result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             //result.Company = code.Substring(0, 7);
                             //result.Product = code.Substring(7, 5);
                             result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
@@ -1455,6 +1581,9 @@ namespace ParserIO.Core
                             // 34010798755871393295
                             result.SubType = "002"; // ACL 13 and LPP
                             result.ACL = subLeftCode;
+                            result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = code.Substring(13, 7);
                         }
                     }
@@ -1467,6 +1596,9 @@ namespace ParserIO.Core
                             // 3401079875587 1393295
                             result.SubType = "003"; // ACL 13 and LPP with Espace
                             result.ACL = subLeftCode;
+                            result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = subRightCode;
                         }
                     }
@@ -1481,6 +1613,8 @@ namespace ParserIO.Core
                             //result.Company = code.Substring(0, 7);
                             //result.Product = code.Substring(7, 5);
                             result.EAN = subLeftCode;
+                            result.GTIN = subLeftCode;
+                            result.UDI = subLeftCode;
                             result.LPP = subRightCode;
                         }
                     }
@@ -1495,18 +1629,19 @@ namespace ParserIO.Core
                             result.Expiry = code.Substring(21, 7);
                         }
                     }
-                    if (code.Length == 17)
-                    {
-                        string maybeLot = code.Substring(11, 6);
-                        bool ok = NumericString(maybeLot);
-                        if ((ok) & (code.Substring(10, 1) == " "))
-                        {
-                            // FBIOW8D160 102223
-                            result.SubType = "006"; // COUSIN BIOSERV Company
-                            result.Reference = code.Substring(0, 10);
-                            result.Lot = maybeLot;
-                        }
-                    }
+                    // Obsolete
+                    //if (code.Length == 17)
+                    //{
+                    //    string maybeLot = code.Substring(11, 6);
+                    //    bool ok = NumericString(maybeLot);
+                    //    if ((ok) & (code.Substring(10, 1) == " "))
+                    //    {
+                    //        // FBIOW8D160 102223
+                    //        result.SubType = "006"; // COUSIN BIOSERV Company
+                    //        result.Reference = code.Substring(0, 10);
+                    //        result.Lot = maybeLot;
+                    //    }
+                    //}
                     // Obsolete
                     //if (code.Length == 22)
                     //{
@@ -1559,37 +1694,35 @@ namespace ParserIO.Core
                     // Obsolete
                     //if (code.Length > 10)
                     //{
-                    //  if (NumericString(code.Substring(3, 6)) & (code.Substring(0, 3) == "SEM") & (code.Substring(9, 1) == "^"))
-                    //    result = "012"; //  SEM (Sciences Et Medecine) Company (Example: SEM171252^P30778E4009A)
+                    //    if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
+                    //    {
+                    //        // SEM171252^P30778E4009A
+                    //        result.SubType = "012"; //  SEM (Sciences Et Medecine)
+                    //        result.Reference = code.Substring(3, 6);
+                    //        result.Lot = code.Substring(code.IndexOf('^') + 1, code.Length - code.IndexOf('^') - 2);
+                    //    }
                     //}
-                    if (code.Length > 10)
-                    {
-                        if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
-                        {
-                            // SEM171252^P30778E4009A
-                            result.SubType = "012"; //  SEM (Sciences Et Medecine)
-                            result.Reference = code.Substring(3, 6);
-                            result.Lot = code.Substring(code.IndexOf('^') + 1, code.Length - code.IndexOf('^') - 2);
-                        }
-                    }
-                    if (code.Length == 14)
-                    {
-                        if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
-                        {
-                            // ˽BF01-11018180
-                            result.SubType = "013"; // ABS BOLTON Company
-                            result.Reference = code.Substring(1, 13);
-                        }
-                    }
-                    if (code.Length == 10)
-                    {
-                        if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
-                        {
-                            // CPDR 24602
-                            result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
-                            result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
-                        }
-                    }
+                    // Obsolete
+                    //if (code.Length == 14)
+                    //{
+                    //    if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
+                    //    {
+                    //        // ˽BF01-11018180
+                    //        result.SubType = "013"; // ABS BOLTON Company
+                    //        result.Reference = code.Substring(1, 13);
+                    //    }
+                    //}
+                    //Obsolete
+                    //if (code.Length == 10)
+                    //{
+                    //    if (NumericString(code.Substring(5, 5)) & (code.Substring(0, 5) == "CPDR "))
+                    //    {
+                    //        // CPDR 24602
+                    //        result.SubType = "014"; // CHIRURGIE OUEST / EUROSILICONE / SORMED Company
+                    //        result.Reference = code.Substring(0, 4) + code.Substring(5, 5);
+                    //    }
+                    //}
+                    //Obsolete
                     //if (code.Length == 17)
                     //{
                     //    if ((code.Substring(4, 1) == "-") & (code.Substring(15, 1) == "-"))
@@ -1858,13 +1991,14 @@ namespace ParserIO.Core
                 code = Cleanse(code);
                 result.Type = Type(code);
                 result.SymbologyID = SymbologyID(code);
+                result.SymbologyIDDesignation = SymbologyIDDesignation(result.SymbologyID);
                 code = CleanSymbologyId(code);
 
                 Parse(code);
 
                 result.ContainsOrMayContainId = containsOrMayContainId(code, result.Type, result.SubType);
                 result.NaSIdParamName = NaSIdParamName(result.Type, result.SubType);
-                result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString(); ;
+                result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString();
 
                 if (result.ContainsOrMayContainId)
                 {

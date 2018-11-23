@@ -34,6 +34,7 @@ namespace ParserIO.ORM
                                                               analyse.InformationSet.Expiry,
                                                               analyse.InformationSet.Family,
                                                               analyse.InformationSet.GTIN,
+                                                              analyse.InformationSet.INTERNAL_90,
                                                               analyse.InformationSet.INTERNAL_91,
                                                               analyse.InformationSet.INTERNAL_92,
                                                               analyse.InformationSet.INTERNAL_93,
@@ -86,6 +87,7 @@ namespace ParserIO.ORM
                 item.Barcode = dr["Barcode"].ToString();
                 item.Commentary = dr["Commentary"].ToString();
                 item.InformationSet.SymbologyID = dr["SymbologyID"].ToString();
+                item.InformationSet.SymbologyIDDesignation = dr["SymbologyIDDesignation"].ToString();
                 item.InformationSet.Type = dr["Type"].ToString();
                 item.InformationSet.SubType = dr["SubType"].ToString();
                 item.InformationSet.ContainsOrMayContainId = Convert.ToBoolean(Convert.ToInt32(dr["containsOrMayContainId"])); // Convert.ToBoolean(Convert.ToInt32("1")); //
@@ -101,6 +103,7 @@ namespace ParserIO.ORM
                 item.InformationSet.Expiry = dr["Expiry"].ToString();
                 item.InformationSet.Family = dr["Family"].ToString();
                 item.InformationSet.GTIN = dr["GTIN"].ToString();
+                item.InformationSet.INTERNAL_90 = dr["INTERNAL_90"].ToString();
                 item.InformationSet.INTERNAL_91 = dr["INTERNAL_91"].ToString();
                 item.InformationSet.INTERNAL_92 = dr["INTERNAL_92"].ToString();
                 item.InformationSet.INTERNAL_93 = dr["INTERNAL_93"].ToString();
