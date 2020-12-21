@@ -107,6 +107,7 @@ using System;
 using System.Windows.Forms;
 using System.Globalization;
 using ParserIO.DAO;
+using System.Reflection;
 
 namespace ParserIO.WinFormsApp
 {
@@ -119,91 +120,108 @@ namespace ParserIO.WinFormsApp
 
         private void Parse(object sender, EventArgs e)
         {
-            Core.Functions client = new Core.Functions();
-            string Barcode = textBoxBarcode.Text;
-            DAO.InformationSet result = client.GetFullInformationSet(Barcode);
-            textBoxParserIOVersion.Text = result.ParserIOVersion;
-            textBoxExecuteResult.Text = result.executeResult.ToString();
-            textBoxAdditionalInformation.Text = result.AdditionalInformation;
-            textBoxACL.Text = result.ACL;
-            textBoxADDITIONALID.Text = result.ADDITIONALID;
-            textBoxBESTBEFORE.Text = result.BESTBEFORE;
-            textBoxCIP.Text = result.CIP;
-            textBoxcontainsOrMayContainId.Text = result.ContainsOrMayContainId.ToString(); //check type
+            buttonParser.Enabled = false;
 
-            //Identifiers
-            string IdentifiersRawList = string.Empty;
-            bool isFirst = true;
-            string returnCarriageLine = string.Empty;
-
-            foreach (Identifier x in result.Identifiers)
+            try
             {
-                if(isFirst)
-                {   
-                    isFirst = false;
-                }
-                else
+                Core.Functions client = new Core.Functions();
+                string Barcode = textBoxBarcode.Text;
+                DAO.InformationSet result = client.GetFullInformationSet(Barcode);
+                
+                textBoxParserIOVersion.Text = result.ParserIOVersion;
+
+                textBoxAdditionalInformation.Text = result.AdditionalInformation;
+                textBoxACL.Text = result.ACL;
+                textBoxADDITIONALID.Text = result.ADDITIONALID;
+                textBoxBESTBEFORE.Text = result.BESTBEFORE;
+                textBoxCIP.Text = result.CIP;
+                textBoxcontainsOrMayContainId.Text = result.ContainsOrMayContainId.ToString(); //check type
+
+                //Identifiers
+                string IdentifiersRawList = string.Empty;
+                bool isFirst = true;
+                string returnCarriageLine = string.Empty;
+
+                foreach (Identifier x in result.Identifiers)
                 {
-                    returnCarriageLine = "\r\n";
+                    if (isFirst)
+                    {
+                        isFirst = false;
+                    }
+                    else
+                    {
+                        returnCarriageLine = "\r\n";
+                    }
+                    textBoxIdentifiers.AppendText(returnCarriageLine + x.Value);
                 }
-                textBoxIdentifiers.AppendText(returnCarriageLine + x.Value);
-            }
 
-            textBoxCONTENT.Text = result.CONTENT;
-            textBoxCOUNT.Text = result.COUNT;
-            textBoxCUSTPARTNO.Text = result.CUSTPARTNO;
-            textBoxEAN.Text = result.EAN;
-            textBoxExpiry.Text = result.Expiry;
-            textBoxFamily.Text = result.Family;
-            textBoxGTIN.Text = result.GTIN;
-            textBoxLIC.Text = result.LIC;
-            textBoxLot.Text = result.Lot;
-            textBoxLPP.Text = result.LPP;
-            textBoxNaS7.Text = result.NaS7;
-            textBoxNormalizedBESTBEFORE.Text = result.NormalizedBESTBEFORE;
-            textBoxNormalizedExpiry.Text = result.NormalizedExpiry;
-            textBoxNormalizedPRODDATE.Text = result.NormalizedPRODDATE;
-            textBoxPCN.Text = result.PCN;
-            textBoxPRODDATE.Text = result.PRODDATE;
-            textBoxQuantity.Text = result.Quantity;
-            textBoxReference.Text = result.Reference;
-            textBoxNaSIdParamName.Text = result.NaSIdParamName;
-            textBoxSerial.Text = result.Serial;
-            textBoxSSCC.Text = result.SSCC;
-            textBoxStorageLocation.Text = result.StorageLocation;
-            textBoxSymbologyID.Text = result.SymbologyID;
-            textBoxSymbologyIDDesignation.Text = result.SymbologyIDDesignation;
-            textBoxType.Text = result.Type;
-            textBoxUoM.Text = result.UoM;
-            textBoxUPN.Text = result.UPN;
-            textBoxVARCOUNT.Text = result.VARCOUNT;
-            textBoxVARIANT.Text = result.VARIANT;
-            textBoxVariante.Text = result.SubType;
-            textBoxUDI.Text = result.UDI;
-            textBoxINTERNAL_90.Text = result.INTERNAL_90;
-            textBoxINTERNAL_91.Text = result.INTERNAL_91;
-            textBoxINTERNAL_92.Text = result.INTERNAL_92;
-            textBoxINTERNAL_93.Text = result.INTERNAL_93;
-            textBoxINTERNAL_94.Text = result.INTERNAL_94;
-            textBoxINTERNAL_95.Text = result.INTERNAL_95;
-            textBoxINTERNAL_96.Text = result.INTERNAL_96;
-            textBoxINTERNAL_97.Text = result.INTERNAL_97;
-            textBoxINTERNAL_98.Text = result.INTERNAL_98;
-            textBoxINTERNAL_99.Text = result.INTERNAL_99;
+                textBoxCONTENT.Text = result.CONTENT;
+                textBoxCOUNT.Text = result.COUNT;
+                textBoxCUSTPARTNO.Text = result.CUSTPARTNO;
+                textBoxEAN.Text = result.EAN;
+                textBoxExpiry.Text = result.Expiry;
+                textBoxFamily.Text = result.Family;
+                textBoxGTIN.Text = result.GTIN;
+                textBoxLIC.Text = result.LIC;
+                textBoxLot.Text = result.Lot;
+                textBoxLPP.Text = result.LPP;
+                textBoxNaS7.Text = result.NaS7;
+                textBoxNormalizedBESTBEFORE.Text = result.NormalizedBESTBEFORE;
+                textBoxNormalizedExpiry.Text = result.NormalizedExpiry;
+                textBoxNormalizedPRODDATE.Text = result.NormalizedPRODDATE;
+                textBoxPCN.Text = result.PCN;
+                textBoxPRODDATE.Text = result.PRODDATE;
+                textBoxQuantity.Text = result.Quantity;
+                textBoxReference.Text = result.Reference;
+                textBoxNaSIdParamName.Text = result.NaSIdParamName;
+                textBoxSerial.Text = result.Serial;
+                textBoxSSCC.Text = result.SSCC;
+                textBoxStorageLocation.Text = result.StorageLocation;
+                textBoxSymbologyID.Text = result.SymbologyID;
+                textBoxSymbologyIDDesignation.Text = result.SymbologyIDDesignation;
+                textBoxType.Text = result.Type;
+                textBoxUoM.Text = result.UoM;
+                textBoxUPN.Text = result.UPN;
+                textBoxVARCOUNT.Text = result.VARCOUNT;
+                textBoxVARIANT.Text = result.VARIANT;
+                textBoxVariante.Text = result.SubType;
+                textBoxUDI.Text = result.UDI;
+                textBoxUDI_DI.Text = result.UDI_DI;
+                textBoxIssuer.Text = result.Issuer;
+                textBoxINTERNAL_90.Text = result.INTERNAL_90;
+                textBoxINTERNAL_91.Text = result.INTERNAL_91;
+                textBoxINTERNAL_92.Text = result.INTERNAL_92;
+                textBoxINTERNAL_93.Text = result.INTERNAL_93;
+                textBoxINTERNAL_94.Text = result.INTERNAL_94;
+                textBoxINTERNAL_95.Text = result.INTERNAL_95;
+                textBoxINTERNAL_96.Text = result.INTERNAL_96;
+                textBoxINTERNAL_97.Text = result.INTERNAL_97;
+                textBoxINTERNAL_98.Text = result.INTERNAL_98;
+                textBoxINTERNAL_99.Text = result.INTERNAL_99;
 
-            if (result.Type == "HIBC")
-            {
-                tabControlOutput.SelectedTab = hibcTabPage;
-            }
-            else if (result.Type.Contains("GS1") | result.Type == "EAN 13")
-            {
-                tabControlOutput.SelectedTab = gs1TabPage;
-            }
-            else if (result.Type == "NaS")
-            {
-                tabControlOutput.SelectedTab = nasTabPage;
-            }
+                if (result.Type == "HIBC")
+                {
+                    tabControlOutput.SelectedTab = hibcTabPage;
+                }
+                else if (result.Type.Contains("GS1") | result.Type == "EAN 13")
+                {
+                    tabControlOutput.SelectedTab = gs1TabPage;
+                }
+                else if (result.Type == "NaS")
+                {
+                    tabControlOutput.SelectedTab = nasTabPage;
+                }
 
+                textBoxExecuteResult.Text = Results.Ok.ToString();
+            }
+            catch (Exception ex)
+            {
+                textBoxExecuteResult.Text = Results.GeneralError.ToString();
+            }
+            finally
+            {
+                buttonParser.Enabled = false;
+            }
         }
 
         private void textBoxCode_TextChanged(object sender, EventArgs e)
@@ -258,8 +276,15 @@ namespace ParserIO.WinFormsApp
             textBoxVARIANT.Clear();
             textBoxVariante.Clear();
             textBoxUDI.Clear();
+            textBoxUDI_DI.Clear();
+            textBoxIssuer.Clear();
 
-            tabControlOutput.SelectedTab = hibcTabPage;
+           tabControlOutput.SelectedTab = hibcTabPage;
+           this.ActiveControl = textBoxBarcode;
+
+            textBoxBarcode.Focus();
+            
+            buttonParser.Enabled = true;
         }
 
         private void aboutParserIOToolStripMenuItem_Click(object sender, EventArgs e)

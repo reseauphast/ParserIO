@@ -39,20 +39,17 @@ namespace ParserIO.Tools
         public static void BarcodestoreExport(string workingFolder)
         {
             string StandardDateFormat14 = "yyyyMMddHHmmss";
-<<<<<<< HEAD
-=======
-            string workingFolder = "D:\\tools\\ParserIO\\";
->>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
-            string outputFileName = workingFolder + "Barcodestore_master_" + DateTime.Now.ToString(StandardDateFormat14) + ".xml";
 
             DAO.Barcodestore result = new DAO.Barcodestore();
             
             List<DAO.Analyse> barcodeList = ORM.Barcodestore.List();
 
             result.ProviderName = "master";
-            result.Version = DateTime.UtcNow.ToUniversalTime().ToString(StandardDateFormat14);
+            result.Version = DateTime.Now.ToString(StandardDateFormat14);
             result.Analyses = barcodeList;
-            
+
+            string outputFileName = workingFolder + "Barcodestore_master_" + result.Version + ".xml";
+
             using (StreamWriter myWriter = new StreamWriter(outputFileName, false))
             {
                 XmlSerializer mySerializer = new XmlSerializer(typeof(DAO.Barcodestore));

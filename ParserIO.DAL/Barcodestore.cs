@@ -13,9 +13,11 @@ namespace ParserIO.DAL
     {
         public static int P_Barcode_Upsert(int AnalyseId,
                                            DateTime TimeStamp,
-                                           string ParserIOVersion,
                                            string Barcode,
+                                           string ParserIOVersion,
+                                           string InputCode,
                                            string SymbologyID,
+                                           string SymbologyIDDesignation,
                                            string Type,
                                            string SubType,
                                            string NaSIdParamName,
@@ -57,6 +59,8 @@ namespace ParserIO.DAL
                                            string SSCC,
                                            string StorageLocation,
                                            string UDI,
+                                           string UDI_DI,
+                                           string Issuer,
                                            string UoM,
                                            string UPN,
                                            string VARCOUNT,
@@ -88,10 +92,20 @@ namespace ParserIO.DAL
             BarcodeParam.Value = Barcode;
             inParam.Add(BarcodeParam);
 
+            SqlParameter InputCodeParam = new SqlParameter();
+            InputCodeParam.ParameterName = "InputCode";
+            InputCodeParam.Value = InputCode;
+            inParam.Add(InputCodeParam);
+
             SqlParameter SymbologyIDParam = new SqlParameter();
             SymbologyIDParam.ParameterName = "SymbologyID";
             SymbologyIDParam.Value = SymbologyID;
             inParam.Add(SymbologyIDParam);
+
+            SqlParameter SymbologyIDDesignationParam = new SqlParameter();
+            SymbologyIDDesignationParam.ParameterName = "SymbologyIDDesignation";
+            SymbologyIDDesignationParam.Value = SymbologyIDDesignation;
+            inParam.Add(SymbologyIDDesignationParam);
 
             SqlParameter TypeParam = new SqlParameter();
             TypeParam.ParameterName = "Type";
@@ -314,6 +328,16 @@ namespace ParserIO.DAL
             UDIParam.ParameterName = "UDI";
             UDIParam.Value = UDI;
             inParam.Add(UDIParam);
+
+            SqlParameter UDI_DIParam = new SqlParameter();
+            UDI_DIParam.ParameterName = "UDI_DI";
+            UDI_DIParam.Value = UDI_DI;
+            inParam.Add(UDI_DIParam);
+
+            SqlParameter IssuerParam = new SqlParameter();
+            IssuerParam.ParameterName = "Issuer";
+            IssuerParam.Value = Issuer;
+            inParam.Add(IssuerParam);
 
             SqlParameter UoMParam = new SqlParameter();
             UoMParam.ParameterName = "UoM";

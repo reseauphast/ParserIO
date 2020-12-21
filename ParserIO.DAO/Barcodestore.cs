@@ -10,7 +10,7 @@ namespace ParserIO.DAO
     public class Barcodestore
     {
         [XmlAttributeAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-        public string xsiSchemaLocation = "Barcodestore.0.1.3.xsd";
+        public string xsiSchemaLocation = "Barcodestore.0.1.6.xsd";
 
         public string Version;
         public string ProviderName;

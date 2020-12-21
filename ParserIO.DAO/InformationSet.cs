@@ -22,7 +22,7 @@ namespace ParserIO.DAO
 
     public class InformationSet
     {
-        private int _executeResult=0;
+        private string _InputCode = string.Empty;
         private string _ACL = string.Empty;
         private string _ADDITIONALID = string.Empty;
         private string _BESTBEFORE = string.Empty;
@@ -36,6 +36,7 @@ namespace ParserIO.DAO
         private string _Expiry = string.Empty;
         private string _Family = string.Empty;
         private string _GTIN = string.Empty;
+        private string _Issuer = string.Empty;
         private string _LIC = string.Empty;
         private string _Lot = string.Empty;
         private string _LPP = string.Empty;
@@ -56,6 +57,7 @@ namespace ParserIO.DAO
         private string _SymbologyIDDesignation = string.Empty;
         private string _Type = string.Empty;
         private string _UDI = string.Empty;
+        private string _UDI_DI = string.Empty;
         private string _UoM = string.Empty;
         private string _UPN = string.Empty;
         private string _VARCOUNT = string.Empty;
@@ -75,13 +77,10 @@ namespace ParserIO.DAO
         private List<Identifier> _Identifiers = new List<Identifier>();
         private string _ParserIOVersion = string.Empty;
 
-
-
-
-        public int executeResult
+        public string InputCode
         {
-            get { return _executeResult; }
-            set { _executeResult = value; }
+            get { return _InputCode; }
+            set { _InputCode = value; }
         }
         public string ACL
         {
@@ -343,10 +342,36 @@ namespace ParserIO.DAO
             set { _ParserIOVersion = value; }
         }
 
+        public string UDI_DI
+        {
+            get
+            {
+                return _UDI_DI;
+            }
+
+            set
+            {
+                _UDI_DI = value;
+            }
+        }
+
+        public string Issuer
+        {
+            get
+            {
+                return _Issuer;
+            }
+
+            set
+            {
+                _Issuer = value;
+            }
+        }
+
         public InformationSet()
         {
             //AdditionalInformation = "No errors detected!";
-
         }
+
     }
 }

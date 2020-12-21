@@ -29,13 +29,8 @@ namespace ParserIO.Benchmark
         {
 
             Provider value = Provider.dll;
-<<<<<<< HEAD
             string workingFolder = @"C:\_Phast\tools\ParserIO\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20181123171642.xml";
-=======
-            string workingFolder = "D:\\tools\\ParserIO\\";
-            string sourceFileName = workingFolder + "Barcodestore_master_20180828182538.xml";
->>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
+            string sourceFileName = workingFolder + "Barcodestore_master_20201217150218.xml";
 
             string outputFileName = workingFolder + "Barcodestore_" + value + "_"+ DateTime.Now.ToString("yyyymmddhhmmss") + ".xml";
 
@@ -84,10 +79,11 @@ namespace ParserIO.Benchmark
                     //todo
                 }
 
+                x.InformationSet.InputCode = targetAnalyse.InputCode;
                 x.InformationSet.ParserIOVersion = targetAnalyse.ParserIOVersion;
                 x.InformationSet.Type = targetAnalyse.Type;
                 x.InformationSet.SubType = targetAnalyse.SubType;
-                x.InformationSet.executeResult = targetAnalyse.executeResult;
+                //x.InformationSet.executeResult = targetAnalyse.executeResult;
                 x.InformationSet.ACL = targetAnalyse.ACL;
                 x.InformationSet.ADDITIONALID = targetAnalyse.ADDITIONALID;
                 x.InformationSet.BESTBEFORE = targetAnalyse.BESTBEFORE;
@@ -131,6 +127,8 @@ namespace ParserIO.Benchmark
                 x.InformationSet.SymbologyID = targetAnalyse.SymbologyID;
                 x.InformationSet.SymbologyIDDesignation = targetAnalyse.SymbologyIDDesignation;
                 x.InformationSet.UDI = targetAnalyse.UDI;
+                x.InformationSet.UDI_DI = targetAnalyse.UDI_DI;
+                x.InformationSet.Issuer = targetAnalyse.Issuer;
                 x.InformationSet.UoM = targetAnalyse.UoM;
                 x.InformationSet.UPN = targetAnalyse.UPN;
                 x.InformationSet.VARCOUNT = targetAnalyse.VARCOUNT;

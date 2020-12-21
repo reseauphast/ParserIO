@@ -371,7 +371,7 @@ namespace ParserIO.Core
         private static string getGStype(string code)
         {
             string result = "Not";
-            
+
             if (code.Contains(NonPrintableGS))
                 result = "GS";
             else if (code.Contains("@"))
@@ -795,13 +795,17 @@ namespace ParserIO.Core
 
             if (InfoSet.Type == "EAN 13")
             {
-                result.Add(new Identifier { Value = InfoSet.GTIN });
+                result.Add(new Identifier { Value = InfoSet.UDI });
             }
             else if (InfoSet.Type.Contains("GS1"))
             {
                 if (InfoSet.SubType.Contains("01"))
                 {
-                    result.Add(new Identifier { Value = InfoSet.GTIN });
+                    result.Add(new Identifier { Value = InfoSet.UDI });
+                }
+                if (InfoSet.SubType.Contains("02"))
+                {
+                    result.Add(new Identifier { Value = InfoSet.CONTENT });
                 }
                 if (InfoSet.SubType.Contains("240"))
                 {
@@ -861,9 +865,9 @@ namespace ParserIO.Core
             }
             else if (InfoSet.Type == "NaS")
             {
-                if (InfoSet.SubType == "001" | InfoSet.SubType == "004")
+                if (/*InfoSet.SubType == "001" |*/ InfoSet.SubType == "004")
                 {
-                    result.Add(new Identifier { Value = InfoSet.EAN });
+                    result.Add(new Identifier { Value = InfoSet.UDI });
                 }
                 else if (InfoSet.SubType == "002" | InfoSet.SubType == "003")
                 {
@@ -894,7 +898,7 @@ namespace ParserIO.Core
                     {
                         code = code.Substring(4, code.Length - 4);
                     }
-                    else if(code.StartsWith(NonPrintableGS))
+                    else if (code.StartsWith(NonPrintableGS))
                     {
                         code = code.Substring(1, code.Length - 1);
                     }
@@ -912,17 +916,23 @@ namespace ParserIO.Core
                         //Check if GTIN-13 or GTIN-14
 
                         string gtin = code.Substring(2, 14);
+
                         if (CheckGTINKey(gtin))
-                        {
-                            result.GTIN = gtin;
-                            result.UDI = gtin;
-                            if (result.GTIN.StartsWith("03400"))
+                        {     
+                            if (gtin.StartsWith("03400"))
                             {
-                                result.CIP = result.GTIN.Substring(1, 13);
+                                result.CIP = gtin.Substring(1, 13);
+                                result.UDI = result.CIP;
                             }
-                            else if (result.GTIN.StartsWith("03401"))
+                            else if (gtin.StartsWith("03401"))
                             {
-                                result.ACL = result.GTIN.Substring(1, 13);
+                                result.ACL = gtin.Substring(1, 13);
+                                result.UDI = result.ACL;
+                            }
+                            else
+                            {
+                                result.GTIN = gtin;
+                                result.UDI = gtin;
                             }
                         }
                         else
@@ -1018,7 +1028,6 @@ namespace ParserIO.Core
                     {
 
                     }
-
                     else if (code.StartsWith("30"))
                     {
                         result.SubType = result.SubType + ".30";
@@ -1511,21 +1520,23 @@ namespace ParserIO.Core
                 else if (result.Type == "EAN 13")
                 {
                     result.EAN = code;
-                    result.GTIN = code;
-                    result.UDI = code;
 
                     if (code.Substring(0, 4) == "3401")
                     {
                         result.SubType = "ACL 13";
                         result.ACL = code;
-                        result.GTIN = code;
                         result.UDI = code;
                     }
                     else if (code.Substring(0, 4) == "3400")
                     {
                         result.SubType = "CIP 13";
                         result.CIP = code;
-                        result.GTIN = code;
+                        result.UDI = code;
+                    }
+                    else
+                    {
+                        result.GTIN = code.PadLeft(14, '0');
+                        result.UDI = code.PadLeft(14, '0');
                     }
 
                     //Obsolete
@@ -1557,21 +1568,21 @@ namespace ParserIO.Core
                     //        result.NaS7 = code;
                     //    }
 
-                    if (code.Length == 19)
-                    {
-                        string subLeftCode = code.Substring(0, 13);
-                        if (CheckEan13Key(subLeftCode))
-                        {
-                            // 4022495007216119361
-                            result.SubType = "001"; // EAN 13 and LPP without checksum
-                            result.EAN = subLeftCode;
-                            result.GTIN = subLeftCode;
-                            result.UDI = subLeftCode;
-                            //result.Company = code.Substring(0, 7);
-                            //result.Product = code.Substring(7, 5);
-                            result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
-                        }
-                    }
+                    //if (code.Length == 19)
+                    //{
+                    //    string subLeftCode = code.Substring(0, 13);
+                    //    if (CheckEan13Key(subLeftCode))
+                    //    {
+                    //        // 4022495007216119361
+                    //        result.SubType = "001"; // EAN 13 and LPP without checksum
+                    //        result.EAN = subLeftCode;
+                    //        result.GTIN = subLeftCode;
+                    //        result.UDI = subLeftCode;
+                    //        //result.Company = code.Substring(0, 7);
+                    //        //result.Product = code.Substring(7, 5);
+                    //        result.LPP = code.Substring(13, 6) + Key7Car(code.Substring(13, 6));
+                    //    }
+                    //}
                     if (code.Length == 20)
                     {
                         string subLeftCode = code.Substring(0, 13);
@@ -1582,7 +1593,6 @@ namespace ParserIO.Core
                             result.SubType = "002"; // ACL 13 and LPP
                             result.ACL = subLeftCode;
                             result.EAN = subLeftCode;
-                            result.GTIN = subLeftCode;
                             result.UDI = subLeftCode;
                             result.LPP = code.Substring(13, 7);
                         }
@@ -1597,7 +1607,6 @@ namespace ParserIO.Core
                             result.SubType = "003"; // ACL 13 and LPP with Espace
                             result.ACL = subLeftCode;
                             result.EAN = subLeftCode;
-                            result.GTIN = subLeftCode;
                             result.UDI = subLeftCode;
                             result.LPP = subRightCode;
                         }
@@ -1613,8 +1622,8 @@ namespace ParserIO.Core
                             //result.Company = code.Substring(0, 7);
                             //result.Product = code.Substring(7, 5);
                             result.EAN = subLeftCode;
-                            result.GTIN = subLeftCode;
-                            result.UDI = subLeftCode;
+                            result.GTIN = subLeftCode.PadLeft(14, '0');  //subLeftCode;
+                            result.UDI = subLeftCode.PadLeft(14, '0');  //subLeftCode;
                             result.LPP = subRightCode;
                         }
                     }
@@ -1629,6 +1638,7 @@ namespace ParserIO.Core
                             result.Expiry = code.Substring(21, 7);
                         }
                     }
+                    
                     // Obsolete
                     //if (code.Length == 17)
                     //{
@@ -1691,7 +1701,6 @@ namespace ParserIO.Core
                     //    if (NumericString(code.Substring(1, 1)) & (code.Substring(0, 1) == "Q"))
                     //        result = "011"; //  Arthrex Company (Example: Q1)
                     //}
-<<<<<<< HEAD
                     // Obsolete
                     //if (code.Length > 10)
                     //{
@@ -1713,27 +1722,6 @@ namespace ParserIO.Core
                     //        result.Reference = code.Substring(1, 13);
                     //    }
                     //}
-=======
-                    if (code.Length > 10)
-                    {
-                        if ((code.Substring(0, 3) == "SEM") & (code.Substring(9, 2) == "^P") & (Regex.IsMatch(code.Substring(code.Length - 1, 1), @"^[a-zA-Z]+$")))
-                        {
-                            // SEM171252^P30778E4009A
-                            result.SubType = "012"; //  SEM (Sciences Et Medecine)
-                            result.Reference = code.Substring(3, 6);
-                            result.Lot = code.Substring(code.IndexOf('^') + 1, code.Length - code.IndexOf('^') - 2);
-                        }
-                    }
-                    if (code.Length == 14)
-                    {
-                        if (NumericString(code.Substring(6, 8)) & (code.Substring(0, 1) == " ") & (code.Substring(5, 1) == "-"))
-                        {
-                            // ˽BF01-11018180
-                            result.SubType = "013"; // ABS BOLTON Company
-                            result.Reference = code.Substring(1, 13);
-                        }
-                    }
->>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
                     //Obsolete
                     //if (code.Length == 10)
                     //{
@@ -2008,55 +1996,69 @@ namespace ParserIO.Core
         }
         public InformationSet GetFullInformationSet(string code)
         {
-            try
+            result = new InformationSet();
+            result.InputCode = code;
+            code = Cleanse(code);
+            result.Type = Type(code);
+            result.SymbologyID = SymbologyID(code);
+            result.SymbologyIDDesignation = SymbologyIDDesignation(result.SymbologyID);
+            code = CleanSymbologyId(code);
+
+            Parse(code);
+
+            result.ContainsOrMayContainId = containsOrMayContainId(code, result.Type, result.SubType);
+            result.NaSIdParamName = NaSIdParamName(result.Type, result.SubType);
+
+            if (result.Expiry != "")
             {
-                code = Cleanse(code);
-                result.Type = Type(code);
-                result.SymbologyID = SymbologyID(code);
-                result.SymbologyIDDesignation = SymbologyIDDesignation(result.SymbologyID);
-                code = CleanSymbologyId(code);
+                result.NormalizedExpiry = NormalizedDate(result.Expiry, result.Type, result.SubType);
+            }
+            if (result.PRODDATE != "")
+            {
+                result.NormalizedPRODDATE = NormalizedDate(result.PRODDATE, result.Type, result.SubType);
+            }
 
-                Parse(code);
+            if (result.BESTBEFORE != "")
+            {
+                result.NormalizedBESTBEFORE = NormalizedDate(result.BESTBEFORE, result.Type, result.SubType);
+            }
 
-                result.ContainsOrMayContainId = containsOrMayContainId(code, result.Type, result.SubType);
-                result.NaSIdParamName = NaSIdParamName(result.Type, result.SubType);
-                result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString();
+            result.Family = Family(code, result.Type, result.SubType);
 
-                if (result.ContainsOrMayContainId)
+            //UDI_DI
+            if (!string.IsNullOrEmpty(result.UPN))
+            {
+                result.UDI_DI = result.UPN;
+            }
+            else if (!string.IsNullOrEmpty(result.GTIN))
+            {
+                result.UDI_DI = result.GTIN;
+            }
+
+            //Issuer
+            if (!string.IsNullOrEmpty(result.UDI_DI))
+            {
+                if (!string.IsNullOrEmpty(result.GTIN))
                 {
-                    result.Identifiers = Identifiers(result);
+                    result.Issuer = "GS1";
                 }
-
-                if (result.Expiry != "")
+                else if (!string.IsNullOrEmpty(result.UPN))
                 {
-                    result.NormalizedExpiry = NormalizedDate(result.Expiry, result.Type, result.SubType);
-                }
-                if (result.PRODDATE != "")
-                {
-                    result.NormalizedPRODDATE = NormalizedDate(result.PRODDATE, result.Type, result.SubType);
-                }
-
-                if (result.BESTBEFORE != "")
-                {
-                    result.NormalizedBESTBEFORE = NormalizedDate(result.BESTBEFORE, result.Type, result.SubType);
-                }
-                result.Family = Family(code, result.Type, result.SubType);
-
-                if (result.AdditionalInformation.Length == 0)
-                {
-                    result.AdditionalInformation = "No errors detected!";
-                }
-                else
-                {
-
-                    result.AdditionalInformation = "Errors detected:" + result.AdditionalInformation.Remove(0, 1);
+                    result.Issuer = "HIBCC";
                 }
             }
-            catch (Exception e)
+
+            if (result.ContainsOrMayContainId)
             {
-                result.executeResult = -1;
-                result.AdditionalInformation = e.Message;
+                result.Identifiers = Identifiers(result);
             }
+
+            result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString();
+
+            //if (result.AdditionalInformation.Length == 0)
+            //{
+            //    result.AdditionalInformation = "No errors detected!";
+            //}
 
             return result;
         }

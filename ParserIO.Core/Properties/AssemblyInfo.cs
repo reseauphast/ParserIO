@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Phast")]
 [assembly: AssemblyProduct("ParserIO.Core")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,10 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-<<<<<<< HEAD
-[assembly: AssemblyVersion("2.2.2.0")]
-[assembly: AssemblyFileVersion("2.2.2.0")]
-=======
-[assembly: AssemblyVersion("2.2.1.1")]
-[assembly: AssemblyFileVersion("2.2.1.1")]
->>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
+[assembly: AssemblyVersion("2.6.*")]
+//[assembly: AssemblyFileVersion("0.0.0.0")]

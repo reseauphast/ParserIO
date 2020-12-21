@@ -1,0 +1,9 @@
+C:\Workspaces\ParserIO\ParserIO.Core\bin\Dev\ParserIO.Core.dll
+C:\Workspaces\ParserIO\ParserIO.Core\bin\Dev\ParserIO.Core.pdb
+C:\Workspaces\ParserIO\ParserIO.Core\bin\Dev\ParserIO.DAO.dll
+C:\Workspaces\ParserIO\ParserIO.Core\bin\Dev\ParserIO.DAO.pdb
+C:\Workspaces\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.csprojAssemblyReference.cache
+C:\Workspaces\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.csproj.CoreCompileInputs.cache
+C:\Workspaces\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.csproj.CopyComplete
+C:\Workspaces\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.dll
+C:\Workspaces\ParserIO\ParserIO.Core\obj\Dev\ParserIO.Core.pdb

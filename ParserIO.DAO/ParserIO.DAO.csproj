@@ -80,8 +80,14 @@
   <ItemGroup>
     <Compile Include="Analyse.cs" />
     <Compile Include="Barcodestore.cs" />
+    <Compile Include="BasicRequestType.cs" />
+    <Compile Include="BasicResponseType.cs" />
     <Compile Include="InformationSet.cs" />
+    <Compile Include="InformationSetRequestType.cs" />
+    <Compile Include="InformationSetResponseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results.cs" />
+    <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

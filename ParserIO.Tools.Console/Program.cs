@@ -12,7 +12,7 @@ namespace ParserIO.Tools.Console
         static void Main(string[] args)
         {
             string workingFolder = ConfigurationManager.AppSettings["workingFolder"];
-            string fileName = workingFolder + "Barcodestore_dll_20185323035342.xml";
+            string fileName = workingFolder + "Barcodestore_master_20201120132923.xml";
             //FileProcess.BarcodestoreImport(fileName);
             FileProcess.BarcodestoreExport(workingFolder);
         }

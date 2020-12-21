@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Barcodestore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Analyse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Barcode" type="xs:string" />
+              <xs:element name="ACL" type="xs:string" />
+              <xs:element name="ADDITIONALID" type="xs:string" />
+              <xs:element name="BESTBEFORE" type="xs:string" />
+              <xs:element name="CIP" type="xs:string" />
+              <xs:element name="Company" type="xs:string" />
+              <xs:element name="CONTENT" type="xs:string" />
+              <xs:element name="COUNT" type="xs:string" />
+              <xs:element name="Expiry" type="xs:string" />
+              <xs:element name="Family" type="xs:string" />
+              <xs:element name="GTIN" type="xs:string" />
+              <xs:element name="LIC" type="xs:string" />
+              <xs:element name="Lot" type="xs:string" />
+              <xs:element name="LPP" type="xs:string" />
+              <xs:element name="NaS7" type="xs:string" />
+              <xs:element name="NormalizedBESTBEFORE" type="xs:string" />
+              <xs:element name="NormalizedExpiry" type="xs:string" />
+              <xs:element name="NormalizedPRODDATE" type="xs:string" />
+              <xs:element name="PCN" type="xs:string" />
+              <xs:element name="PRODDATE" type="xs:string" />
+              <xs:element name="Product" type="xs:string" />
+              <xs:element name="Quantity" type="xs:string" />
+              <xs:element name="Reference" type="xs:string" />
+              <xs:element name="Serial" type="xs:string" />
+              <xs:element name="SSCC" type="xs:string" />
+              <xs:element name="SubType" type="xs:string" />
+              <xs:element name="Type" type="xs:string" />
+              <xs:element name="UCD" type="xs:string" />
+              <xs:element name="UoM" type="xs:string" />
+              <xs:element name="VARCOUNT" type="xs:string" />
+              <xs:element name="VARIANT" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Version" type="xs:unsignedLong" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

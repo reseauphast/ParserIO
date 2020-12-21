@@ -3,6 +3,7 @@
 @TimeStamp datetime,
 @ParserIOVersion NVARCHAR(MAX),
 @Barcode NVARCHAR(MAX),
+@InputCode NVARCHAR(MAX),
 @SymbologyID NVARCHAR(MAX),
 @SymbologyIDDesignation NVARCHAR(MAX),
 @Type NVARCHAR(MAX),
@@ -46,6 +47,8 @@
 @SSCC NVARCHAR(MAX),
 @StorageLocation NVARCHAR(MAX),
 @UDI NVARCHAR(MAX),
+@UDI_DI NVARCHAR(MAX),
+@Issuer NVARCHAR(MAX),
 @UoM NVARCHAR(MAX),
 @UPN NVARCHAR(MAX),
 @VARCOUNT NVARCHAR(MAX),
@@ -64,6 +67,7 @@ INSERT INTO [dbo].[BarcodesStore]
 		   ,[TimeStamp]
 		   ,[ParserIOVersion]
 		   ,[Barcode]
+		   ,[InputCode]
 		   ,[SymbologyID]
 		   ,[SymbologyIDDesignation]
            ,[Type]
@@ -107,6 +111,8 @@ INSERT INTO [dbo].[BarcodesStore]
            ,[SSCC]
 		   ,[StorageLocation]
            ,[UDI]
+		   ,[UDI_DI]
+		   ,[Issuer]
            ,[UoM]
 		   ,[UPN]
            ,[VARCOUNT]
@@ -117,7 +123,8 @@ INSERT INTO [dbo].[BarcodesStore]
            (@AnalyseId,
 		    @TimeStamp,
 			@ParserIOVersion,
-		    @Barcode,
+			@Barcode,
+		    @InputCode,
 			@SymbologyID,
 			@SymbologyIDDesignation,
             @Type,
@@ -161,6 +168,8 @@ INSERT INTO [dbo].[BarcodesStore]
             @SSCC,
 			@StorageLocation,
             @UDI,
+			@UDI_DI,
+			@Issuer,
             @UoM,
 			@UPN,
             @VARCOUNT,
@@ -171,8 +180,11 @@ END
 ELSE
 BEGIN
 UPDATE [dbo].[BarcodesStore]
-   SET [Barcode] = @Barcode,
-       [ParserIOVersion] = @ParserIOVersion,
+   SET [AnalyseId] = @AnalyseId,
+       [TimeStamp] = @TimeStamp,
+	   [ParserIOVersion] = @ParserIOVersion,
+	   [Barcode] = @Barcode,
+	   [InputCode] = @InputCode,
        [Type] = @Type,
        [SubType] = @SubType,
        [ContainsOrMayContainId] = @ContainsOrMayContainId,
@@ -212,6 +224,8 @@ UPDATE [dbo].[BarcodesStore]
        [SSCC] = @SSCC,
 	   [StorageLocation]=@StorageLocation,
        [UDI] = @UDI,
+	   [UDI_DI] = @UDI_DI,
+	   [Issuer] = @Issuer,
        [UoM] = @UoM,
        [VARCOUNT] = @VARCOUNT,
        [VARIANT] = @VARIANT,
@@ -221,9 +235,7 @@ UPDATE [dbo].[BarcodesStore]
        [EAN] = @EAN,
        [NaSIdParamName] = @NaSIdParamName,
        [UPN] = @UPN,
-       [AdditionalInformation] = @AdditionalInformation,
-       [AnalyseId] = @AnalyseId,
-       [TimeStamp] = @TimeStamp
+       [AdditionalInformation] = @AdditionalInformation
  WHERE [AnalyseId]=@AnalyseId
 END
 END

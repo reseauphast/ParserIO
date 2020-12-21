@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParserIO_COMclient", "ParserIO_COMclient\test.vcxproj", "{50AFC760-AD03-432F-A0F0-FC93F6F68DD8}"
 EndProject
@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{513009AC-1
 		Data\Barcodestore.0.1.3.xsd = Data\Barcodestore.0.1.3.xsd
 		Data\Barcodestore.0.1.4.xsd = Data\Barcodestore.0.1.4.xsd
 		Data\Barcodestore.0.1.5.xsd = Data\Barcodestore.0.1.5.xsd
+		Data\Barcodestore.0.1.6.xsd = Data\Barcodestore.0.1.6.xsd
 		Data\Barcodestore_master_20160623150402.xml = Data\Barcodestore_master_20160623150402.xml
 		Data\Barcodestore_master_20160914164639.xml = Data\Barcodestore_master_20160914164639.xml
 		Data\Barcodestore_master_20160926151315.xml = Data\Barcodestore_master_20160926151315.xml
@@ -58,10 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{513009AC-1
 		Data\Barcodestore_master_20180411093658.xml = Data\Barcodestore_master_20180411093658.xml
 		Data\Barcodestore_master_20180628145228.xml = Data\Barcodestore_master_20180628145228.xml
 		Data\Barcodestore_master_20180829154420.xml = Data\Barcodestore_master_20180829154420.xml
-<<<<<<< HEAD
 		Data\Barcodestore_master_20181123171642.xml = Data\Barcodestore_master_20181123171642.xml
-=======
->>>>>>> b904a952a45e7cb05e019e8e42fbd9c7aaee5832
+		Data\Barcodestore_master_20201217151559.xml = Data\Barcodestore_master_20201217151559.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserIO.Core", "ParserIO.Core\ParserIO.Core.csproj", "{46A0D701-3A2B-44AC-AFD0-BE7235C3F680}"

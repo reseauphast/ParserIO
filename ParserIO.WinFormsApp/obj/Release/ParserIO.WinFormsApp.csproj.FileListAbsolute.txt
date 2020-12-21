@@ -1,0 +1,16 @@
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.WinFormsApp.exe.config
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.WinFormsApp.exe
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.WinFormsApp.pdb
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.Core.dll
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.DAO.dll
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.Core.pdb
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\bin\Release\ParserIO.DAO.pdb
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.csprojAssemblyReference.cache
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.AboutBox.resources
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.Form1.resources
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.Properties.Resources.resources
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.csproj.GenerateResource.cache
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.csproj.CoreCompileInputs.cache
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.csproj.CopyComplete
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.exe
+C:\Workspaces\ParserIO\ParserIO.WinFormsApp\obj\Release\ParserIO.WinFormsApp.pdb

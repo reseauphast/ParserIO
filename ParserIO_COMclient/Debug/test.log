@@ -1,0 +1,2 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(472,5): warning MSB8003: la propriété VCToolsInstallDir n'est pas définie. Certains outils de build sont introuvables.
+TRACKER : error TRK0005: échec de localisation de : "CL.exe". Le fichier spécifié est introuvable.

@@ -15,9 +15,11 @@ namespace ParserIO.ORM
             int executeResult = 0;
             executeResult = DAL.Barcodestore.P_Barcode_Upsert(analyse.AnalyseId,
                                                               analyse.TimeStamp,
-                                                              analyse.InformationSet.ParserIOVersion,
                                                               analyse.Barcode,
+                                                              analyse.InformationSet.ParserIOVersion,
+                                                              analyse.InformationSet.InputCode,
                                                               analyse.InformationSet.SymbologyID,
+                                                              analyse.InformationSet.SymbologyIDDesignation,
                                                               analyse.InformationSet.Type,
                                                               analyse.InformationSet.SubType,
                                                               analyse.InformationSet.NaSIdParamName,
@@ -59,6 +61,8 @@ namespace ParserIO.ORM
                                                               analyse.InformationSet.SSCC,
                                                               analyse.InformationSet.StorageLocation,
                                                               analyse.InformationSet.UDI,
+                                                              analyse.InformationSet.UDI_DI,
+                                                              analyse.InformationSet.Issuer,
                                                               analyse.InformationSet.UoM,
                                                               analyse.InformationSet.UPN,
                                                               analyse.InformationSet.VARCOUNT,
@@ -86,6 +90,7 @@ namespace ParserIO.ORM
                 item.InformationSet.ParserIOVersion = dr["ParserIOVersion"].ToString();
                 item.Barcode = dr["Barcode"].ToString();
                 item.Commentary = dr["Commentary"].ToString();
+                item.InformationSet.InputCode = dr["InputCode"].ToString();
                 item.InformationSet.SymbologyID = dr["SymbologyID"].ToString();
                 item.InformationSet.SymbologyIDDesignation = dr["SymbologyIDDesignation"].ToString();
                 item.InformationSet.Type = dr["Type"].ToString();
@@ -130,6 +135,8 @@ namespace ParserIO.ORM
                 item.InformationSet.SSCC = dr["SSCC"].ToString();
                 item.InformationSet.StorageLocation = dr["StorageLocation"].ToString();
                 item.InformationSet.UDI = dr["UDI"].ToString();
+                item.InformationSet.UDI_DI = dr["UDI_DI"].ToString();
+                item.InformationSet.Issuer = dr["Issuer"].ToString();
                 item.InformationSet.UoM = dr["UoM"].ToString();
                 item.InformationSet.UPN = dr["UPN"].ToString();
                 item.InformationSet.VARCOUNT = dr["VARCOUNT"].ToString();

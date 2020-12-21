@@ -140,6 +140,10 @@
             this.label44 = new System.Windows.Forms.Label();
             this.textBoxSymbologyIDDesignation = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
+            this.textBoxUDI_DI = new System.Windows.Forms.TextBox();
+            this.labelUDI_DI = new System.Windows.Forms.Label();
+            this.textBoxIssuer = new System.Windows.Forms.TextBox();
+            this.labelIssuer = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControlOutput.SuspendLayout();
@@ -286,7 +290,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(88, 383);
+            this.label10.Location = new System.Drawing.Point(92, 383);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 11;
@@ -304,7 +308,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(75, 409);
+            this.label11.Location = new System.Drawing.Point(79, 409);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 13);
             this.label11.TabIndex = 15;
@@ -376,7 +380,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(77, 464);
+            this.label20.Location = new System.Drawing.Point(81, 465);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(33, 13);
             this.label20.TabIndex = 26;
@@ -421,7 +425,7 @@
             // ACL
             // 
             this.ACL.AutoSize = true;
-            this.ACL.Location = new System.Drawing.Point(83, 490);
+            this.ACL.Location = new System.Drawing.Point(87, 491);
             this.ACL.Name = "ACL";
             this.ACL.Size = new System.Drawing.Size(27, 13);
             this.ACL.TabIndex = 29;
@@ -439,7 +443,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(74, 516);
+            this.label22.Location = new System.Drawing.Point(78, 517);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(36, 13);
             this.label22.TabIndex = 31;
@@ -475,7 +479,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(85, 542);
+            this.label24.Location = new System.Drawing.Point(90, 543);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(24, 13);
             this.label24.TabIndex = 35;
@@ -513,7 +517,7 @@
             // labelContainsProductId
             // 
             this.labelContainsProductId.AutoSize = true;
-            this.labelContainsProductId.Location = new System.Drawing.Point(325, 255);
+            this.labelContainsProductId.Location = new System.Drawing.Point(322, 280);
             this.labelContainsProductId.Name = "labelContainsProductId";
             this.labelContainsProductId.Size = new System.Drawing.Size(123, 13);
             this.labelContainsProductId.TabIndex = 42;
@@ -521,7 +525,7 @@
             // 
             // textBoxcontainsOrMayContainId
             // 
-            this.textBoxcontainsOrMayContainId.Location = new System.Drawing.Point(462, 251);
+            this.textBoxcontainsOrMayContainId.Location = new System.Drawing.Point(459, 276);
             this.textBoxcontainsOrMayContainId.Name = "textBoxcontainsOrMayContainId";
             this.textBoxcontainsOrMayContainId.ReadOnly = true;
             this.textBoxcontainsOrMayContainId.Size = new System.Drawing.Size(32, 20);
@@ -573,7 +577,7 @@
             // labelUDI
             // 
             this.labelUDI.AutoSize = true;
-            this.labelUDI.Location = new System.Drawing.Point(81, 568);
+            this.labelUDI.Location = new System.Drawing.Point(88, 569);
             this.labelUDI.Name = "labelUDI";
             this.labelUDI.Size = new System.Drawing.Size(26, 13);
             this.labelUDI.TabIndex = 50;
@@ -585,7 +589,7 @@
             this.textBoxExecuteResult.Location = new System.Drawing.Point(121, 94);
             this.textBoxExecuteResult.Name = "textBoxExecuteResult";
             this.textBoxExecuteResult.ReadOnly = true;
-            this.textBoxExecuteResult.Size = new System.Drawing.Size(23, 20);
+            this.textBoxExecuteResult.Size = new System.Drawing.Size(79, 20);
             this.textBoxExecuteResult.TabIndex = 53;
             // 
             // label39
@@ -671,7 +675,7 @@
             this.hibcTabPage.Controls.Add(this.label17);
             this.hibcTabPage.Location = new System.Drawing.Point(4, 22);
             this.hibcTabPage.Name = "hibcTabPage";
-            this.hibcTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.hibcTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.hibcTabPage.Size = new System.Drawing.Size(575, 536);
             this.hibcTabPage.TabIndex = 0;
             this.hibcTabPage.Text = "HIBC";
@@ -727,8 +731,8 @@
             this.gs1TabPage.Controls.Add(this.label15);
             this.gs1TabPage.Location = new System.Drawing.Point(4, 22);
             this.gs1TabPage.Name = "gs1TabPage";
-            this.gs1TabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.gs1TabPage.Size = new System.Drawing.Size(575, 469);
+            this.gs1TabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.gs1TabPage.Size = new System.Drawing.Size(575, 536);
             this.gs1TabPage.TabIndex = 1;
             this.gs1TabPage.Text = "GS1";
             this.gs1TabPage.UseVisualStyleBackColor = true;
@@ -1159,7 +1163,7 @@
             this.nasTabPage.Controls.Add(this.label23);
             this.nasTabPage.Location = new System.Drawing.Point(4, 22);
             this.nasTabPage.Name = "nasTabPage";
-            this.nasTabPage.Size = new System.Drawing.Size(575, 469);
+            this.nasTabPage.Size = new System.Drawing.Size(575, 536);
             this.nasTabPage.TabIndex = 2;
             this.nasTabPage.Text = "NaS";
             this.nasTabPage.UseVisualStyleBackColor = true;
@@ -1220,12 +1224,50 @@
             this.label46.Text = "SymbologyID Designation";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // textBoxUDI_DI
+            // 
+            this.textBoxUDI_DI.Location = new System.Drawing.Point(121, 592);
+            this.textBoxUDI_DI.Name = "textBoxUDI_DI";
+            this.textBoxUDI_DI.ReadOnly = true;
+            this.textBoxUDI_DI.Size = new System.Drawing.Size(183, 20);
+            this.textBoxUDI_DI.TabIndex = 66;
+            // 
+            // labelUDI_DI
+            // 
+            this.labelUDI_DI.AutoSize = true;
+            this.labelUDI_DI.Location = new System.Drawing.Point(74, 595);
+            this.labelUDI_DI.Name = "labelUDI_DI";
+            this.labelUDI_DI.Size = new System.Drawing.Size(40, 13);
+            this.labelUDI_DI.TabIndex = 67;
+            this.labelUDI_DI.Text = "UDI-DI";
+            // 
+            // textBoxIssuer
+            // 
+            this.textBoxIssuer.Location = new System.Drawing.Point(121, 619);
+            this.textBoxIssuer.Name = "textBoxIssuer";
+            this.textBoxIssuer.ReadOnly = true;
+            this.textBoxIssuer.Size = new System.Drawing.Size(183, 20);
+            this.textBoxIssuer.TabIndex = 68;
+            // 
+            // labelIssuer
+            // 
+            this.labelIssuer.AutoSize = true;
+            this.labelIssuer.Location = new System.Drawing.Point(79, 622);
+            this.labelIssuer.Name = "labelIssuer";
+            this.labelIssuer.Size = new System.Drawing.Size(35, 13);
+            this.labelIssuer.TabIndex = 69;
+            this.labelIssuer.Text = "Issuer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1131, 632);
+            this.ClientSize = new System.Drawing.Size(1131, 653);
+            this.Controls.Add(this.labelIssuer);
+            this.Controls.Add(this.textBoxIssuer);
+            this.Controls.Add(this.labelUDI_DI);
+            this.Controls.Add(this.textBoxUDI_DI);
             this.Controls.Add(this.textBoxSymbologyIDDesignation);
             this.Controls.Add(this.label46);
             this.Controls.Add(this.textBoxParserIOVersion);
@@ -1399,6 +1441,10 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox textBoxSymbologyIDDesignation;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox textBoxUDI_DI;
+        private System.Windows.Forms.Label labelUDI_DI;
+        private System.Windows.Forms.TextBox textBoxIssuer;
+        private System.Windows.Forms.Label labelIssuer;
     }
 }
 
