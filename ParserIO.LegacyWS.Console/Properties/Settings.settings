@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ParserIO.LegacyWS.Console.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="ParserIO_LegacyWS_Console_localhost_parserio_ParserIO_WS" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:55279/parserio.asmx</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
