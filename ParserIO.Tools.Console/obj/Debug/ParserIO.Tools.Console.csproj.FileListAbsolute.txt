@@ -1,0 +1,16 @@
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.Tools.Console.exe.config
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.Tools.Console.exe
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.Tools.Console.pdb
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.Tools.dll
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.DAO.dll
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.ORM.dll
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.DAL.dll
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.Tools.pdb
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.DAO.pdb
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.ORM.pdb
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\bin\Debug\ParserIO.DAL.pdb
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\obj\Debug\ParserIO.Tools.Console.csproj.AssemblyReference.cache
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\obj\Debug\ParserIO.Tools.Console.csproj.CoreCompileInputs.cache
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\obj\Debug\ParserIO.Tools.Console.csproj.CopyComplete
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\obj\Debug\ParserIO.Tools.Console.exe
+C:\_Workspaces\ParserIO\ParserIO.Tools.Console\obj\Debug\ParserIO.Tools.Console.pdb

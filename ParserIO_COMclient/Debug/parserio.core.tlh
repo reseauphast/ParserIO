@@ -1,0 +1,132 @@
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.29.30143.0 (1cd94bb7).
+//
+// C:\_Workspaces\ParserIO\ParserIO_COMclient\Debug\parserio.core.tlh
+//
+// C++ source equivalent of Win32 type library ParserIO.Core.tlb
+// compiler-generated file created 05/09/22 at 16:40:32 - DO NOT EDIT!
+
+//
+// Cross-referenced type libraries:
+//
+//  #import "C:\_Workspaces\ParserIO\ParserIO.Core\bin\Debug\ParserIO.DAO.tlb"
+//  #import "C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.tlb"
+//
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace ParserIO_Core {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("46a0d701-3a2b-44ac-afd0-be7235c3f680"))
+/* LIBID */ __ParserIO_Core;
+struct __declspec(uuid("eaa4976a-45c3-4bc5-bc0b-e474f4c3c83f"))
+/* dual interface */ IFunctions;
+struct __declspec(uuid("7bd20046-df8c-44a6-8f6b-687faa26fa71"))
+/* dispinterface */ ParserIO_Core_events;
+struct /* coclass */ Functions;
+struct __declspec(uuid("c67aca73-dbfe-3a72-b5c8-4c90c3dd365d"))
+/* dual interface */ _Functions;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IFunctions, __uuidof(IFunctions));
+_COM_SMARTPTR_TYPEDEF(ParserIO_Core_events, __uuidof(ParserIO_Core_events));
+_COM_SMARTPTR_TYPEDEF(_Functions, __uuidof(_Functions));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("eaa4976a-45c3-4bc5-bc0b-e474f4c3c83f"))
+IFunctions : IDispatch
+{
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall GetFullInformationSet (
+        /*[in]*/ BSTR code,
+        /*[out,retval]*/ struct _InformationSet * * pRetVal ) = 0;
+};
+
+struct __declspec(uuid("7bd20046-df8c-44a6-8f6b-687faa26fa71"))
+ParserIO_Core_events : IDispatch
+{};
+
+struct __declspec(uuid("0d53a3e8-e51a-49c7-944e-e72a2064f938"))
+Functions;
+    // [ default ] interface _Functions
+    // interface _Object
+    // interface IFunctions
+
+struct __declspec(uuid("c67aca73-dbfe-3a72-b5c8-4c90c3dd365d"))
+_Functions : IDispatch
+{
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall get_ToString (
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+      virtual HRESULT __stdcall Equals (
+        /*[in]*/ VARIANT obj,
+        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+      virtual HRESULT __stdcall GetHashCode (
+        /*[out,retval]*/ long * pRetVal ) = 0;
+      virtual HRESULT __stdcall GetType (
+        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
+      virtual HRESULT __stdcall GetFullInformationSet (
+        /*[in]*/ BSTR code,
+        /*[out,retval]*/ struct _InformationSet * * pRetVal ) = 0;
+      virtual HRESULT __stdcall SymbologyID (
+        /*[in]*/ BSTR code,
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+      virtual HRESULT __stdcall SymbologyIDDesignation (
+        /*[in]*/ BSTR SymbologyID,
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+      virtual HRESULT __stdcall Family (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR type,
+        /*[in]*/ BSTR subType,
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    virtual HRESULT _VtblGapPlaceholder1( ) { return E_NOTIMPL; }
+      virtual HRESULT __stdcall containsOrMayContainId (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR type,
+        /*[in]*/ BSTR subType,
+        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+      virtual HRESULT __stdcall NaSIdParamName (
+        /*[in]*/ BSTR type,
+        /*[in]*/ BSTR subType,
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+      virtual HRESULT __stdcall type (
+        /*[in]*/ BSTR code,
+        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+};
+
+//
+// Named GUID constants initializations
+//
+
+extern "C" const GUID __declspec(selectany) LIBID_ParserIO_Core =
+    {0x46a0d701,0x3a2b,0x44ac,{0xaf,0xd0,0xbe,0x72,0x35,0xc3,0xf6,0x80}};
+extern "C" const GUID __declspec(selectany) IID_IFunctions =
+    {0xeaa4976a,0x45c3,0x4bc5,{0xbc,0x0b,0xe4,0x74,0xf4,0xc3,0xc8,0x3f}};
+extern "C" const GUID __declspec(selectany) DIID_ParserIO_Core_events =
+    {0x7bd20046,0xdf8c,0x44a6,{0x8f,0x6b,0x68,0x7f,0xaa,0x26,0xfa,0x71}};
+extern "C" const GUID __declspec(selectany) CLSID_Functions =
+    {0x0d53a3e8,0xe51a,0x49c7,{0x94,0x4e,0xe7,0x2a,0x20,0x64,0xf9,0x38}};
+extern "C" const GUID __declspec(selectany) IID__Functions =
+    {0xc67aca73,0xdbfe,0x3a72,{0xb5,0xc8,0x4c,0x90,0xc3,0xdd,0x36,0x5d}};
+
+} // namespace ParserIO_Core
+
+#pragma pack(pop)

@@ -1,0 +1,13 @@
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.Core.UnitTest.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.Core.UnitTest.pdb
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.Core.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.DAO.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.Core.pdb
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\ParserIO.DAO.pdb
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\bin\Debug\fr\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\obj\Debug\ParserIO.Core.UnitTest.csproj.AssemblyReference.cache
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\obj\Debug\ParserIO.Core.UnitTest.csproj.CoreCompileInputs.cache
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\obj\Debug\ParserIO.Core.UnitTest.csproj.CopyComplete
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\obj\Debug\ParserIO.Core.UnitTest.dll
+C:\_Workspaces\ParserIO\ParserIO.Core.UnitTest\obj\Debug\ParserIO.Core.UnitTest.pdb

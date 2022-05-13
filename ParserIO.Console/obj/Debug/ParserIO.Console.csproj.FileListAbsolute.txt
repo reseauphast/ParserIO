@@ -1,0 +1,11 @@
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.Console.exe.config
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.Console.exe
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.Console.pdb
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.Core.dll
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.DAO.dll
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.Core.pdb
+C:\_Workspaces\ParserIO\ParserIO.Console\bin\Debug\ParserIO.DAO.pdb
+C:\_Workspaces\ParserIO\ParserIO.Console\obj\Debug\ParserIO.Console.csproj.CoreCompileInputs.cache
+C:\_Workspaces\ParserIO\ParserIO.Console\obj\Debug\ParserIO.Console.csproj.CopyComplete
+C:\_Workspaces\ParserIO\ParserIO.Console\obj\Debug\ParserIO.Console.exe
+C:\_Workspaces\ParserIO\ParserIO.Console\obj\Debug\ParserIO.Console.pdb

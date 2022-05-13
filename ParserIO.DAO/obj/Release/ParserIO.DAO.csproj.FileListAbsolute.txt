@@ -1,7 +1,7 @@
-C:\Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.dll
-C:\Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.pdb
-C:\Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.tlb
-C:\Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csproj.CoreCompileInputs.cache
-C:\Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.dll
-C:\Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.pdb
-C:\Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csprojAssemblyReference.cache
+C:\_Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.dll
+C:\_Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.pdb
+C:\_Workspaces\ParserIO\ParserIO.DAO\bin\Release\ParserIO.DAO.tlb
+C:\_Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csproj.AssemblyReference.cache
+C:\_Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.csproj.CoreCompileInputs.cache
+C:\_Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.dll
+C:\_Workspaces\ParserIO\ParserIO.DAO\obj\Release\ParserIO.DAO.pdb

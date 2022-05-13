@@ -1638,7 +1638,7 @@ namespace ParserIO.Core
                             result.Expiry = code.Substring(21, 7);
                         }
                     }
-                    
+
                     // Obsolete
                     //if (code.Length == 17)
                     //{
@@ -1766,10 +1766,14 @@ namespace ParserIO.Core
                     //        result.Expiry = code.Substring(7, 3);
                     //    }
                     //}
+
+                    
                     if (result.SubType == "")
                     {
                         result.SubType = "NaS";
-                        result.Reference = code;
+                        
+                        //A la demande d'Etienne. Fait le 2022-05-09.
+                        //result.Reference = code;
                     }
                 }
             }
@@ -2053,7 +2057,7 @@ namespace ParserIO.Core
                 result.Identifiers = Identifiers(result);
             }
 
-            result.ParserIOVersion = Assembly.Load("ParserIO.Core").GetName().Version.ToString();
+            result.ParserIOVersion = string.Format("{0}.{1}",Assembly.Load("ParserIO.Core").GetName().Version.Major.ToString(), Assembly.Load("ParserIO.Core").GetName().Version.Minor.ToString());
 
             //if (result.AdditionalInformation.Length == 0)
             //{

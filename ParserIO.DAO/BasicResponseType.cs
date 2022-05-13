@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-//using RLIO.RightManagement.Data;
 
 namespace ParserIO.DAO
 {
@@ -50,5 +44,13 @@ namespace ParserIO.DAO
             DureeExecution = DateTime.Now.Subtract(debut).TotalMilliseconds;
             //LogManager.AddLog(request.UserId, request.Function, debut, DateTime.Now, DureeExecution, Serializer.SerializeObject(request), Errors, request.Caller, "", request.GetLicence());
         }
+
+        public delegate void LogHandler(object Sender, LogEventArgs e);
+        public event LogHandler OnLog;
+   
     }
+public class LogEventArgs
+{
+
+}
 }

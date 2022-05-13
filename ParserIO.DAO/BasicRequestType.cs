@@ -11,6 +11,10 @@ namespace ParserIO.DAO
     {
         private  string _userId = string.Empty;
         private string _pinCode = string.Empty;
+
+        [XmlIgnore()]
+        public string _ApplicationAutoriseeSeparator = "#!$";
+
         public string UserId
         {
             get
@@ -52,19 +56,32 @@ namespace ParserIO.DAO
             PinCode = pinCode;
         }
 
-        //#$£
-        public string GetLicence()
-        {
-            string result = null;
-            string[] stringSeparators = new string[] { "#$£" };
-            var splitResult = PinCode.Split(stringSeparators, StringSplitOptions.None);
-            if (splitResult.Length == 2)
-            {
-                result = splitResult[1];
-            }
+        //public string GetPassword()
+        //{
+        //    string result = null;
+        //    string[] stringSeparators = new string[] { _ApplicationAutoriseeSeparator };
+        //    var splitResult = PinCode.Split(stringSeparators, StringSplitOptions.None);
+        //    if (splitResult.Length > 0)
+        //    {
+        //        result = splitResult[0];
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
+
+        //public string GetLicence()
+        //{
+        //    string result = "PARSER_IO-5e048966-92ed-4c65-aae1-ee744bb12bd0";
+            
+        //    string[] stringSeparators = new string[] { _ApplicationAutoriseeSeparator };
+        //    var splitResult = PinCode.Split(stringSeparators, StringSplitOptions.None);
+        //    if (splitResult.Length == 2)
+        //    {
+        //        result = splitResult[1];
+        //    }
+
+        //    return result;
+        //}
 
         public virtual bool Validate()
         {
